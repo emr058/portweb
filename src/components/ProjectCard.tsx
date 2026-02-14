@@ -2,7 +2,6 @@
 
 import { Project } from "@/data/portfolio";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
 import { useLanguage } from "@/components/LanguageContext";
 
 interface ProjectCardProps {
@@ -12,12 +11,8 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
     const { language } = useLanguage();
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="group relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+        <div
+            className="group relative bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-fade-in-up"
         >
             <div className="flex justify-between items-start mb-4">
                 <div>
@@ -82,6 +77,6 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
                     </span>
                 ))}
             </div>
-        </motion.div>
+        </div>
     );
 };

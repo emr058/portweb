@@ -4,7 +4,6 @@ import { portfolioData } from "@/data/portfolio";
 import { useLanguage } from "@/components/LanguageContext";
 import { Section } from "./Section";
 import { Mail, Linkedin, Github, Send } from "lucide-react";
-import { motion } from "framer-motion";
 
 export const Contact = () => {
     const { language } = useLanguage();
@@ -22,53 +21,44 @@ export const Contact = () => {
             </div>
 
             <div className="flex flex-col md:flex-row justify-center gap-8 max-w-3xl mx-auto">
-                <motion.a
+                <a
                     href={personal.socials.email}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="flex-1 flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-accent hover:shadow-md transition-all group"
+                    className="flex-1 flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-accent hover:shadow-md transition-all group animate-fade-in-up"
                 >
                     <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <Mail size={24} />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white mb-1">Email</h3>
                     <p className="text-slate-500 dark:text-slate-400 text-sm">{language === 'tr' ? "Doğrudan mail gönder" : "Send me an email"}</p>
-                </motion.a>
+                </a>
 
-                <motion.a
+                <a
                     href={personal.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 }}
-                    className="flex-1 flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-accent hover:shadow-md transition-all group"
+                    className="flex-1 flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-accent hover:shadow-md transition-all group animate-fade-in-up"
+                    style={{ animationDelay: "0.1s" }}
                 >
                     <div className="w-12 h-12 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <Linkedin size={24} />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white mb-1">LinkedIn</h3>
                     <p className="text-slate-500 dark:text-slate-400 text-sm">{language === 'tr' ? "Profesyonel ağım" : "Professional network"}</p>
-                </motion.a>
+                </a>
 
-                <motion.a
+                <a
                     href={personal.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 }}
-                    className="flex-1 flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-accent hover:shadow-md transition-all group"
+                    className="flex-1 flex flex-col items-center p-8 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:border-accent hover:shadow-md transition-all group animate-fade-in-up"
+                    style={{ animationDelay: "0.2s" }}
                 >
                     <div className="w-12 h-12 bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <Github size={24} />
                     </div>
                     <h3 className="font-bold text-slate-900 dark:text-white mb-1">GitHub</h3>
                     <p className="text-slate-500 dark:text-slate-400 text-sm">{language === 'tr' ? "Kod incele" : "Review my code"}</p>
-                </motion.a>
+                </a>
             </div>
 
             <div className="mt-16 text-center">

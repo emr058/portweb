@@ -3,7 +3,6 @@
 import { portfolioData } from "@/data/portfolio";
 import { useLanguage } from "@/components/LanguageContext";
 import { Section } from "./Section";
-import { motion } from "framer-motion";
 
 export const About = () => {
     const { language } = useLanguage();
@@ -12,11 +11,8 @@ export const About = () => {
     return (
         <Section id="about" className="bg-slate-50 dark:bg-slate-950">
             <div className="max-w-4xl mx-auto">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800"
+                <div
+                    className="bg-white dark:bg-slate-900 p-8 md:p-12 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-800 animate-fade-in-up"
                 >
                     <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-6">{about.title}</h2>
                     <div className="prose prose-slate dark:prose-invert prose-lg text-slate-600 dark:text-slate-300">
@@ -89,7 +85,7 @@ export const About = () => {
                             </div>
                         </div>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </Section>
     );

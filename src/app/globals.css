@@ -8,9 +8,9 @@
 
   --font-sans: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
+
+  --animate-fade-in-up: fade-in-up 0.6s ease-out both;
 }
-
-
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -23,16 +23,11 @@
 
 .dark {
   --background: #0f172a;
-  /* Slate 900 */
   --foreground: #f8fafc;
-  /* Slate 50 */
   --accent: #3b82f6;
-  /* Blue 500 */
   --accent-hover: #60a5fa;
-  /* Blue 400 */
 }
 
-/* Base styles are applied automatically by @import "tailwindcss" */
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -40,4 +35,23 @@ body {
 
 @utility glass {
   @apply bg-white/70 backdrop-blur-md border border-white/20;
+}
+
+/* Performance: CSS animations replace framer-motion for scroll-triggered elements */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Content visibility optimization for below-fold sections */
+section:not(:first-of-type) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
 }

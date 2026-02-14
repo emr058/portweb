@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useCallback, useSyncExternalStore } from "react";
 
 type Language = "tr" | "en";
 
@@ -12,32 +12,39 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-    const [language, setLanguage] = useState<Language>(() => {
-        if (typeof window !== "undefined") {
-            const savedLang = localStorage.getItem("language") as Language;
-            if (savedLang === "tr" || savedLang === "en") {
-                return savedLang;
-            }
-        }
-        return "tr";
-    });
+// Use useSyncExternalStore for hydration-safe localStorage reading
+function getStoredLanguage(): Language {
+    if (typeof window === "undefined") return "tr";
+    const saved = localStorage.getItem("language");
+    if (saved === "tr" || saved === "en") return saved;
+    return "tr";
+}
 
-    const handleSetLanguage = (lang: Language) => {
-        setLanguage(lang);
+function subscribeToStorage(callback: () => void): () => void {
+    window.addEventListener("storage", callback);
+    return () => window.removeEventListener("storage", callback);
+}
+
+function getServerSnapshot(): Language {
+    return "tr";
+}
+
+export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
+    const language = useSyncExternalStore(subscribeToStorage, getStoredLanguage, getServerSnapshot);
+    const [, forceUpdate] = useState(0);
+
+    const handleSetLanguage = useCallback((lang: Language) => {
         localStorage.setItem("language", lang);
         document.documentElement.lang = lang;
-    };
+        // Trigger re-render since useSyncExternalStore won't detect programmatic localStorage changes
+        window.dispatchEvent(new StorageEvent("storage", { key: "language", newValue: lang }));
+        forceUpdate(c => c + 1);
+    }, []);
 
-    const toggleLanguage = () => {
-        handleSetLanguage(language === "tr" ? "en" : "tr");
-    };
-
-    // During SSR and initial hydration, render children with the default "tr" language.
-    // After hydration, re-render with the correct language from localStorage.
-    // To prevent a hydration mismatch, we suppress the children render until hydrated
-    // only if we know localStorage might differ. Instead, we always render but ensure
-    // the first render uses "tr" consistently on both server and client.
+    const toggleLanguage = useCallback(() => {
+        const current = getStoredLanguage();
+        handleSetLanguage(current === "tr" ? "en" : "tr");
+    }, [handleSetLanguage]);
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, toggleLanguage }}>

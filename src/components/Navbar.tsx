@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { cn } from "@/utils/cn";
 import { scrollToSection } from "@/utils/scroll";
 import { useLanguage } from "@/components/LanguageContext";
 import { portfolioData } from "@/data/portfolio";
 import { useTheme } from "next-themes";
 import { Menu, X, Github, Linkedin, Mail, Globe, Moon, Sun } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 
 const navLinks = [
     { name: { en: "Projects", tr: "Projeler" }, id: "projects" },
@@ -16,22 +16,30 @@ const navLinks = [
     { name: { en: "Contact", tr: "İletişim" }, id: "contact" },
 ];
 
+// Hydration-safe scroll state via useSyncExternalStore
+function subscribeToScroll(callback: () => void) {
+    window.addEventListener("scroll", callback, { passive: true });
+    return () => window.removeEventListener("scroll", callback);
+}
+function getScrollState() {
+    return window.scrollY > 50;
+}
+function getServerScrollState() {
+    return false;
+}
+
+// Hydration-safe mounted check
+const emptySubscribe = () => () => { };
+function getClientMounted() { return true; }
+function getServerMounted() { return false; }
+
 export const Navbar = () => {
     const { language, toggleLanguage } = useLanguage();
     const { personal } = portfolioData[language];
     const { setTheme, resolvedTheme } = useTheme();
     const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true); // eslint-disable-line
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
-        };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    const scrolled = useSyncExternalStore(subscribeToScroll, getScrollState, getServerScrollState);
+    const mounted = useSyncExternalStore(emptySubscribe, getClientMounted, getServerMounted);
 
     const handleNavClick = (id: string) => {
         scrollToSection(id);
@@ -85,15 +93,15 @@ export const Navbar = () => {
                             className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-accent transition-colors px-2 py-1"
                             aria-label="Toggle Theme"
                         >
-                            {mounted ? (resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />) : null}
+                            {mounted ? (resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />) : <span className="w-4 h-4" />}
                         </button>
                     </div>
                 </nav>
 
                 {/* Desktop Socials */}
                 <div className="hidden md:flex items-center gap-4 border-l border-slate-200 dark:border-slate-800 pl-6">
-                    <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"><Github size={18} /></a>
-                    <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"><Linkedin size={18} /></a>
+                    <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="GitHub"><Github size={18} /></a>
+                    <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin size={18} /></a>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -101,18 +109,21 @@ export const Navbar = () => {
                     <button
                         onClick={toggleTheme}
                         className="text-slate-600 dark:text-slate-300"
+                        aria-label="Toggle Theme"
                     >
-                        {mounted ? (resolvedTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />) : null}
+                        {mounted ? (resolvedTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />) : <span className="w-5 h-5" />}
                     </button>
                     <button
                         onClick={toggleLanguage}
                         className="text-slate-600 dark:text-slate-300 font-medium text-sm flex items-center gap-1"
+                        aria-label="Switch Language"
                     >
                         {language === "tr" ? "EN" : "TR"}
                     </button>
                     <button
                         className="p-2 text-slate-600 dark:text-slate-300"
                         onClick={() => setIsOpen(!isOpen)}
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
@@ -120,33 +131,35 @@ export const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4 shadow-lg text-foreground"
-                    >
-                        <nav className="flex flex-col gap-4">
-                            {navLinks.map((link) => (
-                                <button
-                                    key={link.id}
-                                    onClick={() => handleNavClick(link.id)}
-                                    className="text-left py-2 font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
-                                >
-                                    {link.name[language]}
-                                </button>
-                            ))}
-                            <div className="flex gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900"><Github size={20} /></a>
-                                <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900"><Linkedin size={20} /></a>
-                                <a href={personal.socials.email} className="text-slate-500 dark:text-slate-400 hover:text-slate-900"><Mail size={20} /></a>
-                            </div>
-                        </nav>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <LazyMotion features={domAnimation} strict>
+                <AnimatePresence>
+                    {isOpen && (
+                        <m.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4 shadow-lg text-foreground"
+                        >
+                            <nav className="flex flex-col gap-4">
+                                {navLinks.map((link) => (
+                                    <button
+                                        key={link.id}
+                                        onClick={() => handleNavClick(link.id)}
+                                        className="text-left py-2 font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
+                                    >
+                                        {link.name[language]}
+                                    </button>
+                                ))}
+                                <div className="flex gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                    <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900" aria-label="GitHub"><Github size={20} /></a>
+                                    <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900" aria-label="LinkedIn"><Linkedin size={20} /></a>
+                                    <a href={personal.socials.email} className="text-slate-500 dark:text-slate-400 hover:text-slate-900" aria-label="Email"><Mail size={20} /></a>
+                                </div>
+                            </nav>
+                        </m.div>
+                    )}
+                </AnimatePresence>
+            </LazyMotion>
         </header>
     );
 };
