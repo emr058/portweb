@@ -32,7 +32,7 @@ export default function Home() {
             {language === 'tr' ? "Öne Çıkan Projeler" : "Featured Projects"}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 mt-2">
-            {language === 'tr' ? "Otonom sistemler ve yazılım alanındaki son çalışmalarım." : "Latest work in autonomous systems and software."}
+            {language === 'tr' ? "Yapay zekâ, robotik ve yazılım alanındaki son çalışmalarım." : "My latest work in AI, robotics, and software."}
           </p>
         </div>
         <ProjectGrid projects={featuredProjects} />
@@ -42,7 +42,7 @@ export default function Home() {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
             <span className="w-8 h-1 bg-accent rounded-full"></span>
-            Robotics Automation
+            {language === 'tr' ? "Robotik Otomasyon" : "Robotics Automation"}
           </h2>
         </div>
         <ProjectGrid projects={roboticsProjects} />
@@ -52,7 +52,7 @@ export default function Home() {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
             <span className="w-8 h-1 bg-accent rounded-full"></span>
-            AI Integrations
+            {language === 'tr' ? "Yapay Zekâ Entegrasyonları" : "AI Integrations"}
           </h2>
         </div>
         <ProjectGrid projects={aiProjects} />
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
             <span className="w-8 h-1 bg-accent rounded-full"></span>
-            Full-Stack & Tools
+            {language === 'tr' ? "Full-Stack ve Araçlar" : "Full-Stack & Tools"}
           </h2>
         </div>
         <ProjectGrid projects={fullStackProjects} />

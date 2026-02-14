@@ -3,12 +3,14 @@
 import { Project } from "@/data/portfolio";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/components/LanguageContext";
 
 interface ProjectCardProps {
     project: Project;
 }
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
+    const { language } = useLanguage();
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -56,7 +58,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
             <div className="mb-6 p-3 bg-slate-50 dark:bg-slate-700/50 rounded-lg border border-slate-100 dark:border-slate-700">
                 <div className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
-                    System Flow
+                    {language === 'tr' ? "Sistem Akışı" : "System Flow"}
                 </div>
                 <div className="flex items-center flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-200 font-mono">
                     {project.systemFlow.split("->").map((step, index, arr) => (

@@ -14,14 +14,15 @@ export const Footer = () => {
                 <div className="text-center md:text-left">
                     <div className="font-bold text-xl tracking-tight mb-2">{personal.name}</div>
                     <p className="text-slate-400 text-sm">
-                        {language === 'tr' ? "AI & Robotik Mühendisliği" : "AI & Robotics Engineering"}
+                        {language === 'tr' ? "Yapay Zekâ ve Robotik Mühendisliği" : "AI & Robotics Engineering"}
                     </p>
                 </div>
 
-                <div className="text-sm text-slate-500">
+                <div className="text-sm text-slate-500" suppressHydrationWarning>
                     &copy; {currentYear} Emir Aydın. {language === 'tr' ? "Tüm hakları saklıdır." : "All rights reserved."}
                 </div>
             </div>
         </footer>
     );
 };
+

@@ -85,7 +85,7 @@ export const Navbar = () => {
                             className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-accent transition-colors px-2 py-1"
                             aria-label="Toggle Theme"
                         >
-                            {mounted && resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+                            {mounted ? (resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />) : null}
                         </button>
                     </div>
                 </nav>
@@ -102,7 +102,7 @@ export const Navbar = () => {
                         onClick={toggleTheme}
                         className="text-slate-600 dark:text-slate-300"
                     >
-                        {mounted && resolvedTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                        {mounted ? (resolvedTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />) : null}
                     </button>
                     <button
                         onClick={toggleLanguage}

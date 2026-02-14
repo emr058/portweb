@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Emir Aydın | AI & Robotics Engineer",
-  description: "Portfolyo: Robotik otomasyon, AI entegrasyonu ve araç yazılımları.",
+  description: "Emir Aydın - Yapay zekâ, robotik otomasyon ve araç yazılımları alanında mühendislik portföyü.",
   openGraph: {
     title: "Emir Aydın | AI & Robotics Engineer",
-    description: "Robotik otomasyon, AI entegrasyonu ve araç yazılımları.",
+    description: "Yapay zekâ, robotik otomasyon ve araç yazılımları alanında mühendislik portföyü.",
     type: "website",
   },
 };
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 import { LanguageProvider } from "@/components/LanguageContext";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-// ... imports
+
 
 export default function RootLayout({
   children,

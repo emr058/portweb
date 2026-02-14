@@ -6,6 +6,7 @@ import { PathSelector } from "./PathSelector";
 import { scrollToSection } from "@/utils/scroll";
 import { ArrowDown } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export const Hero = () => {
     const { language } = useLanguage();
@@ -20,10 +21,28 @@ export const Hero = () => {
             </div>
 
             <div className="container mx-auto px-4 text-center z-10">
+                {/* Profile Photo */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-8 flex justify-center"
+                >
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/30 dark:border-slate-700/50 shadow-xl">
+                        <Image
+                            src="/profile.jpg"
+                            alt={personal.name}
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
+                </motion.div>
+
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                     className="flex flex-wrap justify-center gap-3 mb-8"
                 >
                     {hero.badges.map((badge) => (
