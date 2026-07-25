@@ -1,0 +1,69 @@
+---
+title: "How I Built an AI Customer Support Agent"
+description: "A deep dive into building a multi-agent customer support system that resolves 73% of tier-1 inquiries autonomously."
+date: "2026-01-15"
+tags: ["AI Agents", "LLM", "RAG", "Automation"]
+featured: true
+---
+
+## The Business Problem
+
+Small businesses lose 15–20 hours per week answering the same customer questions. Order status, return policies, shipping times — these repetitive inquiries pull founders away from building product.
+
+The goal wasn't to build a chatbot. It was to build a system that **eliminates manual support work** while maintaining quality.
+
+## Architecture Overview
+
+I designed a multi-agent system rather than a single monolithic prompt:
+
+- **Router Agent** — classifies incoming messages by intent
+- **FAQ Agent** — retrieves answers from a vector-indexed knowledge base
+- **Order Agent** — calls live APIs to fetch order status
+- **Escalation Agent** — hands off to humans when confidence is low
+
+This separation keeps each agent focused and makes debugging tractable.
+
+## Building the RAG Pipeline
+
+The knowledge base quality determines everything. Here's what worked:
+
+1. **Chunk documents by semantic sections**, not arbitrary token limits
+2. **Include metadata** (product name, category, last updated) with each chunk
+3. **Re-rank results** before passing to the LLM — top-5 retrieval isn't always top-5 relevance
+
+```python
+# Simplified retrieval flow
+query_embedding = embed(user_message)
+candidates = vector_db.search(query_embedding, top_k=10)
+reranked = cross_encoder.rerank(user_message, candidates, top_k=3)
+context = format_context(reranked)
+response = llm.generate(system_prompt, context, user_message)
+```
+
+## Confidence Scoring & Escalation
+
+Not every query should be auto-answered. I implemented per-intent confidence thresholds:
+
+- **FAQ queries**: 0.85 threshold (high confidence needed for policy answers)
+- **Order status**: 0.95 threshold (must be accurate)
+- **General chat**: 0.70 threshold (lower risk)
+
+When confidence drops below threshold, the system seamlessly escalates to a human with full conversation context.
+
+## Results
+
+After 8 weeks of development and tuning:
+
+- **73% auto-resolution rate** for tier-1 inquiries
+- **12-second average response time** (down from 4 hours)
+- **14 hours/week saved** on manual support
+
+## Key Lessons
+
+1. **RAG quality > model size** — a well-curated knowledge base with GPT-4o-mini beats a poorly indexed KB with GPT-4
+2. **Transparency builds trust** — always tell users they're talking to AI
+3. **Measure everything** — track resolution rate, escalation rate, and CSAT per intent type
+
+## What's Next
+
+Multi-language support, voice channel integration, and proactive outreach based on order lifecycle events.

@@ -1,0 +1,66 @@
+---
+title: "Building a QR Attendance System"
+description: "From ESP32 face recognition to QR-based check-in — how I automated attendance tracking and reduced check-in time from 15 minutes to 30 seconds."
+date: "2025-12-10"
+tags: ["Automation", "IoT", "Computer Vision", "Backend"]
+featured: true
+---
+
+## Why Manual Attendance Fails
+
+Every classroom session starts with 10–15 minutes of roll call. Paper sign-in sheets get lost. Manual counts have errors. And nobody analyzes the data.
+
+The business case was clear: **automate attendance, get accurate data, save time**.
+
+## Two Modes, One System
+
+I built a dual-mode system to handle different environments:
+
+### Mode 1: QR Code Check-in
+- Admin generates session-specific QR codes
+- Students scan with any smartphone camera
+- Instant check-in with timestamp and device fingerprint
+
+### Mode 2: ESP32 Face Recognition
+- ESP32-CAM module at classroom entrance
+- Optimized PyTorch model running on-device
+- Contactless check-in for high-traffic scenarios
+
+Both modes feed into the same backend API and dashboard.
+
+## Edge AI Challenges
+
+Running face recognition on ESP32 was the hardest technical challenge:
+
+- Full PyTorch models don't fit in 520KB RAM
+- Inference must complete in under 2 seconds
+- Lighting conditions vary wildly in classroom environments
+
+**Solution**: Model quantization (INT8), face detection with MTCNN on-device, and embedding comparison against a pre-computed database rather than full inference per frame.
+
+## Handling Scale
+
+During class transitions, 500+ students need to check in within 5 minutes. That's ~1.7 check-ins per second.
+
+The backend uses:
+- **WebSocket connections** for real-time updates
+- **Redis pub/sub** for broadcasting attendance events
+- **Batch writes** to PostgreSQL to avoid connection pool exhaustion
+
+## Results
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Check-in time | 15 min | 30 sec |
+| Recognition accuracy | Manual | 96.2% |
+| Record accuracy | ~85% | 99.8% |
+
+## Lessons Learned
+
+1. **Always provide a fallback** — QR scan when face recognition fails
+2. **Audit trails matter** — log who checked in, when, and via which method
+3. **Edge AI needs optimization** — don't assume cloud models work on microcontrollers
+
+## Future Plans
+
+Geofencing to prevent remote check-in, LMS integration, and predictive analytics for at-risk students.

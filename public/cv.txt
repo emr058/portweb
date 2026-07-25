@@ -1,0 +1,54 @@
+======================================================================
+EMİR AYDIN
+AI Automation Engineer & Software Product Builder
+Email: emraydin058@gmail.com
+LinkedIn: https://linkedin.com/in/emir-aydn
+GitHub: https://github.com/emr058
+Website: https://www.emirr.com.tr
+======================================================================
+
+SUMMARY
+AI Automation Engineer & Software Product Builder with extensive experience designing and deploying autonomous AI agents, event-driven workflow automation pipelines, SaaS web applications, and high-concurrency backend services. Dedicated to solving complex business problems, reducing operational overhead, and building measurable software systems.
+
+TECHNICAL EXPERTISE
+- AI & LLM Systems: OpenAI GPT-4o, Claude 3.5 Sonnet, Gemini 1.5, Model Context Protocol (MCP), LangGraph, RAG (PgVector/Pinecone), Prompt Engineering, Function Calling.
+- Backend Engineering: Python, FastAPI, Node.js, Express, PostgreSQL, Redis, Celery, BullMQ, RESTful & GraphQL APIs, Docker.
+- Workflow Automation: n8n (Self-Hosted), Custom Webhooks, OCR Pipelines (Whisper AI, Vision LLM), Zapier.
+- Frontend & SaaS: Next.js (App Router), TypeScript, React, TailwindCSS, Framer Motion, Stripe Billing.
+
+FEATURED PROJECTS
+1. CarryHub (Status: Active Development)
+   Logistics & Delivery Optimization SaaS platform.
+   - Built dynamic route optimization pipeline reducing courier mileage by 28% and route calculation time from 45 mins to < 1s using Python FastAPI & OR-Tools.
+
+2. B12 Reminder Platform (Status: Publishing Soon)
+   Automated Patient Supplement & Dosage Retention System.
+   - Built precision cron queue and WhatsApp Cloud API webhook engine achieving 91.2% patient dosage adherence.
+
+3. AI Customer Support Agent (Status: Live)
+   Multi-Tenant Autonomous Support & Ticket Resolution System.
+   - Architected RAG agent with PgVector and function calling that resolves 74% of support tickets automatically with 1.8s response latencies.
+
+4. QR Attendance Automation (Status: Live)
+   Instant Contactless Workplace & Event Attendance System.
+   - Created dynamic TOTP QR code generator reducing check-in duration from 12 mins to 2.1 seconds.
+
+CAREER TIMELINE
+- Independent AI Product Builder (2024 - Present)
+  Designing and scaling autonomous AI agents, workflow automation pipelines, and SaaS products.
+- DentTech - Software & Systems Engineer (2024)
+  Automated clinic operational workflows and patient reminder queues.
+- 32Bit - Enterprise Systems & Backend Engineer (2023 - 2024)
+  Engineered high-reliability backend API bridges between legacy enterprise systems.
+- Software Engineering - Full Stack Developer (2023)
+  Designed custom web portals, REST APIs, and relational database schemas.
+- Novelty AI - AI / ML Engineering Intern (2022)
+  Preprocessed computer vision datasets and fine-tuned NLP classification models.
+
+ENGINEERING PRINCIPLES
+1. Eliminate repetitive work.
+2. Be measurable.
+3. Be maintainable.
+4. Be simple.
+5. Solve business problems first.
+======================================================================

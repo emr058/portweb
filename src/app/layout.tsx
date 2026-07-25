@@ -1,81 +1,95 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/context/language-context";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
+import { siteConfig } from "@/data/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-});
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-  ],
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Emir Aydın | AI & Robotics Engineer",
-  description:
-    "Emir Aydın - Yapay zekâ, robotik otomasyon ve araç yazılımları alanında mühendislik portföyü. AI & Robotics Engineering Portfolio.",
-  metadataBase: new URL("https://www.emirr.com.tr"),
-  alternates: {
-    canonical: "/",
+  title: {
+    default: `${siteConfig.name} | ${siteConfig.title}`,
+    template: `%s | ${siteConfig.name}`,
   },
+  description: siteConfig.description,
+  keywords: [
+    "Emir Aydın",
+    "AI Automation Engineer",
+    "Full Stack Software Engineer",
+    "Kyrenia University",
+    "Girne Üniversitesi",
+    "Dentech Medikal",
+    "CarryHub",
+    "AI Agents",
+    "Python",
+    "Next.js",
+    "FastAPI",
+    "TypeScript",
+  ],
+  authors: [{ name: siteConfig.author }],
+  creator: siteConfig.author,
   openGraph: {
-    title: "Emir Aydın | AI & Robotics Engineer",
-    description:
-      "Yapay zekâ, robotik otomasyon ve araç yazılımları alanında mühendislik portföyü.",
     type: "website",
-    url: "https://www.emirr.com.tr",
-    siteName: "Emir Aydın Portfolio",
-    locale: "tr_TR",
-  },
-  twitter: {
-    card: "summary",
-    title: "Emir Aydın | AI & Robotics Engineer",
-    description:
-      "Yapay zekâ, robotik otomasyon ve araç yazılımları alanında mühendislik portföyü.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  icons: {
-    icon: "/icon.jpg",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: `${siteConfig.name} | ${siteConfig.title}`,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [{ url: siteConfig.ogImage }],
   },
 };
-
-import { LanguageProvider } from "@/components/LanguageContext";
-import { ThemeProvider } from "@/components/ThemeProvider";
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.name,
+    jobTitle: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    image: `${siteConfig.url}/profile.jpg`,
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Kyrenia University (Girne Üniversitesi)",
+    },
+    worksFor: {
+      "@type": "Organization",
+      name: "Dentech Medikal",
+    },
+    sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
+    knowsAbout: [
+      "AI Automation",
+      "Software Product Building",
+      "AI Agents",
+      "Python Automation",
+      "Backend Architecture",
+      "SaaS Engineering",
+    ],
+  };
+
   return (
-    <html lang="tr" suppressHydrationWarning>
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.className} bg-[#08090a] text-gray-100 min-h-screen flex flex-col antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
-        </ThemeProvider>
+        <LanguageProvider>
+          <Navbar />
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

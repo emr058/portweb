@@ -1,165 +1,128 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
-import { cn } from "@/utils/cn";
-import { scrollToSection } from "@/utils/scroll";
-import { useLanguage } from "@/components/LanguageContext";
-import { portfolioData } from "@/data/portfolio";
-import { useTheme } from "next-themes";
-import { Menu, X, Github, Linkedin, Mail, Globe, Moon, Sun } from "lucide-react";
-import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useLanguage } from "@/context/language-context";
+import { translations } from "@/data/translations";
+import { siteConfig } from "@/data/site";
+import { Globe, Download, Menu, X, Cpu } from "lucide-react";
 
-const navLinks = [
-    { name: { en: "Projects", tr: "Projeler" }, id: "projects" },
-    { name: { en: "Playbook", tr: "Metodoloji" }, id: "playbook" },
-    { name: { en: "About", tr: "Hakkımda" }, id: "about" },
-    { name: { en: "Contact", tr: "İletişim" }, id: "contact" },
-];
+export function Navbar() {
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations[language].nav;
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-// Hydration-safe scroll state via useSyncExternalStore
-function subscribeToScroll(callback: () => void) {
-    window.addEventListener("scroll", callback, { passive: true });
-    return () => window.removeEventListener("scroll", callback);
+  const navItems = [
+    { label: t.about, href: "/#about" },
+    { label: t.projects, href: "/projects" },
+    { label: t.aiStack, href: "/ai-stack" },
+    { label: t.services, href: "/#services" },
+    { label: t.principles, href: "/#principles" },
+    { label: t.career, href: "/#career" },
+    { label: t.blog, href: "/blog" },
+    { label: t.contact, href: "/#contact" },
+  ];
+
+  return (
+    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#08090a]/85 border-b border-white/10 transition-all">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Brand Logo & Avatar */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-blue-500/40 group-hover:border-blue-400 transition-colors">
+            <Image
+              src={siteConfig.avatar}
+              alt={siteConfig.name}
+              fill
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-sm tracking-tight text-white group-hover:text-blue-400 transition-colors">
+              {siteConfig.name}
+            </span>
+            <span className="text-[10px] text-gray-400 font-mono tracking-wider">
+              AI AUTOMATION
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="px-3 py-1.5 text-xs font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Right Actions: Language Switcher & CV Download */}
+        <div className="hidden md:flex items-center gap-3">
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-mono font-semibold text-gray-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg transition-all"
+            title="Switch Language (TR / EN)"
+          >
+            <Globe className="w-3.5 h-3.5 text-blue-400" />
+            <span>{language.toUpperCase()}</span>
+          </button>
+
+          {/* CV Download Button */}
+          <a
+            href={siteConfig.cvPath}
+            download="Emir_Aydin_Resume.pdf"
+            className="flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-lg shadow-lg shadow-blue-500/20 transition-all transform hover:-translate-y-0.5"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>{t.viewCv}</span>
+          </a>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={toggleLanguage}
+            className="px-2 py-1 text-xs font-mono font-semibold text-gray-300 bg-white/5 border border-white/10 rounded-md"
+          >
+            {language.toUpperCase()}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 text-gray-400 hover:text-white rounded-lg focus:outline-none"
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      {mobileOpen && (
+        <div className="md:hidden bg-[#08090a] border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              className="block px-3 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-md"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href={siteConfig.cvPath}
+            download="Emir_Aydin_Resume.pdf"
+            className="flex items-center justify-center gap-2 w-full mt-4 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg"
+          >
+            <Download className="w-4 h-4" />
+            <span>{t.viewCv}</span>
+          </a>
+        </div>
+      )}
+    </header>
+  );
 }
-function getScrollState() {
-    return window.scrollY > 50;
-}
-function getServerScrollState() {
-    return false;
-}
-
-// Hydration-safe mounted check
-const emptySubscribe = () => () => { };
-function getClientMounted() { return true; }
-function getServerMounted() { return false; }
-
-export const Navbar = () => {
-    const { language, toggleLanguage } = useLanguage();
-    const { personal } = portfolioData[language];
-    const { setTheme, resolvedTheme } = useTheme();
-    const [isOpen, setIsOpen] = useState(false);
-    const scrolled = useSyncExternalStore(subscribeToScroll, getScrollState, getServerScrollState);
-    const mounted = useSyncExternalStore(emptySubscribe, getClientMounted, getServerMounted);
-
-    const handleNavClick = (id: string) => {
-        scrollToSection(id);
-        setIsOpen(false);
-    };
-
-    const toggleTheme = () => {
-        setTheme(resolvedTheme === "dark" ? "light" : "dark");
-    };
-
-    return (
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                scrolled ? "glass h-16" : "h-20 bg-transparent"
-            )}
-        >
-            <div className="container mx-auto px-4 h-full flex items-center justify-between">
-                {/* Logo */}
-                <div
-                    className="font-bold text-xl tracking-tight cursor-pointer hover:opacity-80 transition-opacity text-foreground"
-                    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                >
-                    {personal.name}
-                </div>
-
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link) => (
-                        <button
-                            key={link.id}
-                            onClick={() => handleNavClick(link.id)}
-                            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-                        >
-                            {link.name[language]}
-                        </button>
-                    ))}
-
-                    <div className="flex items-center gap-2 pl-4 border-l border-slate-200 dark:border-slate-800">
-                        <button
-                            onClick={toggleLanguage}
-                            className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-accent transition-colors px-2 py-1"
-                            aria-label="Switch Language"
-                        >
-                            <Globe size={16} />
-                            {language === "tr" ? "EN" : "TR"}
-                        </button>
-
-                        <button
-                            onClick={toggleTheme}
-                            className="flex items-center gap-1 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-accent transition-colors px-2 py-1"
-                            aria-label="Toggle Theme"
-                        >
-                            {mounted ? (resolvedTheme === "dark" ? <Sun size={16} /> : <Moon size={16} />) : <span className="w-4 h-4" />}
-                        </button>
-                    </div>
-                </nav>
-
-                {/* Desktop Socials */}
-                <div className="hidden md:flex items-center gap-4 border-l border-slate-200 dark:border-slate-800 pl-6">
-                    <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="GitHub"><Github size={18} /></a>
-                    <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin size={18} /></a>
-                </div>
-
-                {/* Mobile Menu Toggle */}
-                <div className="md:hidden flex items-center gap-4">
-                    <button
-                        onClick={toggleTheme}
-                        className="text-slate-600 dark:text-slate-300"
-                        aria-label="Toggle Theme"
-                    >
-                        {mounted ? (resolvedTheme === "dark" ? <Sun size={20} /> : <Moon size={20} />) : <span className="w-5 h-5" />}
-                    </button>
-                    <button
-                        onClick={toggleLanguage}
-                        className="text-slate-600 dark:text-slate-300 font-medium text-sm flex items-center gap-1"
-                        aria-label="Switch Language"
-                    >
-                        {language === "tr" ? "EN" : "TR"}
-                    </button>
-                    <button
-                        className="p-2 text-slate-600 dark:text-slate-300"
-                        onClick={() => setIsOpen(!isOpen)}
-                        aria-label={isOpen ? "Close menu" : "Open menu"}
-                    >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
-                    </button>
-                </div>
-            </div>
-
-            {/* Mobile Menu */}
-            <LazyMotion features={domAnimation} strict>
-                <AnimatePresence>
-                    {isOpen && (
-                        <m.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 p-4 shadow-lg text-foreground"
-                        >
-                            <nav className="flex flex-col gap-4">
-                                {navLinks.map((link) => (
-                                    <button
-                                        key={link.id}
-                                        onClick={() => handleNavClick(link.id)}
-                                        className="text-left py-2 font-medium text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white"
-                                    >
-                                        {link.name[language]}
-                                    </button>
-                                ))}
-                                <div className="flex gap-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                    <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900" aria-label="GitHub"><Github size={20} /></a>
-                                    <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900" aria-label="LinkedIn"><Linkedin size={20} /></a>
-                                    <a href={personal.socials.email} className="text-slate-500 dark:text-slate-400 hover:text-slate-900" aria-label="Email"><Mail size={20} /></a>
-                                </div>
-                            </nav>
-                        </m.div>
-                    )}
-                </AnimatePresence>
-            </LazyMotion>
-        </header>
-    );
-};

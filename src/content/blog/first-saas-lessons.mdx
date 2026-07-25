@@ -1,0 +1,60 @@
+---
+title: "Lessons From Building My First SaaS"
+description: "What I learned shipping B12 Reminder — from idea validation to building a health supplement tracking app with intelligent scheduling."
+date: "2026-02-01"
+tags: ["SaaS", "Product", "Startup", "Engineering"]
+featured: true
+---
+
+## Starting With the Problem, Not the Tech
+
+My first instinct was to build features. Notification scheduling, adherence tracking, analytics dashboards — the engineering possibilities were endless.
+
+But the first lesson hit hard: **nobody cares about your tech stack**. They care about whether their problem gets solved.
+
+For B12 Reminder, the problem was simple: people forget to take their supplements. The solution needed to be even simpler.
+
+## Validation Before Code
+
+Before writing a single line of code, I:
+
+1. Talked to 15 people on B12 regimens
+2. Asked about their current reminder methods (phone alarms, sticky notes, nothing)
+3. Identified the #1 pain point: **alarm fatigue** — they disable reminders after a week
+
+This shaped the entire product: smart scheduling that adapts, not fixed daily alarms.
+
+## Technical Decisions That Mattered
+
+### PWA Over Native App
+For MVP, a Progressive Web App beat native development:
+- No app store approval delays
+- Push notifications via Web Push API
+- Single codebase for all platforms
+- Instant updates without user action
+
+### Timezone-Aware Cron Jobs
+Supplement schedules cross time zones when users travel. The reminder engine stores schedules in UTC and converts at notification time, not at schedule creation.
+
+### Adherence Without Guilt
+Most health apps use streaks. Research shows streaks create anxiety when broken. B12 Reminder uses **weekly compliance percentages** instead — motivating without punishing.
+
+## What I'd Do Differently
+
+1. **Launch earlier** — I spent 3 weeks on UI polish that users didn't notice
+2. **Charge from day one** — free users give different feedback than paying users
+3. **Build analytics first** — understanding usage patterns should precede feature development
+
+## Metrics That Matter for SaaS
+
+Don't track vanity metrics. Track:
+
+- **Activation rate**: % of signups who set their first reminder
+- **Week-1 retention**: % who still use the app after 7 days
+- **Adherence improvement**: the actual health outcome you're selling
+
+## The Biggest Lesson
+
+Building SaaS is 30% engineering and 70% understanding your user. The best code in the world doesn't matter if you're solving the wrong problem.
+
+Start with the problem. Measure the outcome. Then build.
