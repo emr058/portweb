@@ -71,6 +71,12 @@
   .world-hint span { display: inline; }
   .world-mobile-index { display: none; }
 }
+@media (max-width: 639px) {
+  .world-hotspot { left: var(--label-x) !important; top: var(--label-y) !important; width: 32px !important; height: 32px !important; min-width: 32px; min-height: 32px; transform: translate(-50%, -50%); border-radius: 7px; z-index: 4; }
+  .world-hotspot:hover, .world-hotspot:focus-visible, .world-hotspot[aria-pressed="true"] { z-index: 4; }
+  .world-label-name { display: none; }
+  .world-label { left: 50% !important; top: 50% !important; display: grid; place-items: center; min-width: 32px; min-height: 32px; padding: 4px; }
+}
 @media (max-width: 420px) {
   .world-stage { padding: 18px 10px 12px; }
   .world-stage-heading { padding: 0 10px; letter-spacing: 0; }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useLanguage } from "@/context/language-context";
@@ -11,12 +11,6 @@ import { ArrowRight, Download, ChevronDown, Sparkles, MapPin } from "lucide-reac
 export function HeroSection() {
   const { language } = useLanguage();
   const t = translations[language].hero;
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 py-16 overflow-hidden bg-grid-pattern">

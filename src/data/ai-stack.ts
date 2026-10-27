@@ -17,8 +17,8 @@ export const aiStackData: AITechItem[] = [
     category: "LLM Models",
     status: "production",
     description: {
-      en: "Used in live customer agents with structured JSON outputs and function calling.",
-      tr: "Canlı müşteri ajanlarında yapılandırılmış JSON çıktıları ve fonksiyon çağırma ile aktif kullanılıyor.",
+      en: "Structured responses and tool calls for support bots.",
+      tr: "Destek botlarında yapılandırılmış yanıtlar ve araç çağrıları.",
     },
     tags: ["Structured Outputs", "Function Calling", "Embeddings"],
   },
@@ -47,8 +47,8 @@ export const aiStackData: AITechItem[] = [
     category: "Orchestration & Frameworks",
     status: "production",
     description: {
-      en: "Connecting LLM agents to internal databases, file systems, and external tools securely.",
-      tr: "Yapay zeka ajanlarını iç veritabanlarına, dosya sistemlerine ve harici araçlara güvenle bağlama.",
+      en: "Connecting AI agents to databases, files and external tools.",
+      tr: "Yapay zeka ajanlarını veritabanlarına, dosyalara ve harici araçlara bağlama.",
     },
     tags: ["Protocol", "Tool Integration", "Context Routing"],
   },
@@ -87,8 +87,8 @@ export const aiStackData: AITechItem[] = [
     category: "Agent Architecture",
     status: "production",
     description: {
-      en: "System prompt optimization, few-shot conditioning, and structured output enforcement.",
-      tr: "Sistem istemi optimizasyonu, az örnekli şartlandırma ve tutarlı veri çıktısı garantisi.",
+      en: "Writing system prompts, adding examples and checking response formats.",
+      tr: "Sistem talimatları yazma, örnek ekleme ve yanıt biçimlerini kontrol etme.",
     },
     tags: ["Few-Shot", "Guardrails", "Eval Suites"],
   },
@@ -117,8 +117,8 @@ export const aiStackData: AITechItem[] = [
     category: "Agent Architecture",
     status: "production",
     description: {
-      en: "Chunking, embedding, hybrid BM25 + dense search for enterprise document retrieval.",
-      tr: "Metin parçalama, embedding ve kurumsal belge sorgulama için hibrit vektör araması.",
+      en: "Splitting documents into chunks and combining keyword and vector search.",
+      tr: "Belgeleri parçalara ayırma, anahtar kelime ve vektör aramasını birleştirme.",
     },
     tags: ["PgVector", "Pinecone", "Hybrid Search"],
   },

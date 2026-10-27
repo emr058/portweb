@@ -25,16 +25,16 @@ export const careerTimeline: CareerStep[] = [
     },
     period: "2021 - 2025",
     description: {
-      en: "Graduated with a degree in Software Engineering, building strong foundations in computer science algorithms, system design, machine learning, and face recognition graduation project (PyuzTanima).",
+      en: "I graduated in software engineering, studying algorithms, system design and machine learning. My graduation project was PyuzTanima, a face recognition system.",
       tr: "Yazılım Mühendisliği bölümünü bitirdim. Bilgisayar bilimleri algoritmaları, sistem tasarımı, makine öğrenmesi ve bitirme projesi olarak yüz tanıma sistemi (PyuzTanima) geliştirdim.",
     },
     highlights: {
       en: [
-        "Specialized in Python, algorithms, database systems & computer vision",
+        "Studied Python, algorithms, databases and computer vision",
         "Graduation Project: PyuzTanima (Flask & OpenCV Face Recognition)",
       ],
       tr: [
-        "Python, algoritmalar, veritabanı sistemleri ve bilgisayarlı görü uzmanlığı",
+        "Python, algoritmalar, veritabanları ve bilgisayarlı görü çalışmaları",
         "Bitirme Projesi: PyuzTanima (Flask & OpenCV Yüz Tanıma Sistemi)",
       ],
     },
@@ -47,13 +47,13 @@ export const careerTimeline: CareerStep[] = [
     },
     period: "06/2024 - 08/2024",
     description: {
-      en: "Contributed to healthcare-focused AI and web development projects, leveraging Flask, OpenCV, and Machine Learning methodologies to build RESTful APIs and process visual data.",
+      en: "I worked on healthcare AI and web projects, building web services and processing images with Flask, OpenCV and machine learning.",
       tr: "Sağlık odaklı yapay zeka ve web projelerinde yer alarak Flask, OpenCV ve Makine Öğrenmesi ile RESTful API'ler geliştirdim ve görsel verileri işledim.",
     },
     highlights: {
       en: [
         "Developed Python RESTful APIs for healthcare computer vision models",
-        "Processed visual medical dataset pipelines and classification tools",
+        "Worked on medical image processing and classification tools",
       ],
       tr: [
         "Sağlık bilgisayarlı görü modelleri için Python RESTful API'ler geliştirme",
@@ -69,8 +69,8 @@ export const careerTimeline: CareerStep[] = [
     },
     period: "06/2025 - 08/2025",
     description: {
-      en: "Developed robust backend and frontend modules utilizing Java, Spring Boot, React, and PostgreSQL. Collaborated in agile environments, participating in technical planning and deployment.",
-      tr: "Java, Spring Boot, React ve PostgreSQL kullanarak katı backend ve frontend modülleri geliştirdim. Çevik (Agile) ekiplerde teknik planlama ve yayına alma süreçlerinde yer aldım.",
+      en: "I developed backend and frontend modules with Java, Spring Boot, React and PostgreSQL. I took part in technical planning and releases with an agile team.",
+      tr: "Java, Spring Boot, React ve PostgreSQL kullanarak backend ve frontend modülleri geliştirdim. Çevik (Agile) ekiplerde teknik planlama ve yayına alma süreçlerinde yer aldım.",
     },
     highlights: {
       en: [
@@ -91,12 +91,12 @@ export const careerTimeline: CareerStep[] = [
     },
     period: "03/2026 - 09/2026",
     description: {
-      en: "Engineered AI-driven automation systems, knowledge base chatbots, QR participant tracking systems, and digital commerce platform migrations.",
+      en: "I built AI automation, a document-based support bot and QR participant tracking, and handled an e-commerce platform migration.",
       tr: "Yapay zeka otomasyon sistemleri, bilgi tabanı botları, QR katılımcı takip sistemleri ve e-ticaret platform taşıma süreçlerini yürüttüm.",
     },
     highlights: {
       en: [
-        "Engineered Python automation pipeline processing 35,000 webinar subtitle lines in < 1 minute",
+        "Built Python automation to translate 35,000 webinar subtitle lines in under a minute",
         "Built AI Customer Support Chatbot (chatbot_v1) answering 100+ business queries across 20 docs",
         "Designed QR Participant System (qrcodeapp) with Google Workspace APIs for 75 badges",
         "Led Wix to IKAS platform migration restructuring 330 products and 35 pages (dentechPro)",
@@ -141,7 +141,7 @@ export const careerTimeline: CareerStep[] = [
     highlights: {
       en: [
         "Bridging CNC production and software: digital tools for quoting, drawings and job tracking",
-        "Torna AI CAD: turning drawing-to-CAD assistant in development",
+        "Torna AI CAD: an assistant for converting technical drawings to CAD, in development",
       ],
       tr: [
         "CNC üretimi ile yazılımı birleştirme: teklif, teknik resim ve iş takibi için dijital araçlar",
@@ -158,14 +158,14 @@ export const careerTimeline: CareerStep[] = [
     period: "2024 - Present",
     isCurrent: true,
     description: {
-      en: "Designing and scaling autonomous AI agents, workflow automation pipelines, and SaaS products focused on solving real business problems.",
-      tr: "Gerçek iş sorunlarını çözmeye odaklanmış otonom yapay zeka ajanları, otomasyon sistemleri ve SaaS ürünleri tasarlayıp büyütüyorum.",
+      en: "I design AI agents, workflow automation and software products for business tasks.",
+      tr: "İş süreçleri için yapay zeka ajanları, otomasyonlar ve yazılım ürünleri tasarlıyorum.",
     },
     highlights: {
       en: [
         "CarryHub: Textile logistics marketplace & courier route optimization platform",
         "Elem-AI: AI-powered business automation platform",
-        "B12 Reminder: Patient supplement dosage retention system",
+        "B12 Reminder: Medication and supplement tracking and reminders",
         "PyuzTanima: Flask & OpenCV Face Recognition System",
       ],
       tr: [

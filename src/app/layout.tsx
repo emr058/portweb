@@ -9,6 +9,7 @@ import { siteConfig } from "@/data/site";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} | ${siteConfig.title}`,
     template: `%s | ${siteConfig.name}`,
@@ -83,7 +84,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} bg-[#08090a] text-gray-100 min-h-screen flex flex-col antialiased`}
+        className={`${inter.className} bg-[#071020] text-gray-100 min-h-screen flex flex-col antialiased`}
         suppressHydrationWarning
       >
         <LanguageProvider>

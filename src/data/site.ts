@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Emir Aydın",
   title: "AI Automation Engineer & Full Stack Software Engineer",
   description:
-    "Specializing in AI-driven automation systems, scalable backend architecture, and digital transformation. Building software that eliminates manual work and creates measurable business value.",
+    "I build web products and automation for daily work, from CNC manufacturing to business software.",
   url: "https://www.emirr.com.tr",
   ogImage: "/profile.jpg",
   avatar: "/profile.jpg",

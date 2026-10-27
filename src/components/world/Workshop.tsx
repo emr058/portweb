@@ -101,13 +101,13 @@ export function Workshop() {
 
   return <div className="workshop">
     <section className="world-stage" aria-label={tr ? "Atölye haritası" : "Workshop map"}>
-      <div className="world-stage-heading"><span>{tr ? "EMİR’İN ATÖLYESİ" : "EMİR’S WORKSHOP"}</span><span>{tr ? "Yazılım × üretim" : "Software × manufacturing"}</span></div>
+      <div className="world-stage-heading"><span>{tr ? "EMİR’İN ATÖLYESİ" : "EMIR’S WORKSHOP"}</span><span>{tr ? "Yazılım × üretim" : "Software × manufacturing"}</span></div>
       <div className="world-scene-space">
         <div className="world-scene" style={{ aspectRatio: `${worldScene.width} / ${worldScene.height}`, "--scene-ratio": `${worldScene.width} / ${worldScene.height}` } as CSSProperties}>
           <Image src={worldScene.src} width={worldScene.width} height={worldScene.height} alt={worldScene.alt[language]} priority sizes="(min-width: 1024px) 65vw, 100vw" className="world-image" />
-          {worldRegions.map(region => <button key={region.id} type="button" className="world-hotspot" style={{ left: `${region.position.x}%`, top: `${region.position.y}%`, width: `${region.position.w}%`, height: `${region.position.h}%`, "--region-color": region.color } as CSSProperties}
+          {worldRegions.map(region => <button key={region.id} type="button" className="world-hotspot" style={{ left: `${region.position.x}%`, top: `${region.position.y}%`, width: `${region.position.w}%`, height: `${region.position.h}%`, "--region-color": region.color, "--label-x": `${region.position.labelX}%`, "--label-y": `${region.position.labelY}%` } as CSSProperties}
             aria-label={`${region.hotkey} · ${region.name[language]}`} aria-keyshortcuts={String(region.hotkey)} aria-pressed={selected?.id === region.id} onClick={() => open(region.id)}>
-            <span className="world-label" style={{ left: `${(region.position.labelX - region.position.x) / region.position.w * 100}%`, top: `${(region.position.labelY - region.position.y) / region.position.h * 100}%` }}><b>{String(region.hotkey).padStart(2, "0")}</b> · {region.name[language]}</span>
+            <span className="world-label" style={{ left: `${(region.position.labelX - region.position.x) / region.position.w * 100}%`, top: `${(region.position.labelY - region.position.y) / region.position.h * 100}%` }}><b>{String(region.hotkey).padStart(2, "0")}</b><span className="world-label-name"> · {region.name[language]}</span></span>
           </button>)}
           {[worldRegions[1], worldRegions[0], worldRegions[3], worldRegions[5]].map((region, index) => <button type="button" key={region.id} className="world-bot" style={{ left: `${region.position.labelX + 5}%`, top: `${region.position.labelY + 10}%`, color: region.color, animationDelay: `${index * -3}s` }} aria-label={`${tr ? "Atölye botu" : "Workshop bot"}: ${region.name[language]}`} onClick={() => open(region.id)}><Robot /></button>)}
         </div>
