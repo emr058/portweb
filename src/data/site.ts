@@ -18,6 +18,7 @@ export const siteConfig = {
     companyGithub: "https://github.com/medikaldentech10-hue",
   },
   cvPath: "/cv.pdf",
+  cvPaths: { tr: "/cv-tr.pdf", en: "/cv.pdf" },
 } as const;
 
 export const currentlyBuildingProjects = [

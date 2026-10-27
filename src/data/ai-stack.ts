@@ -1,135 +1,58 @@
-export type AIStatus = "production" | "current" | "learning" | "planned";
+type Text = { tr: string; en: string };
 
-export interface AITechItem {
+export interface StackItem {
   name: string;
-  category: "LLM Models" | "Orchestration & Frameworks" | "Automation & Workflows" | "Agent Architecture";
-  status: AIStatus;
-  description: {
-    en: string;
-    tr: string;
-  };
-  tags: string[];
+  note: Text;
+  learning?: boolean;
 }
 
-export const aiStackData: AITechItem[] = [
+export interface StackGroup {
+  title: Text;
+  items: StackItem[];
+}
+
+export const stackGroups: StackGroup[] = [
   {
-    name: "OpenAI (GPT-4o / O3)",
-    category: "LLM Models",
-    status: "production",
-    description: {
-      en: "Structured responses and tool calls for support bots.",
-      tr: "Destek botlarında yapılandırılmış yanıtlar ve araç çağrıları.",
-    },
-    tags: ["Structured Outputs", "Function Calling", "Embeddings"],
+    title: { tr: "Web ve arayüz", en: "Web and front end" },
+    items: [
+      { name: "Next.js · React", note: { tr: "Telefon servis ve satış sitesi, bu portfolyo.", en: "The phone shop website and this portfolio." } },
+      { name: "TypeScript · JavaScript", note: { tr: "Web projeleri, QR katılımcı sistemi.", en: "Web projects and the QR attendee system." } },
+      { name: "Vue · HTML · CSS", note: { tr: "Üniversite ve staj projeleri.", en: "University and internship projects." } },
+    ],
   },
   {
-    name: "Anthropic Claude (3.5 Sonnet / Haiku)",
-    category: "LLM Models",
-    status: "production",
-    description: {
-      en: "Primary model for complex code reasoning, architecture analysis, and long-context processing.",
-      tr: "Karmaşık kod mantığı, mimari analiz ve uzun bağlam işleme için temel model.",
-    },
-    tags: ["Code Generation", "System Prompts", "Artifacts"],
+    title: { tr: "Sunucu ve veri", en: "Back end and data" },
+    items: [
+      { name: "Java · Spring Boot", note: { tr: "32bit stajında e-ticaret projesinin sunucu tarafı.", en: "Back end of an e-commerce project during my 32bit internship." } },
+      { name: "Python · Flask", note: { tr: "Altyazı otomasyonu, yüz tanıma bitirme projesi, Novelty AI stajı.", en: "Subtitle automation, my face recognition graduation project and the Novelty AI internship." } },
+      { name: "Node.js · REST API", note: { tr: "Destek botu ve servis bağlantıları.", en: "The support bot and service integrations." } },
+      { name: "PostgreSQL · Supabase · MySQL", note: { tr: "Ürün, sipariş ve servis kayıtları; satır bazlı erişim kuralları.", en: "Product, order and repair records, with row-level access rules." } },
+    ],
   },
   {
-    name: "Google Gemini (1.5 Pro / Flash)",
-    category: "LLM Models",
-    status: "production",
-    description: {
-      en: "Multimodal audio/video ingestion and high-throughput background processing.",
-      tr: "Çok modlu ses/video işleme ve yüksek hacimli arka plan veri analizi.",
-    },
-    tags: ["Multimodal", "Large Context", "Video OCR"],
+    title: { tr: "Yapay zeka ve otomasyon", en: "AI and automation" },
+    items: [
+      { name: "OpenAI API · Google Gemini API", note: { tr: "Destek botu ve metin işleme otomasyonları.", en: "The support bot and text processing automation." } },
+      { name: "RAG", note: { tr: "20 şirket belgesinden yanıt veren destek botu.", en: "A support bot answering from 20 company documents." } },
+      { name: "OpenCV", note: { tr: "Yüz tanıma ile yoklama sistemi.", en: "Attendance tracking with face recognition." } },
+      { name: "Google Workspace API", note: { tr: "QR yaka kartı ve katılımcı kayıtları.", en: "QR badges and attendee records." } },
+    ],
   },
   {
-    name: "Model Context Protocol (MCP)",
-    category: "Orchestration & Frameworks",
-    status: "production",
-    description: {
-      en: "Connecting AI agents to databases, files and external tools.",
-      tr: "Yapay zeka ajanlarını veritabanlarına, dosyalara ve harici araçlara bağlama.",
-    },
-    tags: ["Protocol", "Tool Integration", "Context Routing"],
+    title: { tr: "Geliştirme araçları", en: "Development tools" },
+    items: [
+      { name: "Claude Code · Codex", note: { tr: "Planlama, kod inceleme ve test yazımında yardımcı olarak kullanıyorum; her değişikliği kendim okuyup test ediyorum.", en: "I use them as assistants for planning, code review and writing tests; I read and test every change myself." } },
+      { name: "Hermes Agent", note: { tr: "Kendi bilgisayarımda çalışan ajan denemeleri.", en: "Experiments with agents running on my own machine." }, learning: true },
+      { name: "Git · GitHub · Postman", note: { tr: "Sürüm takibi ve API testleri.", en: "Version control and API testing." } },
+      { name: "Vercel", note: { tr: "Sitelerin yayına alınması.", en: "Deploying websites." } },
+      { name: "Docker · GitHub Actions", note: { tr: "Kurulum ve otomatik testleri öğreniyorum.", en: "Learning containers and automated testing." }, learning: true },
+    ],
   },
   {
-    name: "LangGraph / LangChain",
-    category: "Orchestration & Frameworks",
-    status: "current",
-    description: {
-      en: "Cyclic multi-agent orchestration, state persistence, and human-in-the-loop nodes.",
-      tr: "Döngüsel çoklu-ajan orkestrasyonu, durum kalıcılığı ve insan onaylı düğümler.",
-    },
-    tags: ["Multi-Agent", "Graph State", "Human-in-loop"],
-  },
-  {
-    name: "n8n (Self-Hosted Workflow Engine)",
-    category: "Automation & Workflows",
-    status: "production",
-    description: {
-      en: "Event-driven workflow automation connecting webhooks, databases, and AI nodes.",
-      tr: "Web hook'ları, veritabanlarını ve AI modüllerini bağlayan olay güdümlü otomasyon motoru.",
-    },
-    tags: ["Webhooks", "Custom JS/Python", "API Integration"],
-  },
-  {
-    name: "Hermes Agent Framework",
-    category: "Orchestration & Frameworks",
-    status: "learning",
-    description: {
-      en: "Exploring lightweight autonomous execution environments and local tool execution.",
-      tr: "Hafif otonom çalıştırma ortamları ve yerel araç çalıştırma üzerine çalışmalar.",
-    },
-    tags: ["Local Agents", "Autonomous Execution"],
-  },
-  {
-    name: "Prompt Engineering & Evaluation",
-    category: "Agent Architecture",
-    status: "production",
-    description: {
-      en: "Writing system prompts, adding examples and checking response formats.",
-      tr: "Sistem talimatları yazma, örnek ekleme ve yanıt biçimlerini kontrol etme.",
-    },
-    tags: ["Few-Shot", "Guardrails", "Eval Suites"],
-  },
-  {
-    name: "Function Calling & Tool Use",
-    category: "Agent Architecture",
-    status: "production",
-    description: {
-      en: "Enabling agents to execute SQL queries, trigger webhooks, and call REST endpoints.",
-      tr: "Ajanların SQL sorgulaması yapmasını, webhook tetiklemesini ve REST endpoint çağırmasını sağlama.",
-    },
-    tags: ["JSON Schema", "Dynamic Tools", "API Triggers"],
-  },
-  {
-    name: "Agentic Memory Systems",
-    category: "Agent Architecture",
-    status: "current",
-    description: {
-      en: "Short-term conversation buffers, Redis session state, and long-term vector memory.",
-      tr: "Kısa süreli konuşma arabellekleri, Redis oturum durumu ve uzun süreli vektör hafıza.",
-    },
-    tags: ["Redis", "Conversation History", "State Store"],
-  },
-  {
-    name: "RAG & Vector Search (Pinecone / PgVector)",
-    category: "Agent Architecture",
-    status: "production",
-    description: {
-      en: "Splitting documents into chunks and combining keyword and vector search.",
-      tr: "Belgeleri parçalara ayırma, anahtar kelime ve vektör aramasını birleştirme.",
-    },
-    tags: ["PgVector", "Pinecone", "Hybrid Search"],
-  },
-  {
-    name: "Fine-Tuning & Local LLMs (Ollama / vLLM)",
-    category: "LLM Models",
-    status: "planned",
-    description: {
-      en: "On-premise LLM hosting and task-specific LoRA fine-tuning for privacy-sensitive data.",
-      tr: "Gizlilik hassasiyeti yüksek veriler için yerel LLM barındırma ve LoRA ince ayarı.",
-    },
-    tags: ["Ollama", "vLLM", "LoRA"],
+    title: { tr: "Güvenlik", en: "Security" },
+    items: [
+      { name: "gitleaks · Semgrep", note: { tr: "Her commit öncesi gizli anahtar ve kod taraması.", en: "Secret and code scanning before every commit." } },
+      { name: "Zod", note: { tr: "Formlardan ve API'den gelen verinin sunucuda doğrulanması.", en: "Server-side validation of form and API input." } },
+    ],
   },
 ];

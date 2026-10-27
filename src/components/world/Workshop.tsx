@@ -6,7 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, Download, X, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/context/language-context";
 import { siteConfig } from "@/data/site";
-import { currentRoles, worldContactLinks, worldRegions, worldScene, type WorldRegion } from "@/data/world";
+import { activeProjects, currentRoles, worldContactLinks, worldRegions, worldScene, type WorldRegion } from "@/data/world";
 import "./workshop.css";
 
 function subscribe(callback: () => void) {
@@ -28,6 +28,13 @@ function Robot() {
     <circle cx="16" cy="18" r="2" fill="currentColor" /><circle cx="24" cy="18" r="2" fill="currentColor" />
     <rect x="12" y="30" width="16" height="10" rx="3" fill="#b9cada" stroke="currentColor" strokeWidth="2" />
     <path d="M8 32l-4 5m28-5 4 5M15 41v4m10-4v4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+  </svg>;
+}
+
+function Gear({ className }: { className: string }) {
+  return <svg viewBox="0 0 40 40" className={className} aria-hidden="true" focusable="false">
+    {Array.from({ length: 8 }, (_, i) => <rect key={i} x="17" y="1" width="6" height="9" rx="1.5" transform={`rotate(${i * 45} 20 20)`} />)}
+    <circle cx="20" cy="20" r="13" /><circle cx="20" cy="20" r="5" fill="#0b1525" />
   </svg>;
 }
 
@@ -95,7 +102,7 @@ export function Workshop() {
         {item.tags && <ul className="world-tags">{item.tags.map(tag => <li key={tag}>{tag}</li>)}</ul>}
       </article>)}</div>
       {region.panel.link && <Link className="world-action" href={region.panel.link.href}>{region.panel.link.label[language]}<ArrowUpRight size={16} /></Link>}
-      {region.id === "kargo" && contact}
+      {region.id === "iletisim" && contact}
     </>;
   }
 
@@ -107,8 +114,9 @@ export function Workshop() {
           <Image src={worldScene.src} width={worldScene.width} height={worldScene.height} alt={worldScene.alt[language]} priority sizes="(min-width: 1024px) 65vw, 100vw" className="world-image" />
           {worldRegions.map(region => <button key={region.id} type="button" className="world-hotspot" style={{ left: `${region.position.x}%`, top: `${region.position.y}%`, width: `${region.position.w}%`, height: `${region.position.h}%`, "--region-color": region.color, "--label-x": `${region.position.labelX}%`, "--label-y": `${region.position.labelY}%` } as CSSProperties}
             aria-label={`${region.hotkey} · ${region.name[language]}`} aria-keyshortcuts={String(region.hotkey)} aria-pressed={selected?.id === region.id} onClick={() => open(region.id)}>
-            <span className="world-label" style={{ left: `${(region.position.labelX - region.position.x) / region.position.w * 100}%`, top: `${(region.position.labelY - region.position.y) / region.position.h * 100}%` }}><b>{String(region.hotkey).padStart(2, "0")}</b><span className="world-label-name"> · {region.name[language]}</span></span>
+            <span className="world-label" style={{ left: `${(region.position.labelX - region.position.x) / region.position.w * 100}%`, top: `${(region.position.labelY - region.position.y) / region.position.h * 100}%` }}>{region.id === "aktif" && <i className="world-live" />}<b>{String(region.hotkey).padStart(2, "0")}</b><span className="world-label-name"> · {region.name[language]}</span></span>
           </button>)}
+          <span className="world-gears" aria-hidden="true"><Gear className="world-gear" /><Gear className="world-gear world-gear-small" /></span>
           {[worldRegions[1], worldRegions[0], worldRegions[3], worldRegions[5]].map((region, index) => <button type="button" key={region.id} className="world-bot" style={{ left: `${region.position.labelX + 5}%`, top: `${region.position.labelY + 10}%`, color: region.color, animationDelay: `${index * -3}s` }} aria-label={`${tr ? "Atölye botu" : "Workshop bot"}: ${region.name[language]}`} onClick={() => open(region.id)}><Robot /></button>)}
         </div>
       </div>
@@ -119,16 +127,17 @@ export function Workshop() {
       {selected ? <><button className="world-back" onClick={close}><ArrowLeft size={16} />{tr ? "Atölyeye dön" : "Back to workshop"}</button>{content(selected)}</> : <>
         <p className="world-eyebrow">{tr ? "YAZILIM VE ATÖLYE" : "CODE AND CRAFT"}</p>
         <h1 id="world-welcome">Emir Aydın<span className="world-name-dot">.</span></h1>
-        <p className="world-title">AI Automation Engineer<br />&amp; Product Builder</p>
+        <p className="world-title">{tr ? <>Yazılım mühendisi<br />Full stack ve otomasyon</> : <>Software engineer<br />Full stack and automation</>}</p>
         <div className="world-roles">{currentRoles.map(role => <p key={role.company}><strong>{role.company}</strong><span>{role.role[language]}</span></p>)}</div>
-        <p className="world-intro">{tr ? "CNC atölyesinden web ürünlerine, günlük işleri kolaylaştıran yazılım ve otomasyonlar geliştiriyorum." : "From the CNC workshop to web products, I build software and automation for everyday work."}</p>
-        <div className="world-primary-actions"><a href={siteConfig.links.email}>{tr ? "E-posta yaz" : "Send an email"}<ArrowUpRight size={16} /></a><a href={siteConfig.cvPath} download>{tr ? "CV indir" : "Download CV"}<Download size={16} /></a></div>
+        <div className="world-now"><p className="world-now-head"><i className="world-live" />{tr ? "Şu an üretimde" : "In production now"}</p>{activeProjects.map(item => <button key={item.title.en} onClick={() => open("aktif")}><span>{item.title[language]}</span><ArrowUpRight size={14} /></button>)}</div>
+        <p className="world-intro">{tr ? "Aile atölyemizde CNC tornanın teknik tarafındayım, ADA ANT'ta uzaktan yazılım geliştiriyorum. Küçük işletmelere satış siteleri ve iş takip araçları yapıyorum." : "I handle the technical side of our family CNC turning shop and work remotely as a developer at ADA ANT. I also build sales websites and job-tracking tools for small businesses."}</p>
+        <div className="world-primary-actions"><a href={siteConfig.links.email}>{tr ? "E-posta yaz" : "Send an email"}<ArrowUpRight size={16} /></a><a href={siteConfig.cvPaths[language]} download>{tr ? "CV indir" : "Download CV"}<Download size={16} /></a></div>
         <nav className="world-index" aria-label={tr ? "Atölye bölgeleri" : "Workshop regions"}>{worldRegions.map(region => <button key={region.id} onClick={() => open(region.id)}><span style={{ color: region.color }}>{String(region.hotkey).padStart(2, "0")}</span><span><strong>{region.name[language]}</strong><small>{region.description[language]}</small></span><ArrowUpRight size={15} /></button>)}</nav>
       </>}
     </section>
 
     <section className="world-mobile-index" aria-label={tr ? "Atölye bölgeleri" : "Workshop regions"}>
-      <div className="world-mobile-intro"><h1>{siteConfig.name}</h1><p>AI Automation Engineer &amp; Product Builder</p><p>{currentRoles.map(role => role.company).join(" · ")}</p><div className="world-primary-actions"><a href={siteConfig.links.email}>{tr ? "E-posta yaz" : "Send an email"}</a><a href={siteConfig.cvPath} download>{tr ? "CV indir" : "Download CV"}</a></div></div>
+      <div className="world-mobile-intro"><h1>{siteConfig.name}</h1><p>{tr ? "Yazılım mühendisi · full stack ve otomasyon" : "Software engineer · full stack and automation"}</p><p>{currentRoles.map(role => role.company).join(" · ")}</p><div className="world-now world-now-mobile"><p className="world-now-head"><i className="world-live" />{tr ? "Şu an üretimde" : "In production now"}</p>{activeProjects.map(item => <button key={item.title.en} onClick={() => open("aktif")}><span>{item.title[language]}</span><ArrowUpRight size={14} /></button>)}</div><div className="world-primary-actions"><a href={siteConfig.links.email}>{tr ? "E-posta yaz" : "Send an email"}</a><a href={siteConfig.cvPaths[language]} download>{tr ? "CV indir" : "Download CV"}</a></div></div>
       {worldRegions.map(region => <button key={region.id} onClick={() => open(region.id)}><span style={{ color: region.color }}>{String(region.hotkey).padStart(2, "0")}</span><span><strong>{region.name[language]}</strong><small>{region.description[language]}</small></span><ArrowUpRight size={18} /></button>)}
     </section>
     <dialog ref={dialog} className="world-sheet" aria-labelledby={selected ? `sheet-title-${selected.id}` : undefined} onCancel={event => { event.preventDefault(); close(); }} onClick={event => { if (event.target === event.currentTarget) { const bounds = event.currentTarget.getBoundingClientRect(); if (event.clientY < bounds.top || event.clientX < bounds.left || event.clientX > bounds.right) close(); } }}>

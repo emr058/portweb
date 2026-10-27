@@ -8,9 +8,9 @@ import { projectsData } from "@/data/projects";
 export function ProjectsSection({ limit }: { limit?: number }) {
   const { language } = useLanguage();
   const groups = [
-    { id: "templates", tr: "Müşteri işi şablonları", en: "Client project templates" },
-    { id: "ideas", tr: "Ürün fikirleri", en: "Product ideas" },
-    { id: "work", tr: "Diğer çalışmalar", en: "Other work" },
+    { id: "templates", tr: "Şu an üretimde", en: "In production now" },
+    { id: "ideas", tr: "Geliştirdiğim ürünler", en: "Products I am building" },
+    { id: "work", tr: "Önceki çalışmalar", en: "Earlier work" },
   ];
   const projects = limit ? projectsData.slice(0, limit) : projectsData;
   return <div className="space-y-12">

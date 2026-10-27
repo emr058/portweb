@@ -1,4 +1,4 @@
-import { worldRegions } from "./world";
+import { activeProjects } from "./world";
 import { currentlyBuildingProjects } from "./site";
 
 type Text = { tr: string; en: string };
@@ -11,10 +11,10 @@ export interface ProjectCaseStudy {
   technologies?: readonly string[];
 }
 
-const templates = worldRegions.find(region => region.id === "uretim")!.panel.items;
+const templates = activeProjects.slice(0, 2);
 export const projectsData: ProjectCaseStudy[] = [
   ...templates.map((item, index) => ({
-    slug: index === 0 ? "phone-service-template" : "industrial-supply-template",
+    slug: index === 0 ? "phone-store" : "industrial-supplies",
     title: item.title.en, name: item.title, description: item.description,
     group: "templates" as const, technologies: item.tags,
   })),
