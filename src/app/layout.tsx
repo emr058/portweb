@@ -61,7 +61,7 @@ export default function RootLayout({
       name: "Kyrenia University (Girne Üniversitesi)",
     },
     worksFor: [
-      { "@type": "Organization", name: "ADA ANT" },
+      { "@type": "Organization", name: "Adaant Bilişim Teknolojileri" },
       { "@type": "Organization", name: "Aydın Torna CNC" },
     ],
     sameAs: [siteConfig.links.github, siteConfig.links.linkedin],

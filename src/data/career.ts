@@ -110,16 +110,16 @@ export const careerTimeline: CareerStep[] = [
     },
   },
   {
-    company: "ADA ANT",
+    company: "Adaant Bilişim Teknolojileri",
     role: {
-      en: "Remote Software Developer",
-      tr: "Uzaktan Yazılım Geliştirici",
+      en: "Full Stack Developer",
+      tr: "Full Stack Developer",
     },
     period: "2026 - Present",
     isCurrent: true,
     description: {
-      en: "Developing software remotely as part of the ADA ANT team.",
-      tr: "ADA ANT ekibinde uzaktan yazılım geliştiriyorum.",
+      en: "I work remotely as a full stack developer at Adaant Bilişim Teknolojileri.",
+      tr: "Adaant Bilişim Teknolojileri'nde uzaktan full stack developer olarak çalışıyorum.",
     },
     highlights: {
       en: ["Remote, async collaboration with the product team"],
@@ -129,14 +129,14 @@ export const careerTimeline: CareerStep[] = [
   {
     company: "Aydın Torna CNC",
     role: {
-      en: "Technical Engineer (Full-time)",
-      tr: "Teknik Mühendis (Tam zamanlı)",
+      en: "Technical Engineer",
+      tr: "Teknik Mühendis",
     },
-    period: "2026 - Present",
+    period: "2022 - Present",
     isCurrent: true,
     description: {
-      en: "Full-time technical engineer at our family-run CNC turning workshop: production planning, technical drawings and process improvement, and building software for the shop floor.",
-      tr: "Aile işletmemiz olan CNC torna atölyesinde tam zamanlı teknik mühendisim: üretim planlama, teknik resim ve süreç iyileştirme; atölye için yazılım geliştirme.",
+      en: "Technical engineer at our family-run CNC turning workshop: production planning, technical drawings and process improvement, and building software for the shop floor.",
+      tr: "Aile işletmemiz olan CNC torna atölyesinde teknik mühendisim: üretim planlama, teknik resim ve süreç iyileştirme; atölye için yazılım geliştirme.",
     },
     highlights: {
       en: [

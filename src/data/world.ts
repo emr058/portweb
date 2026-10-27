@@ -2,7 +2,7 @@ import { currentlyBuildingProjects, siteConfig } from "./site";
 import { careerTimeline } from "./career";
 
 type Text = { tr: string; en: string };
-export interface WorldItem { title: Text; description: Text; tags?: readonly string[] }
+export interface WorldItem { title: Text; description: Text; tags?: readonly string[]; level?: 1 | 2 | 3; active?: boolean }
 export interface WorldRegion {
   id: string;
   hotkey: number;
@@ -18,7 +18,7 @@ export const worldScene = {
   alt: { tr: "Yüzen bir ada üzerinde atölye: çalışan üretim binası, inşaat alanı, mor yapay zeka binası, camgöbeği sunucu odası, ahşap kule ve pembe iletişim binası.", en: "A workshop on a floating island: a running production building, a construction yard, a purple AI building, a cyan server room, a wooden tower and a pink contact building." },
 };
 
-export const currentRoles = [...careerTimeline].filter(step => step.company === "Aydın Torna CNC" || step.company === "ADA ANT").reverse();
+export const currentRoles = ["Adaant Bilişim Teknolojileri", "Aydın Torna CNC"].map(company => careerTimeline.find(step => step.company === company)!);
 export const worldContactLinks = [
   { href: siteConfig.links.email, label: { tr: "E-posta yaz", en: "Send an email" }, detail: siteConfig.links.emailDisplay },
   { href: `tel:${siteConfig.phone.replace(/\s/g, "")}`, label: { tr: "Telefon et", en: "Call" }, detail: siteConfig.phone },
@@ -34,12 +34,11 @@ export const activeProjects: WorldItem[] = [
   { title: { tr: "Torna AI CAD", en: "Torna AI CAD" }, description: { tr: "Atölyemizde teknik resimleri CAD çizimine dönüştürmeyi hızlandıran araç. Geliştirmesi sürüyor.", en: "A tool for turning technical drawings into CAD models faster in our workshop. Still in development." }, tags: ["Python"] },
 ];
 
-const careerItems = [...currentRoles, ...careerTimeline.filter(step => !currentRoles.includes(step) && step.company !== "Independent Product Builder").reverse()].map(step => ({ title: { tr: step.company, en: step.company }, description: { tr: `${step.role.tr} · ${step.period.replace("Present", "Devam ediyor")}`, en: `${step.role.en} · ${step.period}` } }));
+const careerItems = [...currentRoles, ...careerTimeline.filter(step => !currentRoles.includes(step) && step.company !== "Independent Product Builder").reverse()].map((step, index) => ({ level: (index < 2 ? index + 1 : 3) as 1 | 2 | 3, active: index < 2, title: { tr: step.company, en: step.company }, description: { tr: `${step.role.tr} · ${step.period.replace("Present", "Devam ediyor")}`, en: `${step.role.en} · ${step.period}` } }));
 
 export const worldRegions: WorldRegion[] = [
   { id: "aktif", hotkey: 1, color: "#86baff", name: { tr: "Aktif üretim", en: "Active production" }, description: { tr: "Şu an yürüyen işlerim ve projelerim.", en: "My current work and projects." }, position: { x: 51, y: 25, w: 28, h: 32, labelX: 65, labelY: 40 }, panel: { title: { tr: "Şu an üzerinde çalıştıklarım", en: "What I am working on now" }, items: [
     ...activeProjects,
-    ...currentRoles.map(step => ({ title: { tr: `${step.company} · ${step.role.tr}`, en: `${step.company} · ${step.role.en}` }, description: step.description })),
   ] } },
   { id: "projeler", hotkey: 2, color: "#ffb26b", name: { tr: "Projeler", en: "Projects" }, description: { tr: "Kendi ürün fikirlerim.", en: "My own product ideas." }, position: { x: 5, y: 10, w: 35, h: 38, labelX: 27, labelY: 30 }, panel: { title: { tr: "Geliştirdiğim ürünler", en: "Products I am building" }, items: currentlyBuildingProjects.map(project => ({ title: { tr: project.name, en: project.name }, description: project.description })), link: { href: "/projects", label: { tr: "Tüm projeler", en: "All projects" } } } },
   { id: "yapay-zeka", hotkey: 3, color: "#ce9aff", name: { tr: "Yapay zeka ve otomasyon", en: "AI and automation" }, description: { tr: "Elle yapılan işi azaltan araçlar.", en: "Tools that cut down manual work." }, position: { x: 40, y: 5, w: 23, h: 31, labelX: 51, labelY: 17 }, panel: { title: { tr: "Yaptığım otomasyonlar", en: "Automation I have built" }, items: [
@@ -53,7 +52,7 @@ export const worldRegions: WorldRegion[] = [
   ] } },
   { id: "kariyer", hotkey: 5, color: "#e7c08e", name: { tr: "Kariyer ve öğrenim", en: "Career and education" }, description: { tr: "Çalıştığım yerler ve eğitimim.", en: "Where I have worked and studied." }, position: { x: 79, y: 13, w: 12, h: 43, labelX: 85, labelY: 31 }, panel: { title: { tr: "Kariyer ve öğrenim", en: "Career and education" }, items: [
     ...careerItems,
-    { title: { tr: "Sertifikalar", en: "Certificates" }, description: { tr: "B2+ İngilizce, Frances King English School, Londra (2025) · CAD/CAM, Desita Yazılım (2020)", en: "B2+ English, Frances King English School, London (2025) · CAD/CAM, Desita Software (2020)" } },
+    { level: 3, title: { tr: "Sertifikalar", en: "Certificates" }, description: { tr: "B2+ İngilizce, Frances King English School, Londra (2025) · CAD/CAM, Desita Yazılım (2020)", en: "B2+ English, Frances King English School, London (2025) · CAD/CAM, Desita Software (2020)" } },
   ], link: { href: "/blog", label: { tr: "Blog yazılarını oku", en: "Read the blog" } } } },
   { id: "iletisim", hotkey: 6, color: "#ffacd5", name: { tr: "İletişim", en: "Contact" }, description: { tr: "E-posta, telefon ve CV.", en: "Email, phone and CV." }, position: { x: 41, y: 59, w: 24, h: 25, labelX: 53, labelY: 72 }, panel: { title: { tr: "İletişim", en: "Contact" }, items: [] } },
 ];

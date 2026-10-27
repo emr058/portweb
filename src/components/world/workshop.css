@@ -101,3 +101,17 @@
 .world-gear-small { width: 62%; height: 62%; inset: auto; left: 78%; top: -30%; animation-direction: reverse; animation-duration: 4s; }
 @keyframes world-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .world-live, .world-gear { animation: none; } }
+.world-hero { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.world-photo { width: clamp(96px, 9vw, 150px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid #2e4a70; box-shadow: 0 6px 24px #0008; flex-shrink: 0; }
+.world-mobile-intro .world-photo { width: 76px; }
+.world-roles .world-role-1 strong { font-size: 16px; }
+.world-roles .world-role-1 span { font-size: 13px; }
+.world-roles .world-role-2 strong { font-size: 14px; }
+.world-roles strong .world-live { margin-right: 8px; }
+.world-items h3 .world-live { margin-right: 9px; }
+.world-items .world-level-1 h3 { font-size: 18px; }
+.world-items .world-level-1 p { color: #c3cfdf; }
+.world-items .world-level-2 h3 { font-size: 15px; }
+.world-items .world-level-3 { opacity: .62; padding-bottom: 14px; }
+.world-items .world-level-3 h3 { font-size: 13px; margin-bottom: 4px; }
+.world-items .world-level-3 p { font-size: 12px; line-height: 1.6; }

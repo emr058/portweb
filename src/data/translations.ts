@@ -16,7 +16,7 @@ export const translations = {
       titleRole: "AI Automation Engineer",
       titleHeadline: "Building AI Systems That Eliminate Repetitive Work.",
       subtitle:
-        "Technical engineer at Aydın Torna CNC and remote software developer at ADA ANT. I build software that takes repetitive work off people, on the shop floor and in the office.",
+        "Technical engineer at Aydın Torna CNC and full stack developer at Adaant Bilişim Teknolojileri. I build software that takes repetitive work off people, on the shop floor and in the office.",
       viewProjects: "View Projects",
       downloadCv: "Download CV",
       scrollDown: "Scroll to explore",
@@ -193,7 +193,7 @@ export const translations = {
       titleRole: "AI Automation Engineer",
       titleHeadline: "Tekrarlayan İşleri Ortadan Kaldıran Yapay Zeka Sistemleri Geliştiriyorum.",
       subtitle:
-        "Aydın Torna CNC'de teknik mühendis, ADA ANT'ta uzaktan yazılım geliştiriciyim. Atölyede ve ofiste insanları yoran tekrar eden işleri yazılımla azaltıyorum.",
+        "Aydın Torna CNC'de teknik mühendis, Adaant Bilişim Teknolojileri'nde full stack developer'ım. Atölyede ve ofiste insanları yoran tekrar eden işleri yazılımla azaltıyorum.",
       viewProjects: "Projeleri İncele",
       downloadCv: "CV'yi İndir",
       scrollDown: "Aşağı kaydırın",
