@@ -20,7 +20,8 @@ export const metadata: Metadata = {
     "Full Stack Software Engineer",
     "Kyrenia University",
     "Girne Üniversitesi",
-    "Dentech Medikal",
+    "Aydın Torna CNC",
+    "CNC",
     "CarryHub",
     "AI Agents",
     "Python",
@@ -58,10 +59,10 @@ export default function RootLayout({
       "@type": "EducationalOrganization",
       name: "Kyrenia University (Girne Üniversitesi)",
     },
-    worksFor: {
-      "@type": "Organization",
-      name: "Dentech Medikal",
-    },
+    worksFor: [
+      { "@type": "Organization", name: "ADA ANT" },
+      { "@type": "Organization", name: "Aydın Torna CNC" },
+    ],
     sameAs: [siteConfig.links.github, siteConfig.links.linkedin],
     knowsAbout: [
       "AI Automation",

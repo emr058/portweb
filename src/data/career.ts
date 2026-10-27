@@ -89,11 +89,10 @@ export const careerTimeline: CareerStep[] = [
       en: "IT & Software Specialist",
       tr: "BT & Yazılım Uzmanı",
     },
-    period: "03/2026 - Present",
-    isCurrent: true,
+    period: "03/2026 - 09/2026",
     description: {
-      en: "Engineering AI-driven automation systems, knowledge base chatbots, QR participant tracking systems, and digital commerce platform migrations.",
-      tr: "Yapay zeka otomasyon sistemleri, bilgi tabanı botları, QR katılımcı takip sistemleri ve e-ticaret platform taşıma süreçlerini yönetiyorum.",
+      en: "Engineered AI-driven automation systems, knowledge base chatbots, QR participant tracking systems, and digital commerce platform migrations.",
+      tr: "Yapay zeka otomasyon sistemleri, bilgi tabanı botları, QR katılımcı takip sistemleri ve e-ticaret platform taşıma süreçlerini yürüttüm.",
     },
     highlights: {
       en: [
@@ -107,6 +106,46 @@ export const careerTimeline: CareerStep[] = [
         "20 belgeden 100+ kurumsal soruyu yanıtlayan Yapay Zeka Destek Botu (chatbot_v1)",
         "75 yaka kartı için Google Workspace API'leri ile QR Katılımcı Yönetimi (qrcodeapp)",
         "Wix'ten IKAS'a 330 ürün ve 35 sayfalık dijital ticaret platform taşınması (dentechPro)",
+      ],
+    },
+  },
+  {
+    company: "ADA ANT",
+    role: {
+      en: "Remote Software Developer",
+      tr: "Uzaktan Yazılım Geliştirici",
+    },
+    period: "2026 - Present",
+    isCurrent: true,
+    description: {
+      en: "Developing software remotely as part of the ADA ANT team.",
+      tr: "ADA ANT ekibinde uzaktan yazılım geliştiriyorum.",
+    },
+    highlights: {
+      en: ["Remote, async collaboration with the product team"],
+      tr: ["Ürün ekibiyle uzaktan ve eşzamansız çalışma"],
+    },
+  },
+  {
+    company: "Aydın Torna CNC",
+    role: {
+      en: "Technical Engineer (Full-time)",
+      tr: "Teknik Mühendis (Tam zamanlı)",
+    },
+    period: "2026 - Present",
+    isCurrent: true,
+    description: {
+      en: "Full-time technical engineer at our family-run CNC turning workshop: production planning, technical drawings and process improvement, and building software for the shop floor.",
+      tr: "Aile işletmemiz olan CNC torna atölyesinde tam zamanlı teknik mühendisim: üretim planlama, teknik resim ve süreç iyileştirme; atölye için yazılım geliştirme.",
+    },
+    highlights: {
+      en: [
+        "Bridging CNC production and software: digital tools for quoting, drawings and job tracking",
+        "Torna AI CAD: turning drawing-to-CAD assistant in development",
+      ],
+      tr: [
+        "CNC üretimi ile yazılımı birleştirme: teklif, teknik resim ve iş takibi için dijital araçlar",
+        "Torna AI CAD: teknik resimden CAD üreten asistan (geliştiriliyor)",
       ],
     },
   },
