@@ -21,36 +21,8 @@ export const siteConfig = {
 } as const;
 
 export const currentlyBuildingProjects = [
-  {
-    name: "CarryHub",
-    tagline: "Logistics Marketplace & Operations Platform",
-    progress: 70,
-    status: { en: "Active Development", tr: "Aktif Geliştirme" },
-    slug: "carryhub",
-    color: "from-emerald-500 to-teal-400",
-  },
-  {
-    name: "Elem-AI",
-    tagline: "AI Business Automation Platform",
-    progress: 40,
-    status: { en: "In Progress", tr: "Geliştirme Aşamasında" },
-    slug: "elem-ai",
-    color: "from-purple-500 to-violet-400",
-  },
-  {
-    name: "B12 Reminder",
-    tagline: "Patient Supplement & Dosage Retention System",
-    progress: 95,
-    status: { en: "Publishing Soon", tr: "Yayınlanmak Üzere" },
-    slug: "b12-reminder",
-    color: "from-blue-500 to-indigo-400",
-  },
-  {
-    name: "MyKar",
-    tagline: "AI Fleet & Vehicle Expense SaaS",
-    progress: 15,
-    status: { en: "Coming Soon", tr: "Yakında" },
-    slug: "mykar",
-    color: "from-amber-500 to-orange-400",
-  },
+  { name: "CarryHub", description: { tr: "Lojistik ve kurye operasyonlarını bir araya getiren platform.", en: "A platform for logistics and courier operations." } },
+  { name: "Elem-AI", description: { tr: "İş süreçlerini yapay zeka ile otomatikleştiren platform.", en: "AI automation for business workflows." } },
+  { name: "B12 Reminder", description: { tr: "Takviye ve ilaç saatlerini hatırlatan uygulama.", en: "An app for supplement and medication reminders." } },
+  { name: "MyKar", description: { tr: "Araç giderlerini ve bakımını takip eden uygulama.", en: "An app for vehicle expenses and maintenance." } },
 ] as const;

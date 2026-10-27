@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/context/language-context";
 import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import { SiteFooter } from "@/components/world/SiteFooter";
 import { siteConfig } from "@/data/site";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -89,7 +89,7 @@ export default function RootLayout({
         <LanguageProvider>
           <Navbar />
           <main className="flex-grow">{children}</main>
-          <Footer />
+          <SiteFooter />
         </LanguageProvider>
       </body>
     </html>

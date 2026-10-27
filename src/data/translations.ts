@@ -54,8 +54,7 @@ export const translations = {
     },
     currentlyBuilding: {
       title: "Currently Building",
-      subtitle: "Active product development and research radar.",
-      progress: "Progress",
+      subtitle: "Product ideas I am working on.",
       status: "Status",
     },
     about: {
@@ -231,9 +230,8 @@ export const translations = {
       },
     },
     currentlyBuilding: {
-      title: "Aktif Geliştirme Radar",
+      title: "Yapım aşamasında",
       subtitle: "Şu an üzerinde çalıştığım ürün ve araştırmalar.",
-      progress: "İlerleme",
       status: "Durum",
     },
     about: {
