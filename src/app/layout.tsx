@@ -55,7 +55,7 @@ export default function RootLayout({
     jobTitle: siteConfig.title,
     description: siteConfig.description,
     url: siteConfig.url,
-    image: `${siteConfig.url}/profile.jpg`,
+    image: `${siteConfig.url}/og.jpg`,
     alumniOf: {
       "@type": "EducationalOrganization",
       name: "Kyrenia University (Girne Üniversitesi)",

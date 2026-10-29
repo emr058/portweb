@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "Emir Aydın",
-  title: "AI Automation Engineer & Full Stack Software Engineer",
+  title: "Full Stack Developer & Software Engineer",
   description:
     "I build web products and automation for daily work, from CNC manufacturing to business software.",
   url: "https://www.emirr.com.tr",
-  ogImage: "/profile.jpg",
-  avatar: "/profile.jpg",
+  ogImage: "/og.jpg",
+  avatar: "/og.jpg",
   author: "Emir Aydın",
   location: "Gebze, Kocaeli, Turkey",
   education: "Kyrenia University - Software Engineering (2021 - 2025)",
