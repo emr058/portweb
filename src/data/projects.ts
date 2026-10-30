@@ -9,12 +9,22 @@ export interface ProjectCaseStudy {
   description: Text;
   group: "templates" | "ideas" | "work";
   technologies?: readonly string[];
+  demo?: string;
+  screens?: { desktop: string; mobile: string };
+  features?: { tr: string[]; en: string[] };
 }
+
+const demos = [
+  { slug: "telefon-magazasi", demo: "https://muratcell-demo.vercel.app", screens: { desktop: "/projects/telefon-desktop.jpg", mobile: "/projects/telefon-mobile.jpg" },
+    features: { tr: ["Kaydırınca açılan ürün tanıtım animasyonu", "Telefondan bir dakikada ürün ekleme, fiyat ve özellik önerileri", "Havale ve WhatsApp ile sipariş, sipariş takibi", "Teknik servis fiyatları ve randevu", "Yönetim paneli: stok, sipariş, mağaza ayarları"], en: ["Scroll-driven product animation", "Add a product from a phone in a minute, with price and feature hints", "Orders by bank transfer or WhatsApp, with order tracking", "Repair prices and appointments", "Admin panel: stock, orders, store settings"] } },
+  { slug: "kesici-takim-magazasi", demo: "https://takimtek-demo.vercel.app", screens: { desktop: "/projects/kesici-takim-desktop.jpg", mobile: "/projects/kesici-takim-mobile.jpg" },
+    features: { tr: ["Uç kodu, ölçü veya markayla arama", "10 ana kategori, marka şeridi ve kampanyalı ürünler", "Ürün sayfasında ölçü ve kaplama listesi", "Telefona göre sıkı iki sütunlu katalog", "Aynı yönetim paneli ve mobilden ürün ekleme"], en: ["Search by insert code, size or brand", "10 main categories, brand strip and campaign products", "Dimensions and coating list on each product page", "Compact two-column catalog on phones", "Same admin panel and phone product entry"] } },
+];
 
 const templates = activeProjects.slice(0, 2);
 export const projectsData: ProjectCaseStudy[] = [
   ...templates.map((item, index) => ({
-    slug: index === 0 ? "phone-store" : "industrial-supplies",
+    ...demos[index],
     title: item.title.en, name: item.title, description: item.description,
     group: "templates" as const, technologies: item.tags,
   })),
