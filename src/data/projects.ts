@@ -15,9 +15,9 @@ export interface ProjectCaseStudy {
 }
 
 const demos = [
-  { slug: "telefon-magazasi", demo: "https://muratcell-demo.vercel.app", screens: { desktop: "/projects/telefon-desktop.jpg", mobile: "/projects/telefon-mobile.jpg" },
+  { slug: "telefon-magazasi", demo: "https://muratcell-demo.vercel.app", screens: { desktop: "/projects/telefon-v2-desktop.jpg", mobile: "/projects/telefon-v2-mobile.jpg" },
     features: { tr: ["Kaydırınca açılan ürün tanıtım animasyonu", "Telefondan bir dakikada ürün ekleme, fiyat ve özellik önerileri", "Havale ve WhatsApp ile sipariş, sipariş takibi", "Teknik servis fiyatları ve randevu", "Yönetim paneli: stok, sipariş, mağaza ayarları"], en: ["Scroll-driven product animation", "Add a product from a phone in a minute, with price and feature hints", "Orders by bank transfer or WhatsApp, with order tracking", "Repair prices and appointments", "Admin panel: stock, orders, store settings"] } },
-  { slug: "kesici-takim-magazasi", demo: "https://takimtek-demo.vercel.app", screens: { desktop: "/projects/kesici-takim-desktop.jpg", mobile: "/projects/kesici-takim-mobile.jpg" },
+  { slug: "kesici-takim-magazasi", demo: "https://takimtek-demo.vercel.app", screens: { desktop: "/projects/kesici-takim-v2-desktop.jpg", mobile: "/projects/kesici-takim-v2-mobile.jpg" },
     features: { tr: ["Uç kodu, ölçü veya markayla arama", "10 ana kategori, marka şeridi ve kampanyalı ürünler", "Ürün sayfasında ölçü ve kaplama listesi", "Telefona göre sıkı iki sütunlu katalog", "Aynı yönetim paneli ve mobilden ürün ekleme"], en: ["Search by insert code, size or brand", "10 main categories, brand strip and campaign products", "Dimensions and coating list on each product page", "Compact two-column catalog on phones", "Same admin panel and phone product entry"] } },
 ];
 

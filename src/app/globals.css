@@ -119,7 +119,7 @@
 .mac-screen img { display: block; width: 100%; border-radius: 0 0 4px 4px; }
 .mac-base { position: relative; height: 16px; margin: 0 -6%; background: linear-gradient(#c9ced6, #8e949e); border-radius: 0 0 14px 14px; }
 .mac-base::before { content: ""; position: absolute; left: 50%; top: 0; width: 18%; height: 6px; transform: translateX(-50%); background: #a4aab4; border-radius: 0 0 8px 8px; }
-.iphone { position: absolute; right: clamp(12px, 5vw, 64px); bottom: clamp(12px, 2.5vw, 28px); width: clamp(112px, 19%, 196px); padding: clamp(5px, 0.6vw, 8px); background: linear-gradient(145deg, #2a2d33, #0d0e10); border: 1px solid #4a4f58; border-radius: clamp(24px, 4.2vw, 46px); box-shadow: 0 28px 60px #000b, inset 0 0 0 2px #000; }
+.iphone { position: absolute; right: clamp(12px, 5vw, 64px); bottom: clamp(12px, 2.5vw, 28px); width: clamp(130px, 23%, 230px); padding: clamp(5px, 0.6vw, 8px); background: linear-gradient(145deg, #2a2d33, #0d0e10); border: 1px solid #4a4f58; border-radius: clamp(24px, 4.2vw, 46px); box-shadow: 0 28px 60px #000b, inset 0 0 0 2px #000; }
 .iphone::before { content: ""; position: absolute; top: 3.2%; left: 50%; width: 30%; height: 2.6%; transform: translateX(-50%); background: #000; border-radius: 99px; z-index: 1; }
 .iphone img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; border-radius: clamp(18px, 3.4vw, 38px); }
 @media (max-width: 640px) { .iphone { position: relative; right: auto; bottom: auto; margin: -40px auto 0; width: 44%; } }
