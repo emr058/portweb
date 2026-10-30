@@ -20,10 +20,10 @@ export default function CaseStudyPage({ params }: { params: Promise<{ slug: stri
       {project.technologies && <ul className="flex flex-wrap gap-2 text-xs text-slate-300">{project.technologies.map(tech => <li key={tech} className="rounded border border-[#303c50] px-3 py-1">{tech}</li>)}</ul>}
       {project.demo && <div className="flex flex-wrap items-center gap-4"><a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-lg bg-[#c2d8ff] px-4 py-3 text-sm font-medium text-[#10213c]">{tr ? "Demoyu aç" : "Open the demo"}<ArrowUpRight size={16} /></a><span className="text-xs text-slate-400">{tr ? "Ürünler ve fiyatlar örnektir; sipariş oluşturulmaz." : "Products and prices are samples; no orders are placed."}</span></div>}
     </div>
-    {project.screens && <div className="mt-8 grid gap-6 md:grid-cols-[3fr_1fr] items-start">
-      <figure className="site-card !p-3"><img src={project.screens.desktop} alt={tr ? `${project.name.tr}, bilgisayar görünümü` : `${project.name.en}, desktop view`} className="w-full rounded-lg" /><figcaption className="mt-2 text-xs text-slate-400">{tr ? "Bilgisayar" : "Desktop"}</figcaption></figure>
-      <figure className="site-card !p-3 max-w-[280px] mx-auto md:max-w-none"><img src={project.screens.mobile} alt={tr ? `${project.name.tr}, telefon görünümü` : `${project.name.en}, phone view`} className="w-full rounded-lg" /><figcaption className="mt-2 text-xs text-slate-400">{tr ? "Telefon" : "Phone"}</figcaption></figure>
-    </div>}
+    {project.screens && <figure className="device-stage" aria-label={tr ? "Bilgisayar ve telefon görünümü" : "Desktop and phone view"}>
+      <div className="mac"><div className="mac-screen"><div className="mac-bar"><i /><i /><i /><span>{project.demo?.replace("https://", "")}</span></div><img src={project.screens.desktop} alt={tr ? `${project.name.tr}, bilgisayar görünümü` : `${project.name.en}, desktop view`} /></div><div className="mac-base" /></div>
+      <div className="iphone"><img src={project.screens.mobile} alt={tr ? `${project.name.tr}, telefon görünümü` : `${project.name.en}, phone view`} /></div>
+    </figure>}
     {project.features && <div className="site-card mt-8"><h2 className="text-lg font-medium mb-4">{tr ? "Neler var?" : "What it does"}</h2><ul className="space-y-2 text-sm text-slate-300 list-disc pl-5">{project.features[language].map(item => <li key={item}>{item}</li>)}</ul></div>}
   </article>;
 }

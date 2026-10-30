@@ -2,7 +2,7 @@ import { currentlyBuildingProjects, siteConfig } from "./site";
 import { careerTimeline } from "./career";
 
 type Text = { tr: string; en: string };
-export interface WorldItem { title: Text; description: Text; tags?: readonly string[]; level?: 1 | 2 | 3; active?: boolean }
+export interface WorldItem { title: Text; description: Text; tags?: readonly string[]; level?: 1 | 2 | 3; active?: boolean; href?: string }
 export interface WorldRegion {
   id: string;
   hotkey: number;
@@ -29,8 +29,8 @@ export const worldContactLinks = [
 ];
 
 export const activeProjects: WorldItem[] = [
-  { title: { tr: "Telefon servis ve satış sitesi", en: "Phone repair and sales website" }, description: { tr: "Bir telefon dükkânı için satış ve teknik servis sitesi. Dükkân sahibi ürünü telefonundan ekliyor, siparişler havale ve WhatsApp ile geliyor. Altyapıyı başka dükkânlara da kurulabilecek şekilde hazırladım.", en: "A sales and repair website for a phone shop. The owner adds products from their phone, and orders come in by bank transfer or WhatsApp. I built it so it can be set up for other shops too." }, tags: ["Next.js", "Supabase", "Vercel"] },
-  { title: { tr: "Kesici takım mağazası", en: "Cutting tools store" }, description: { tr: "Kesici takım ve teknik hırdavat satan bir tedarikçi için mağaza. Uç koduyla arama, kategori ve marka listeleri, mobilden ürün ekleme. Telefon mağazasıyla aynı altyapıyı kullanıyor.", en: "A store for a supplier of cutting tools and workshop supplies: search by insert code, category and brand lists, product entry from a phone. It runs on the same base as the phone store." }, tags: ["Next.js", "Supabase", "Vercel"] },
+  { href: "/projects/telefon-magazasi", title: { tr: "Telefon servis ve satış sitesi", en: "Phone repair and sales website" }, description: { tr: "Bir telefon dükkânı için satış ve teknik servis sitesi. Dükkân sahibi ürünü telefonundan ekliyor, siparişler havale ve WhatsApp ile geliyor. Altyapıyı başka dükkânlara da kurulabilecek şekilde hazırladım.", en: "A sales and repair website for a phone shop. The owner adds products from their phone, and orders come in by bank transfer or WhatsApp. I built it so it can be set up for other shops too." }, tags: ["Next.js", "Supabase", "Vercel"] },
+  { href: "/projects/kesici-takim-magazasi", title: { tr: "Kesici takım mağazası", en: "Cutting tools store" }, description: { tr: "Kesici takım ve teknik hırdavat satan bir tedarikçi için mağaza. Uç koduyla arama, kategori ve marka listeleri, mobilden ürün ekleme. Telefon mağazasıyla aynı altyapıyı kullanıyor.", en: "A store for a supplier of cutting tools and workshop supplies: search by insert code, category and brand lists, product entry from a phone. It runs on the same base as the phone store." }, tags: ["Next.js", "Supabase", "Vercel"] },
   { title: { tr: "Torna AI CAD", en: "Torna AI CAD" }, description: { tr: "Atölyemizde teknik resimleri CAD çizimine dönüştürmeyi hızlandıran araç. Geliştirmesi sürüyor.", en: "A tool for turning technical drawings into CAD models faster in our workshop. Still in development." }, tags: ["Python"] },
 ];
 
