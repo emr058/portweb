@@ -183,9 +183,10 @@
   .sales-table td::before { content: attr(data-label); flex: none; color: #8ea0b8; text-align: left; }
 }
 
-.addon-plan { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid #263246; }
+.addon-plan { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 0; border-bottom: 1px solid #263246; }
 .addon-plan:last-of-type { border-bottom: 0; }
 .addon-plan strong { font-weight: 500; color: #edf2fa; line-height: 1.4; }
+.addon-includes { flex: 1 1 100%; margin: 6px 0 0; padding-left: 18px; color: #b6c2d6; font-size: 0.9rem; line-height: 1.5; }
 .addon-plan span { white-space: nowrap; color: #fff; font-weight: 600; }
 .addon-plan small { color: #8ea0b8; font-weight: 400; font-size: 13px; }
 .sales-note { margin-top: 18px; padding: 16px 18px; border: 1px solid #3a4a63; border-radius: 12px; background: #0f1a2b; color: #c3cfdf; line-height: 1.7; }

@@ -106,15 +106,51 @@ export interface Plan {
   name: string;
   price: number;
   unit: "ay";
-  // Kapsam maddeleri. Talimatta bakım katmanlarının kapsamı verilmedi; doldurulursa sayfada görünür.
+  // Kapsam maddeleri; doluysa plan kartında liste olarak görünür.
   includes?: string[];
 }
 
 export const maintenancePlans: Plan[] = [
-  { id: "bakim-temel", name: "Temel", price: 750, unit: "ay" },
-  { id: "bakim-standart", name: "Standart", price: 1500, unit: "ay" },
-  { id: "bakim-gelismis", name: "Gelişmiş", price: 2500, unit: "ay" },
+  {
+    id: "bakim-temel", name: "Teknik Koruma", price: 750, unit: "ay",
+    includes: ["Temel teknik çalışma kontrolleri", "Form ve iletişim alanlarının kontrolü", "Mevcut yedekleme sisteminin kontrolü", "Teknik hata takibi", "Küçük teknik sorunlarda destek"],
+  },
+  {
+    id: "bakim-standart", name: "Standart Bakım", price: 1500, unit: "ay",
+    includes: ["Teknik Koruma'daki her şey", "Ayda 1 saat küçük içerik veya teknik güncelleme", "Görsel ve metin değişiklikleri", "Temel performans kontrolleri", "Aylık kısa bakım bilgilendirmesi"],
+  },
+  {
+    id: "bakim-gelismis", name: "Gelişmiş Bakım", price: 2500, unit: "ay",
+    includes: ["Standart Bakım'daki her şey", "Ayda toplam 3 saat küçük geliştirme ve güncelleme", "Öncelikli destek", "Daha kapsamlı teknik kontroller", "Aylık bakım ve yapılan işlemler özeti"],
+  },
 ];
+
+export const maintenanceNotes = [
+  "Paketlerdeki süreler aylık kullanım hakkıdır. Kullanılmayan saatler sonraki aya aktarılmaz.",
+  "Yeni sayfa, kapsamlı tasarım değişikliği, özel yazılım geliştirme ve yeni entegrasyonlar ayrıca fiyatlandırılır.",
+  "Bakım paketlerinde SEO ve sosyal medya çalışması yoktur; bunlar ayrı hizmetlerdir.",
+  "Yedekleme, barındırma firmasının sunduğu sistem üzerinden kontrol edilir. Firmanın sunmadığı bir özellik garanti edilmez.",
+  "Bakım 7/24 kesintisiz destek anlamına gelmez. Talepler çalışma saatleri içinde değerlendirilir.",
+];
+
+// Kampanya desteği: sınırlı kapsam, yeni iş veya dış servis ücreti içermez.
+export const freeSupport = {
+  title: "İlk 10 müşteriye 1 yıl ücretsiz temel teknik destek",
+  text: "Teslim edilen web sitesi için yayına alındıktan sonra 1 yıl boyunca verilir.",
+  includes: [
+    "Sitenin teknik olarak çalışır durumda tutulması",
+    "Yazılım kaynaklı hataların giderilmesi",
+    "İletişim ve başvuru formlarının kontrolü",
+    "Güvenlik ve güncelleme kontrolleri",
+  ],
+  excludes: [
+    "Yeni sayfa veya özellik geliştirme",
+    "Tasarım değişiklikleri",
+    "Ürün ve içerik girişleri",
+    "SEO çalışmaları ve yeni entegrasyonlar",
+    "Alan adı, barındırma ve üçüncü taraf servis ücretleri",
+  ],
+};
 
 export const seoPlans: Plan[] = [
   { id: "seo-yerel", name: "Yerel SEO", price: 2500, unit: "ay" },
@@ -149,10 +185,10 @@ export const chooser: { id: string; title: string; text: string; href: string; i
   { id: "eticaret", title: "E-ticaret", text: "Online satış, ödeme, stok veya kargo gerekiyorsa ayrı teklif verilir.", href: "/basvuru?paket=eticaret", icon: "shopping-bag" },
 ];
 
-// Başvurudan sonra ne olur: süre vaadi içermez.
+// Süreç: süre vaadi içermez. Onay, ödeme ve revizyon koşulu 2. ve 3. adımda belirtilir.
 export const steps: { title: string; text: string; icon: IconName }[] = [
-  { title: "Başvuruyu doldurun", text: "Projenizi, istediklerinizi ve bütçenizi yazın.", icon: "clipboard-list" },
-  { title: "Size dönülür", text: "Seçtiğiniz yoldan ulaşılır: WhatsApp, telefon veya e-posta.", icon: "phone-call" },
-  { title: "Kapsam netleşir", text: "İstenenler, fiyat ve teslim tarihi birlikte belirlenir.", icon: "list-checks" },
-  { title: "Siteniz hazırlanır", text: "Site yapılır, siz kontrol edersiniz, sonra yayına alınır.", icon: "globe" },
+  { title: "İhtiyaç analizi", text: "İşletmenizi, hedeflerinizi ve ihtiyaçlarınızı tanırız.", icon: "clipboard-list" },
+  { title: "Teklif ve planlama", text: "Kapsam, fiyat ve teslimat beklentisi netleşir. Başlamak için onayınız ve başlangıç ödemesi gerekir.", icon: "list-checks" },
+  { title: "Tasarım ve geliştirme", text: "Onaylanan plana göre siteniz hazırlanır. Revizyon hakkı teklifte yazılıdır.", icon: "palette" },
+  { title: "Test ve yayına alma", text: "Mobil ve masaüstü kontrolleri yapılır, düzenlemelerden sonra site teslim edilir.", icon: "globe" },
 ];

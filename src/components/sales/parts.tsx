@@ -6,7 +6,7 @@ import {
   Mail, MessageCircle, Newspaper, Package, Palette, PhoneCall, Search, ShoppingBag, Smartphone, Store, type LucideIcon,
 } from "lucide-react";
 import {
-  addonGroups, campaign, chooser, formatRange, formatTL, notIncluded, quoteSeparately, steps,
+  addonGroups, campaign, freeSupport, maintenanceNotes, chooser, formatRange, formatTL, notIncluded, quoteSeparately, steps,
   type Feature, type IconName, type WebPackage,
 } from "@/data/pricing";
 import { legal } from "@/data/legal";
@@ -240,15 +240,31 @@ export function AddonGroups() {
                   <span>
                     {formatTL(plan.price)} <small>/ {plan.unit}</small>
                   </span>
+                  {plan.includes && (
+                    <ul className="addon-includes">
+                      {plan.includes.map(item => <li key={item}>{item}</li>)}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
           </section>
         ))}
       </div>
-      <p className="sales-note" style={{ marginTop: 18 }}>
-        Ek hizmetlerin kapsamı teklifte yazılı olarak belirtilir. Web sitesi paketlerinden ayrı fiyatlanır.
-      </p>
+      <div className="sales-note" style={{ marginTop: 18 }}>
+        <ul style={{ margin: 0 }}>
+          {maintenanceNotes.map(line => <li key={line}>{line}</li>)}
+          <li>SEO ve sosyal medya kapsamı teklifte yazılı olarak belirtilir. Web sitesi paketlerinden ayrı fiyatlanır.</li>
+        </ul>
+      </div>
+      <section className="sales-card" style={{ marginTop: 18 }} aria-labelledby="free-support">
+        <h3 id="free-support">{freeSupport.title}</h3>
+        <p>{freeSupport.text}</p>
+        <p><strong>Dahil:</strong></p>
+        <ul>{freeSupport.includes.map(i => <li key={i}>{i}</li>)}</ul>
+        <p><strong>Dahil değil:</strong></p>
+        <ul>{freeSupport.excludes.map(i => <li key={i}>{i}</li>)}</ul>
+      </section>
     </>
   );
 }
