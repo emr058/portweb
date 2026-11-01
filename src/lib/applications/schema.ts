@@ -94,7 +94,6 @@ export const applicationSchema = z
     deadlineDate: z.string().trim().regex(/^\d{4}-\d{2}-\d{2}$/, "Tarih geçersiz.").optional().or(z.literal("").transform(() => undefined)),
     notes: optionalText(2000),
 
-    consent: z.literal(true, { error: "Bilgilendirmeyi onaylamadan gönderemezsiniz." }),
     fillMs: z.number({ error: "Form süresi okunamadı." }).int().min(0).max(86_400_000),
   })
   .superRefine((value, ctx) => {

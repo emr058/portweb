@@ -1,4 +1,5 @@
 import { createHash, randomInt } from "node:crypto";
+import { legal } from "@/data/legal";
 import type { ApplicationInput } from "./schema";
 
 // Supabase REST (PostgREST) üzerinden başvuru kaydı. Yalnız sunucuda çalışır; service role anahtarı
@@ -73,7 +74,7 @@ export interface ApplicationRow {
   deadline: string;
   deadline_date: string | null;
   notes: string | null;
-  consent_at: string;
+  notice_version: string;
   ip_hash: string;
   user_agent: string | null;
 }
@@ -98,7 +99,7 @@ export function toRow(data: ApplicationInput, applicationNo: string, ipHash: str
     deadline: data.deadline,
     deadline_date: data.deadline === "tarih" ? data.deadlineDate ?? null : null,
     notes: data.notes ?? null,
-    consent_at: new Date().toISOString(),
+    notice_version: legal.noticeVersion,
     ip_hash: ipHash,
     user_agent: userAgent ? userAgent.slice(0, 300) : null,
   };
