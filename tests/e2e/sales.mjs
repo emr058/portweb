@@ -13,8 +13,8 @@ import { createFakeBackend } from "../helpers/fake-backend.ts";
 const require = createRequire(process.env.PLAYWRIGHT_FROM || import.meta.url);
 const { chromium, webkit, devices } = require("playwright");
 const root = path.resolve(import.meta.dirname, "../..");
-const FAKE_PORT = 4011;
-const APP_PORT = 3131;
+const FAKE_PORT = 4031; // yerel sahte uç betiği (4011) ve geliştirme sunucusuyla (3000) çakışmasın
+const APP_PORT = 3171;
 const base = `http://127.0.0.1:${APP_PORT}`;
 const shots = process.env.SHOTS;
 
@@ -121,7 +121,8 @@ try {
       const text = await page.locator("main").innerText();
       for (const t of ["5.000 TL", "10.000 TL", "7.500–10.000 TL", "15.000–20.000 TL", "15.000–25.000 TL", "750 TL", "1.500 TL", "2.500 TL", "4.000 TL", "3.000 TL", "5.000 TL"]) assert.ok(text.includes(t), t);
       assert.ok(text.includes("İlk 10 müşteri"));
-      assert.ok(text.includes("Alan adı (domain), barındırma (hosting)"));
+      assert.ok(text.includes("Alan adı (domain, örn. firmaniz.com), barındırma (hosting, sitenin yayında durduğu sunucu)"));
+      assert.ok(text.includes("Liste fiyatı") && text.includes("ilk 10 müşteriyle sözleşme yapılana kadar"));
       assert.ok(text.includes("Ayrı tekliflendirilir: E-ticaret, Ödeme sistemi, Stok takibi, Kargo, Özel entegrasyonlar"));
       await page.close();
     });
@@ -154,6 +155,11 @@ try {
         const phone = `0555 20${seed} 00 ${String(ipCounter).padStart(2, "0")}`;
         await page.goto(base + "/basvuru?paket=sanayi", { waitUntil: "networkidle" });
         assert.ok(await page.getByLabel("Sanayi web sitesi (CNC, imalat)").isChecked(), "paket önceden seçilmeli");
+        const selector = label === "masaüstü" ? ".summary-card" : ".summary-inline";
+        assert.ok((await page.locator(selector).first().innerText()).includes("15.000–25.000 TL"), "seçilen paketin fiyatı görünmeli");
+        await page.getByLabel("Başlangıç web sitesi").check();
+        assert.ok((await page.locator(selector).first().innerText()).includes("5.000 TL"), "paket değişince özet değişmeli");
+        await page.getByLabel("Sanayi web sitesi (CNC, imalat)").check();
 
         // boş gönderim: hata özeti ve alan hataları, istek yok
         await page.waitForTimeout(2800);
@@ -163,9 +169,9 @@ try {
         assert.equal(backend.rows.length, before);
 
         await fill(page, { email: `${tag}@Firma.test`, phone });
-        await page.getByTestId("submit").click();
-        await page.locator("#e-consent").waitFor(); // onay kutusu işaretlenmedi
-        await page.getByLabel("Bilgilerimin başvurumu değerlendirmek için kullanılmasını kabul ediyorum.").check();
+        assert.equal(await page.locator("form .btn-wa").count(), 0, "formun altında WhatsApp düğmesi olmamalı");
+        assert.equal(await page.locator('form a[href="/aydinlatma"]').count(), 1, "aydınlatma bağlantısı");
+        assert.equal(await page.locator('input[name="consent"]').count(), 0, "onay kutusu olmamalı");
         await page.getByTestId("submit").click();
         const no = (await page.getByTestId("application-no").innerText({ timeout: 10000 })).trim();
         assert.match(no, /^EA-[A-HJ-NP-Z2-9]{8}$/);
@@ -195,7 +201,6 @@ try {
         await page.getByLabel("Sanayi web sitesi (CNC, imalat)").check();
         await page.getByLabel("Logom var").check();
         await page.getByLabel("WhatsApp", { exact: true }).check();
-        await page.getByLabel("Bilgilerimin başvurumu değerlendirmek için kullanılmasını kabul ediyorum.").check();
         await page.getByTestId("submit").click();
         await page.getByTestId("form-summary").waitFor();
         assert.ok((await page.getByTestId("form-summary").innerText()).includes("son 24 saatte başvuru alındı"));
@@ -220,12 +225,32 @@ try {
     assert.equal(res.status, 422);
     backend.state.failInsert = false;
   });
+  await check("aydınlatma sayfası: veri sorumlusu, hukuki sebep, haklar, noindex", async () => {
+    const res = await fetch(`${base}/aydinlatma`);
+    assert.equal(res.status, 200);
+    const html = (await res.text()).replace(/<!-- -->/g, "");
+    for (const t of ["Veri sorumlusu", "madde 5/2-c", "madde 11", "12 ay sonra silinir", "yurt dışında"]) assert.ok(html.includes(t), t);
+    assert.ok(/name="robots" content="noindex/.test(html));
+  });
+  await check("depolama ayarlı değilken /basvuru formu kapalı gösterir, API 503 verir", async () => {
+    const closed = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", String(APP_PORT + 1), "-H", "127.0.0.1"], {
+      cwd: root, env: { ...process.env, SUPABASE_URL: "", SUPABASE_SERVICE_ROLE_KEY: "" }, stdio: "ignore",
+    });
+    try {
+      for (let i = 0; i < 60; i++) { try { if ((await fetch(`http://127.0.0.1:${APP_PORT + 1}`)).ok) break; } catch { /* henüz açılmadı */ } await new Promise(r => setTimeout(r, 500)); }
+      const html = await (await fetch(`http://127.0.0.1:${APP_PORT + 1}/basvuru`)).text();
+      assert.ok(html.includes("Başvuru formu yakında açılıyor") && !html.includes("Başvuruyu gönder"));
+      const api = await fetch(`http://127.0.0.1:${APP_PORT + 1}/api/basvuru`, { method: "POST", headers: { "content-type": "application/json", origin: `http://127.0.0.1:${APP_PORT + 1}` }, body: "{}" });
+      assert.equal(api.status, 503);
+    } finally { closed.kill(); }
+  });
   await check("güvenlik başlıkları ve robots/sitemap", async () => {
     const home = await fetch(base);
     assert.equal(home.headers.get("x-content-type-options"), "nosniff");
     assert.equal(home.headers.get("x-frame-options"), "DENY");
     const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
     for (const p of ["/web-sitesi", "/fiyatlar", "/sanayi-cozumleri", "/basvuru"]) assert.ok(sitemap.includes(p), p);
+    assert.ok(!sitemap.includes("/aydinlatma"), "aydınlatma sitemap dışında");
     assert.ok((await (await fetch(`${base}/robots.txt`)).text()).includes("Disallow: /api/"));
     const html = await (await fetch(`${base}/fiyatlar`)).text();
     assert.ok(html.includes('rel="canonical" href="https://www.emirr.com.tr/fiyatlar"'));

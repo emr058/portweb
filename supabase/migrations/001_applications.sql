@@ -30,7 +30,8 @@ create table if not exists public.applications (
   deadline_date date,
   notes text check (notes is null or char_length(notes) <= 2000),
 
-  consent_at timestamptz not null,
+  -- Başvuru sırasında gösterilen aydınlatma metninin sürümü (ispat için)
+  notice_version text not null check (char_length(notice_version) between 4 and 20),
   ip_hash text not null check (char_length(ip_hash) = 32),
   user_agent text check (user_agent is null or char_length(user_agent) <= 300),
 

@@ -20,7 +20,7 @@ await db.exec(sql);
 const row = (n, over = {}) => ({
   application_no: `EA-${n}`, name: "Ayşe Yılmaz", phone: "+905551234567", email: "a@b.co", preferred_contact: "whatsapp",
   business_name: "Yılmaz Makine", sector: "sanayi", project_type: "sanayi", design_logo: "var", budget: "10-20", deadline: "1-ay",
-  consent_at: new Date().toISOString(), ip_hash: "a".repeat(32), ...over,
+  notice_version: "2026-11-01", ip_hash: "a".repeat(32), ...over,
 });
 const insert = r => {
   const cols = Object.keys(r);

@@ -26,7 +26,6 @@ const valid = (over: Record<string, unknown> = {}) => {
     budget: "10-20",
     deadline: "1-ay",
     notes: "Tezgâh listesi olacak",
-    consent: true,
     fillMs: 20_000,
     ...over,
   };
@@ -86,11 +85,15 @@ describe("başvuru şeması", () => {
     assert.equal(normalizePhone("123"), null);
     assert.equal(normalizePhone("abc"), null);
   });
-  it("zorunlu alanlar, onay ve bilinmeyen seçenekler reddedilir", () => {
-    const r = applicationSchema.safeParse(valid({ consent: false, projectType: "x", email: "yanlis", name: "" }));
+  it("zorunlu alanlar ve bilinmeyen seçenekler reddedilir", () => {
+    const r = applicationSchema.safeParse(valid({ projectType: "x", email: "yanlis", name: "" }));
     assert.ok(!r.success);
     const errors = fieldErrors(r.error);
-    for (const key of ["consent", "projectType", "email", "name"]) assert.ok(errors[key], key);
+    for (const key of ["projectType", "email", "name"]) assert.ok(errors[key], key);
+  });
+  it("onay kutusu yoktur: açık rıza istenmez, aydınlatma sürümü kaydedilir", async () => {
+    assert.ok(applicationSchema.safeParse(valid()).success);
+    assert.ok(!("consent" in (applicationSchema.shape as object)));
   });
   it("javascript: ve diğer şemalar site adresinde kabul edilmez", () => {
     assert.ok(!applicationSchema.safeParse(valid({ currentSite: "javascript:alert(1)" })).success);
@@ -163,6 +166,7 @@ describe("POST /api/basvuru", () => {
     assert.equal(row.business_name, "Yılmaz Makine");
     assert.ok(!JSON.stringify(row).includes("203.0.113.5"), "ham IP saklanmamalı");
     assert.equal(String(row.ip_hash).length, 32);
+    assert.equal(row.notice_version, "2026-11-01");
     assert.equal(row.notify_status, "sent");
     assert.equal(backend.emails.length, 1);
     const mail = backend.emails[0] as { to: string[]; subject: string; text: string; reply_to: string };

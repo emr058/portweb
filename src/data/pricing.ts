@@ -10,10 +10,22 @@ export const formatRange = (r: PriceRange) => (r.max ? `${dot(r.min)}–${dot(r.
 export const campaign = {
   label: "İlk 10 müşteri",
   seats: 10,
-  note: "Kampanya fiyatı ilk 10 müşteri için geçerlidir.",
+  note: "Kampanya fiyatı, ilk 10 müşteriyle sözleşme yapılana kadar geçerlidir.",
 } as const;
 
 export type PackageId = "baslangic" | "profesyonel";
+
+export type IconName =
+  | "smartphone" | "palette" | "message-circle" | "layout-dashboard" | "search" | "package" | "newspaper" | "mail"
+  | "chart" | "cog" | "gauge" | "layers" | "images" | "file-up" | "clipboard-list" | "factory" | "store"
+  | "shopping-bag" | "phone-call" | "list-checks" | "globe";
+
+// Her özellik: kısa ad + herkesin anlayacağı bir cümle + simge.
+export interface Feature {
+  title: string;
+  hint: string;
+  icon: IconName;
+}
 
 export interface WebPackage {
   id: PackageId;
@@ -21,7 +33,9 @@ export interface WebPackage {
   pages: string;
   normal: PriceRange;
   campaign: PriceRange;
-  features: string[];
+  /** Hangi işletme için uygun: tek cümle. */
+  forWhom: string;
+  features: Feature[];
 }
 
 export const websitePackages: WebPackage[] = [
@@ -31,12 +45,13 @@ export const websitePackages: WebPackage[] = [
     pages: "4–5 sayfa",
     normal: { min: 10000 },
     campaign: { min: 5000 },
+    forWhom: "İşletmenizi tanıtmak, adres ve telefonunuzu internette göstermek istiyorsanız.",
     features: [
-      "Mobil uyumlu tasarım",
-      "Basit logo ve görsel düzen",
-      "İletişim ve WhatsApp bağlantısı",
-      "Basit yönetim paneli",
-      "Temel teknik SEO",
+      { title: "Mobil uyumlu tasarım", hint: "Telefon, tablet ve bilgisayarda düzgün görünür.", icon: "smartphone" },
+      { title: "Basit logo ve görsel düzen", hint: "Sitenin logosu ve renkleri sade bir düzende hazırlanır.", icon: "palette" },
+      { title: "İletişim ve WhatsApp bağlantısı", hint: "Ziyaretçi iletişim bilgilerinize ulaşır, tek dokunuşla WhatsApp'tan yazar.", icon: "message-circle" },
+      { title: "Basit yönetim paneli", hint: "Sitenizi kendiniz güncelleyebileceğiniz sade bir ekran.", icon: "layout-dashboard" },
+      { title: "Temel teknik SEO", hint: "Sitenin Google'da bulunabilmesi için temel ayarlar.", icon: "search" },
     ],
   },
   {
@@ -45,13 +60,14 @@ export const websitePackages: WebPackage[] = [
     pages: "7–12 sayfa",
     normal: { min: 15000, max: 20000 },
     campaign: { min: 7500, max: 10000 },
+    forWhom: "Ürün ve hizmetlerinizi listelemek, duyuru yayınlamak ve markanıza özel bir görünüm istiyorsanız.",
     features: [
-      "Markaya özel tasarım",
-      "Gelişmiş yönetim paneli",
-      "Ürün ve hizmet yönetimi",
-      "Blog / haber alanı",
-      "İletişim formları",
-      "Temel teknik SEO ve analitik",
+      { title: "Markaya özel tasarım", hint: "Sitenin görünümü işletmenizin kimliğine göre hazırlanır.", icon: "palette" },
+      { title: "Gelişmiş yönetim paneli", hint: "Sitedeki içerikleri kendiniz yönetebileceğiniz kapsamlı bir ekran.", icon: "layout-dashboard" },
+      { title: "Ürün ve hizmet yönetimi", hint: "Ürün ve hizmetlerinizi ekran üzerinden ekler, düzenler, kaldırırsınız.", icon: "package" },
+      { title: "Blog / haber alanı", hint: "Duyuru ve yazılarınızı yayınlayabileceğiniz bölüm.", icon: "newspaper" },
+      { title: "İletişim formları", hint: "Ziyaretçinin sorusu veya talebi doğrudan size ulaşır.", icon: "mail" },
+      { title: "Temel teknik SEO ve analitik", hint: "Google için temel ayarlar ve siteye kaç kişinin girdiğini görme.", icon: "chart" },
     ],
   },
 ];
@@ -73,15 +89,16 @@ export const industrial = {
   name: "Sanayi Web Sitesi",
   from: { min: 15000, max: 25000 } as PriceRange,
   audience: ["CNC torna", "CNC freze", "Makine imalatı", "Üretim işletmeleri"],
+  forWhom: "Tezgâh parkurunuzu göstermek, müşterilerden teklif ve teknik çizim almak istiyorsanız.",
   features: [
-    { title: "Makine parkuru", text: "Tezgâhlarınızın marka, model ve işleme ölçüleri." },
-    { title: "Üretim kabiliyetleri", text: "İşleyebildiğiniz malzemeler, toleranslar ve adet aralıkları." },
-    { title: "Hizmet sayfaları", text: "Torna, freze gibi her hizmet için ayrı sayfa." },
-    { title: "Ürün ve parça galerisi", text: "Ürettiğiniz parçaların fotoğrafları." },
-    { title: "Teknik çizim yükleme", text: "Müşteri çizimini talep formuna ekler." },
-    { title: "Teklif talep formu", text: "Parça, adet ve istenen teslim tarihi size ulaşır." },
-    { title: "WhatsApp iletişimi", text: "Tek dokunuşla hazır mesajla yazma." },
-  ],
+    { title: "Makine parkuru", hint: "Tezgâhlarınızın marka, model ve işleme ölçüleri.", icon: "cog" },
+    { title: "Üretim kabiliyetleri", hint: "İşleyebildiğiniz malzemeler, toleranslar ve adet aralıkları.", icon: "gauge" },
+    { title: "Hizmet sayfaları", hint: "Torna, freze gibi her hizmet için ayrı sayfa.", icon: "layers" },
+    { title: "Ürün ve parça galerisi", hint: "Ürettiğiniz parçaların fotoğrafları.", icon: "images" },
+    { title: "Teknik çizim yükleme", hint: "Müşteri çizimini talep formuna ekler.", icon: "file-up" },
+    { title: "Teklif talep formu", hint: "Parça, adet ve istenen teslim tarihi size ulaşır.", icon: "clipboard-list" },
+    { title: "WhatsApp iletişimi", hint: "Tek dokunuşla hazır mesajla yazma.", icon: "message-circle" },
+  ] as Feature[],
 };
 
 export interface Plan {
@@ -116,10 +133,26 @@ export const addonGroups = [
 ] as const;
 
 export const notIncluded = [
-  "Alan adı (domain), barındırma (hosting) ve üçüncü taraf servis ücretleri pakete dahil değildir.",
+  "Alan adı (domain, örn. firmaniz.com), barındırma (hosting, sitenin yayında durduğu sunucu) ve üçüncü taraf servis ücretleri pakete dahil değildir.",
 ];
 
 export const quoteSeparately = {
   intro: "Ayrı tekliflendirilir:",
   items: ["E-ticaret", "Ödeme sistemi", "Stok takibi", "Kargo", "Özel entegrasyonlar"],
 };
+
+// "Hangisi bana uygun?" rehberi.
+export const chooser: { id: string; title: string; text: string; href: string; icon: IconName }[] = [
+  { id: "baslangic", title: "Başlangıç", text: websitePackages[0].forWhom, href: "/basvuru?paket=baslangic", icon: "store" },
+  { id: "profesyonel", title: "Profesyonel", text: websitePackages[1].forWhom, href: "/basvuru?paket=profesyonel", icon: "package" },
+  { id: "sanayi", title: "Sanayi", text: industrial.forWhom, href: "/basvuru?paket=sanayi", icon: "factory" },
+  { id: "eticaret", title: "E-ticaret", text: "Online satış, ödeme, stok veya kargo gerekiyorsa ayrı teklif verilir.", href: "/basvuru?paket=eticaret", icon: "shopping-bag" },
+];
+
+// Başvurudan sonra ne olur: süre vaadi içermez.
+export const steps: { title: string; text: string; icon: IconName }[] = [
+  { title: "Başvuruyu doldurun", text: "Projenizi, istediklerinizi ve bütçenizi yazın.", icon: "clipboard-list" },
+  { title: "Size dönülür", text: "Seçtiğiniz yoldan ulaşılır: WhatsApp, telefon veya e-posta.", icon: "phone-call" },
+  { title: "Kapsam netleşir", text: "İstenenler, fiyat ve teslim tarihi birlikte belirlenir.", icon: "list-checks" },
+  { title: "Siteniz hazırlanır", text: "Site yapılır, siz kontrol edersiniz, sonra yayına alınır.", icon: "globe" },
+];

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { AddonGroups, Actions, CtaStrip, ExclusionNote, PackageCard } from "@/components/sales/parts";
+import { Actions, AddonGroups, CtaStrip, ExclusionNote, ProviderInfo, SalesHero, SectionTitle } from "@/components/sales/parts";
 import { campaign, comparisonRows, formatRange, formatTL, industrial, websitePackages } from "@/data/pricing";
 import { salesMetadata } from "@/lib/sales-metadata";
 
@@ -16,22 +16,55 @@ export default function FiyatlarPage() {
   const [baslangic, profesyonel] = websitePackages;
   return (
     <div className="sales">
-      <header className="sales-hero">
-        <h1>Fiyatlar</h1>
-        <p>{campaign.note} Tüm tutarlar TL cinsindendir.</p>
-      </header>
+      <SalesHero eyebrow="Fiyat listesi" title="Fiyatlar" actions={<Actions apply="/basvuru" whatsapp={{}} />}>
+        {campaign.note} Tüm tutarlar TL cinsindendir.
+      </SalesHero>
 
-      <section className="sales-section" style={{ marginTop: 0 }} aria-labelledby="paketler">
-        <h2 id="paketler">Web sitesi paketleri</h2>
-        <div className="sales-grid">
-          {websitePackages.map((pkg, index) => (
-            <PackageCard key={pkg.id} pkg={pkg} featured={index === 1} />
+      <section className="sales-section" style={{ marginTop: 0 }} aria-labelledby="bakis">
+        <SectionTitle id="bakis" eyebrow="Bir bakışta" title="Web sitesi paketleri" />
+        <div className="overview">
+          {websitePackages.map(pkg => (
+            <Link key={pkg.id} href={`/basvuru?paket=${pkg.id}`} className="overview-tile">
+              <small>{pkg.pages}</small>
+              <strong>{pkg.name}</strong>
+              <span className="price-big">{formatRange(pkg.campaign)}</span>
+              <em>{campaign.label} fiyatı</em>
+              <small>
+                Liste fiyatı: <s>{formatRange(pkg.normal)}</s>
+              </small>
+              <span className="go">
+                Başvuru yap <ArrowUpRight size={14} aria-hidden />
+              </span>
+            </Link>
           ))}
+          <Link href="/basvuru?paket=sanayi" className="overview-tile">
+            <small>CNC ve imalat</small>
+            <strong>{industrial.name}</strong>
+            <span className="price-big">{formatRange(industrial.from)}</span>
+            <em>Başlangıç fiyat aralığı</em>
+            <span className="go">
+              Başvuru yap <ArrowUpRight size={14} aria-hidden />
+            </span>
+          </Link>
+          <Link href="/basvuru?paket=eticaret" className="overview-tile">
+            <small>Online satış</small>
+            <strong>E-ticaret</strong>
+            <span className="price-big">Ayrı teklif</span>
+            <em>Ödeme, stok, kargo</em>
+            <span className="go">
+              Teklif iste <ArrowUpRight size={14} aria-hidden />
+            </span>
+          </Link>
         </div>
+        <p style={{ marginTop: 16 }}>
+          <Link href="/web-sitesi" className="sales-link">
+            Paketlerde neler var? <ArrowUpRight size={15} aria-hidden />
+          </Link>
+        </p>
       </section>
 
       <section className="sales-section" aria-labelledby="karsilastirma">
-        <h2 id="karsilastirma">Karşılaştırma</h2>
+        <SectionTitle id="karsilastirma" eyebrow="Karşılaştırma" title="İki paket yan yana" />
         <div className="sales-table-wrap">
           <table className="sales-table">
             <thead>
@@ -48,7 +81,7 @@ export default function FiyatlarPage() {
                 <td data-label="Profesyonel">{formatRange(profesyonel.campaign)}</td>
               </tr>
               <tr>
-                <th scope="row">Normal fiyat</th>
+                <th scope="row">Liste fiyatı</th>
                 <td data-label="Başlangıç">{formatRange(baslangic.normal)}</td>
                 <td data-label="Profesyonel">{formatRange(profesyonel.normal)}</td>
               </tr>
@@ -62,33 +95,22 @@ export default function FiyatlarPage() {
             </tbody>
           </table>
         </div>
-        <div style={{ marginTop: 18 }}>
-          <ExclusionNote />
-        </div>
       </section>
 
-      <section className="sales-section" aria-labelledby="sanayi">
-        <h2 id="sanayi">Sanayi web sitesi</h2>
-        <div className="sales-card pkg" style={{ marginTop: 22 }}>
-          <div>
-            <p style={{ fontSize: 13, color: "#8ea0b8" }}>Başlangıç fiyat aralığı</p>
-            <p className="price-main">{formatRange(industrial.from)}</p>
-          </div>
-          <p>CNC torna, CNC freze, makine imalatı ve üretim işletmeleri için. Makine parkuru, teklif formu ve teknik çizim yükleme dahil.</p>
-          <Actions apply="/basvuru?paket=sanayi" applyLabel="Başvuru yap" whatsapp={{ packageName: industrial.name, priceText: `${formatRange(industrial.from)} başlangıç aralığı`, projectType: "Sanayi web sitesi (CNC, imalat)" }} />
-          <Link href="/sanayi-cozumleri" className="sales-link" style={{ width: "fit-content" }}>
-            Sanayi çözümleri <ArrowUpRight size={15} aria-hidden />
-          </Link>
-        </div>
+      <section className="sales-section" aria-labelledby="dahil-degil">
+        <SectionTitle id="dahil-degil" eyebrow="Önemli" title="Fiyata dahil olmayanlar" />
+        <ExclusionNote />
       </section>
 
       <section className="sales-section" aria-labelledby="ek-hizmetler-baslik" id="ek-hizmetler">
-        <h2 id="ek-hizmetler-baslik">Ek hizmetler</h2>
-        <p className="lead">Aylık bakım, SEO ve sosyal medya paketlerden ayrı fiyatlanır.</p>
+        <SectionTitle id="ek-hizmetler-baslik" eyebrow="Aylık" title="Ek hizmetler">
+          Aylık bakım, SEO ve sosyal medya paketlerden ayrı fiyatlanır.
+        </SectionTitle>
         <AddonGroups />
       </section>
 
       <CtaStrip context={{}} />
+      <ProviderInfo />
     </div>
   );
 }

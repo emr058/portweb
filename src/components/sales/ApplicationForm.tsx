@@ -7,15 +7,16 @@ import {
   BUDGETS, CONTACT_METHODS, DEADLINES, DESIGN_LOGO, EXTRA_SERVICES, FEATURES, PROJECT_TYPES, QUOTE_FEATURES, SECTORS, labelOf,
 } from "@/lib/applications/options";
 import { applicationSchema, fieldErrors } from "@/lib/applications/schema";
-import { siteConfig } from "@/data/site";
+import { campaign, formatRange, industrial, steps, websitePackages } from "@/data/pricing";
 import { whatsappLink } from "@/lib/whatsapp";
+import { TrustCard } from "./parts";
 
 interface Values {
   name: string; phone: string; email: string; preferredContact: string;
   businessName: string; sector: string; city: string; currentSite: string;
   projectType: string; features: string[]; extraServices: string[];
   designLogo: string; designNotes: string; budget: string; deadline: string; deadlineDate: string; notes: string;
-  consent: boolean; website: string;
+  website: string;
 }
 
 const empty = (projectType: string): Values => ({
@@ -23,7 +24,7 @@ const empty = (projectType: string): Values => ({
   businessName: "", sector: "", city: "", currentSite: "",
   projectType, features: [], extraServices: [],
   designLogo: "", designNotes: "", budget: "", deadline: "", deadlineDate: "", notes: "",
-  consent: false, website: "",
+  website: "",
 });
 
 // Tarih alanı yalnız kullanıcı seçince çizilir; sunucuda üretilmediği için saat dilimi uyuşmazlığı olmaz.
@@ -32,7 +33,53 @@ const todayLocal = () => {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 };
 
-const FIELD_ORDER = ["name", "phone", "email", "preferredContact", "businessName", "sector", "city", "currentSite", "projectType", "features", "extraServices", "designLogo", "designNotes", "budget", "deadline", "deadlineDate", "notes", "consent"];
+const FIELD_ORDER = ["name", "phone", "email", "preferredContact", "businessName", "sector", "city", "currentSite", "projectType", "features", "extraServices", "designLogo", "designNotes", "budget", "deadline", "deadlineDate", "notes"];
+
+/** Seçilen proje türünün adı, fiyatı ve kapsamı: forma bakarken ne alacağınız görünsün. */
+function selection(projectType: string) {
+  const pkg = websitePackages.find(p => p.id === projectType);
+  if (pkg) {
+    return {
+      name: pkg.name,
+      price: formatRange(pkg.campaign),
+      caption: `${campaign.label} fiyatı · Liste fiyatı ${formatRange(pkg.normal)}`,
+      items: pkg.features.map(f => f.title),
+    };
+  }
+  if (projectType === "sanayi") {
+    return { name: industrial.name, price: formatRange(industrial.from), caption: "Başlangıç fiyat aralığı", items: industrial.features.slice(0, 5).map(f => f.title) };
+  }
+  if (projectType === "eticaret") {
+    return { name: "E-ticaret sitesi", price: "Ayrı teklif", caption: "Ödeme, stok ve kargo gereksinimlerinize göre fiyatlanır.", items: [] as string[] };
+  }
+  if (projectType === "belirsiz") {
+    return { name: "Öneri isteyeceksiniz", price: "", caption: "Başvurunuza göre size uygun paketi öneririm.", items: [] as string[] };
+  }
+  return null;
+}
+
+function SummaryCard({ projectType }: { projectType: string }) {
+  const s = selection(projectType);
+  return (
+    <section className="summary-card" aria-labelledby="summary-title">
+      <h2 id="summary-title">Seçiminiz</h2>
+      {s ? (
+        <>
+          <p className="summary-name">{s.name}</p>
+          {s.price && <p className="price-main">{s.price}</p>}
+          <p className="price-note" style={{ marginTop: 6 }}>{s.caption}</p>
+          {s.items.length > 0 && (
+            <ul className="check-list">
+              {s.items.map(item => <li key={item}>{item}</li>)}
+            </ul>
+          )}
+        </>
+      ) : (
+        <p style={{ marginTop: 8 }}>Proje türünü seçtiğinizde paketin fiyatı ve kapsamı burada görünür.</p>
+      )}
+    </section>
+  );
+}
 
 function Field({ id, label, error, hint, children }: { id: string; label: string; error?: string; hint?: string; children: ReactNode }) {
   return (
@@ -106,7 +153,6 @@ export function ApplicationForm({ initialProject }: { initialProject?: string })
     "aria-describedby": errors[id] ? `e-${id}` : undefined,
     ...extra,
   });
-
   const area = (id: "designNotes" | "notes") => ({
     id: `f-${id}`, name: id, value: values[id],
     onChange: (e: { target: { value: string } }) => set(id, e.target.value),
@@ -176,11 +222,11 @@ export function ApplicationForm({ initialProject }: { initialProject?: string })
         <div className="sales-actions">
           <a
             className="btn btn-wa"
-            href={whatsappLink({ name: s.name, projectType: labelOf(PROJECT_TYPES, s.projectType), applicationNo: done.applicationNo, packageName: undefined })}
+            href={whatsappLink({ name: s.name, projectType: labelOf(PROJECT_TYPES, s.projectType), applicationNo: done.applicationNo })}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <MessageCircle size={16} aria-hidden /> WhatsApp&apos;tan yaz
+            <MessageCircle size={16} aria-hidden /> Numaramla WhatsApp&apos;tan yaz
           </a>
           <Link href="/" className="btn btn-ghost">Ana sayfa</Link>
         </div>
@@ -188,110 +234,125 @@ export function ApplicationForm({ initialProject }: { initialProject?: string })
     );
   }
 
+  const inline = selection(values.projectType);
+
   return (
-    <form className="form" onSubmit={submit} noValidate aria-label="Web sitesi başvuru formu">
-      {summary && (
-        <div className="form-summary" role="alert" tabIndex={-1} ref={summaryRef} data-testid="form-summary">
-          {summary}{" "}
-          <a href={whatsappLink({})} target="_blank" rel="noopener noreferrer">WhatsApp&apos;tan yazın</a>
-        </div>
-      )}
-
-      <fieldset>
-        <legend>İletişim bilgileri</legend>
-        <div className="form-row">
-          <Field id="name" label="Ad soyad" error={errors.name}><input {...text("name", "text", { autoComplete: "name" })} /></Field>
-          <Field id="phone" label="Telefon" error={errors.phone} hint="Örnek: 0555 123 45 67"><input {...text("phone", "tel", { autoComplete: "tel", inputMode: "tel" })} /></Field>
-        </div>
-        <Field id="email" label="E-posta" error={errors.email}><input {...text("email", "email", { autoComplete: "email", inputMode: "email" })} /></Field>
-        <Choices name="preferredContact" label="Size nasıl ulaşalım?" options={CONTACT_METHODS} value={values.preferredContact} onChange={v => set("preferredContact", v)} error={errors.preferredContact} />
-      </fieldset>
-
-      <fieldset>
-        <legend>İşletme bilgileri</legend>
-        <div className="form-row">
-          <Field id="businessName" label="İşletme adı" error={errors.businessName}><input {...text("businessName", "text", { autoComplete: "organization" })} /></Field>
-          <Field id="sector" label="Sektör" error={errors.sector}>
-            <select id="f-sector" name="sector" value={values.sector} onChange={e => set("sector", e.target.value)} aria-invalid={errors.sector ? true : undefined} aria-describedby={errors.sector ? "e-sector" : undefined}>
-              <option value="">Seçin</option>
-              {SECTORS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-            </select>
-          </Field>
-        </div>
-        <div className="form-row">
-          <Field id="city" label="Şehir (isteğe bağlı)" error={errors.city}><input {...text("city", "text", { autoComplete: "address-level2" })} /></Field>
-          <Field id="currentSite" label="Mevcut web siteniz (isteğe bağlı)" error={errors.currentSite}><input {...text("currentSite", "text", { inputMode: "url", placeholder: "www.firma.com" })} /></Field>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>Proje</legend>
-        <Choices name="projectType" label="Proje türü" options={PROJECT_TYPES} value={values.projectType} onChange={v => set("projectType", v)} error={errors.projectType} />
-        <Checks label="İstediğiniz özellikler" options={FEATURES} values={values.features} onChange={v => set("features", v)} error={errors.features} />
-        <Checks label="Ayrı tekliflendirilen özellikler" options={QUOTE_FEATURES} values={values.features} onChange={v => set("features", v)} />
-        <Checks label="İlgilendiğiniz ek hizmetler" options={EXTRA_SERVICES} values={values.extraServices} onChange={v => set("extraServices", v)} error={errors.extraServices} />
-      </fieldset>
-
-      <fieldset>
-        <legend>Tasarım, bütçe ve zaman</legend>
-        <Choices name="designLogo" label="Logo" options={DESIGN_LOGO} value={values.designLogo} onChange={v => set("designLogo", v)} error={errors.designLogo} />
-        <Field id="designNotes" label="Tasarım beklentiniz (isteğe bağlı)" error={errors.designNotes} hint="Renkler, beğendiğiniz siteler, istemediğiniz şeyler.">
-          <textarea {...area("designNotes")} rows={4} maxLength={1000} />
-        </Field>
-        <div className="form-row">
-          <Field id="budget" label="Bütçe" error={errors.budget}>
-            <select id="f-budget" name="budget" value={values.budget} onChange={e => set("budget", e.target.value)} aria-invalid={errors.budget ? true : undefined} aria-describedby={errors.budget ? "e-budget" : undefined}>
-              <option value="">Seçin</option>
-              {BUDGETS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-            </select>
-          </Field>
-          <Field id="deadline" label="Ne zamana kadar?" error={errors.deadline}>
-            <select id="f-deadline" name="deadline" value={values.deadline} onChange={e => set("deadline", e.target.value)} aria-invalid={errors.deadline ? true : undefined} aria-describedby={errors.deadline ? "e-deadline" : undefined}>
-              <option value="">Seçin</option>
-              {DEADLINES.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-            </select>
-          </Field>
-        </div>
-        {values.deadline === "tarih" && (
-          <Field id="deadlineDate" label="Teslim tarihi" error={errors.deadlineDate}>
-            <input id="f-deadlineDate" name="deadlineDate" type="date" min={todayLocal()} value={values.deadlineDate} onChange={e => set("deadlineDate", e.target.value)} aria-invalid={errors.deadlineDate ? true : undefined} aria-describedby={errors.deadlineDate ? "e-deadlineDate" : undefined} />
-          </Field>
+    <div className="apply-layout">
+      <form className="form" onSubmit={submit} noValidate aria-label="Web sitesi başvuru formu">
+        {summary && (
+          <div className="form-summary" role="alert" tabIndex={-1} ref={summaryRef} data-testid="form-summary">
+            {summary}{" "}
+            <a href={whatsappLink({})} target="_blank" rel="noopener noreferrer">WhatsApp&apos;tan yazın</a>
+          </div>
         )}
-      </fieldset>
 
-      <fieldset>
-        <legend>Ek açıklamalar</legend>
-        <Field id="notes" label="Eklemek istedikleriniz (isteğe bağlı)" error={errors.notes}>
-          <textarea {...area("notes")} rows={5} maxLength={2000} />
-        </Field>
-      </fieldset>
+        <fieldset>
+          <legend>İletişim bilgileriniz</legend>
+          <div className="form-row">
+            <Field id="name" label="Ad soyad" error={errors.name}><input {...text("name", "text", { autoComplete: "name" })} /></Field>
+            <Field id="phone" label="Telefon" error={errors.phone} hint="Örnek: 0555 123 45 67"><input {...text("phone", "tel", { autoComplete: "tel", inputMode: "tel" })} /></Field>
+          </div>
+          <Field id="email" label="E-posta" error={errors.email}><input {...text("email", "email", { autoComplete: "email", inputMode: "email" })} /></Field>
+          <Choices name="preferredContact" label="Size nasıl ulaşalım?" options={CONTACT_METHODS} value={values.preferredContact} onChange={v => set("preferredContact", v)} error={errors.preferredContact} />
+        </fieldset>
 
-      <div className="hp" aria-hidden="true">
-        <label>Bu alanı boş bırakın<input type="text" name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={e => set("website", e.target.value)} /></label>
-      </div>
+        <fieldset>
+          <legend>İşletmeniz</legend>
+          <div className="form-row">
+            <Field id="businessName" label="İşletme adı" error={errors.businessName}><input {...text("businessName", "text", { autoComplete: "organization" })} /></Field>
+            <Field id="sector" label="Sektör" error={errors.sector}>
+              <select id="f-sector" name="sector" value={values.sector} onChange={e => set("sector", e.target.value)} aria-invalid={errors.sector ? true : undefined} aria-describedby={errors.sector ? "e-sector" : undefined}>
+                <option value="">Seçin</option>
+                {SECTORS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>
+            </Field>
+          </div>
+          <div className="form-row">
+            <Field id="city" label="Şehir (isteğe bağlı)" error={errors.city}><input {...text("city", "text", { autoComplete: "address-level2" })} /></Field>
+            <Field id="currentSite" label="Mevcut web siteniz (isteğe bağlı)" error={errors.currentSite}><input {...text("currentSite", "text", { inputMode: "url", placeholder: "www.firma.com" })} /></Field>
+          </div>
+        </fieldset>
 
-      <div className="consent" data-field="consent">
-        <label className="choice" style={{ border: 0, background: "transparent", padding: 0 }}>
-          <input type="checkbox" name="consent" checked={values.consent} onChange={e => set("consent", e.target.checked)} aria-invalid={errors.consent ? true : undefined} aria-describedby={errors.consent ? "e-consent" : undefined} />
-          <span>Bilgilerimin başvurumu değerlendirmek için kullanılmasını kabul ediyorum.</span>
-        </label>
-        {errors.consent && <p className="field-error" id="e-consent" role="alert">{errors.consent}</p>}
-        <details>
-          <summary>Bilgileriniz nasıl kullanılır?</summary>
-          <p style={{ marginTop: 8 }}>
-            Formdaki bilgiler yalnız başvurunuzu değerlendirmek ve size teklif iletmek için kullanılır; yalnız ben görürüm. Veriler, başvuru kaydı ve bildirim e-postası için kullandığım hizmet sağlayıcılarda (veritabanı ve e-posta servisi) işlenir. Bilgilerinizin silinmesini {siteConfig.links.emailDisplay} adresinden isteyebilirsiniz.
+        <fieldset>
+          <legend>Ne istiyorsunuz?</legend>
+          <Choices name="projectType" label="Proje türü" options={PROJECT_TYPES} value={values.projectType} onChange={v => set("projectType", v)} error={errors.projectType} />
+          {inline && (
+            <p className="summary-inline" aria-live="polite">
+              <b>{inline.name}</b>
+              {inline.price ? <> · {inline.price}</> : null}
+              <br />
+              <span>{inline.caption}</span>
+            </p>
+          )}
+          <Checks label="İstediğiniz özellikler" options={FEATURES} values={values.features} onChange={v => set("features", v)} error={errors.features} />
+          <Checks label="Ayrı tekliflendirilen özellikler" options={QUOTE_FEATURES} values={values.features} onChange={v => set("features", v)} />
+          <Checks label="İlgilendiğiniz ek hizmetler" options={EXTRA_SERVICES} values={values.extraServices} onChange={v => set("extraServices", v)} error={errors.extraServices} />
+        </fieldset>
+
+        <fieldset>
+          <legend>Tasarım, bütçe ve zaman</legend>
+          <Choices name="designLogo" label="Logo" options={DESIGN_LOGO} value={values.designLogo} onChange={v => set("designLogo", v)} error={errors.designLogo} />
+          <Field id="designNotes" label="Tasarım beklentiniz (isteğe bağlı)" error={errors.designNotes} hint="Renkler, beğendiğiniz siteler, istemediğiniz şeyler.">
+            <textarea {...area("designNotes")} rows={4} maxLength={1000} />
+          </Field>
+          <div className="form-row">
+            <Field id="budget" label="Bütçe" error={errors.budget}>
+              <select id="f-budget" name="budget" value={values.budget} onChange={e => set("budget", e.target.value)} aria-invalid={errors.budget ? true : undefined} aria-describedby={errors.budget ? "e-budget" : undefined}>
+                <option value="">Seçin</option>
+                {BUDGETS.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>
+            </Field>
+            <Field id="deadline" label="Ne zamana kadar?" error={errors.deadline}>
+              <select id="f-deadline" name="deadline" value={values.deadline} onChange={e => set("deadline", e.target.value)} aria-invalid={errors.deadline ? true : undefined} aria-describedby={errors.deadline ? "e-deadline" : undefined}>
+                <option value="">Seçin</option>
+                {DEADLINES.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
+              </select>
+            </Field>
+          </div>
+          {values.deadline === "tarih" && (
+            <Field id="deadlineDate" label="Teslim tarihi" error={errors.deadlineDate}>
+              <input id="f-deadlineDate" name="deadlineDate" type="date" min={todayLocal()} value={values.deadlineDate} onChange={e => set("deadlineDate", e.target.value)} aria-invalid={errors.deadlineDate ? true : undefined} aria-describedby={errors.deadlineDate ? "e-deadlineDate" : undefined} />
+            </Field>
+          )}
+        </fieldset>
+
+        <fieldset>
+          <legend>Eklemek istedikleriniz</legend>
+          <Field id="notes" label="Ek açıklama (isteğe bağlı)" error={errors.notes}>
+            <textarea {...area("notes")} rows={5} maxLength={2000} />
+          </Field>
+        </fieldset>
+
+        <div className="hp" aria-hidden="true">
+          <label>Bu alanı boş bırakın<input type="text" name="website" tabIndex={-1} autoComplete="off" value={values.website} onChange={e => set("website", e.target.value)} /></label>
+        </div>
+
+        <div className="form-submit">
+          <button type="submit" className="btn btn-primary" disabled={sending} data-testid="submit">
+            {sending ? "Gönderiliyor…" : "Başvuruyu gönder"}
+          </button>
+          <p className="notice-line">
+            Bilgileriniz yalnızca başvurunuzu değerlendirmek için kullanılır. Ayrıntılar için <Link href="/aydinlatma">Aydınlatma Metni</Link>.
           </p>
-        </details>
-      </div>
+        </div>
+      </form>
 
-      <div className="sales-actions">
-        <button type="submit" className="btn btn-primary" disabled={sending} data-testid="submit">
-          {sending ? "Gönderiliyor…" : "Başvuruyu gönder"}
-        </button>
-        <a href={whatsappLink({})} target="_blank" rel="noopener noreferrer" className="btn btn-wa">
-          <MessageCircle size={16} aria-hidden /> WhatsApp&apos;tan yaz
-        </a>
-      </div>
-    </form>
+      <aside className="apply-aside" aria-label="Başvuru bilgisi">
+        <SummaryCard projectType={values.projectType} />
+        <section className="sales-card" aria-labelledby="next-title">
+          <h2 id="next-title" style={{ fontSize: 15, fontWeight: 600, marginBottom: 14 }}>Başvurudan sonra</h2>
+          <ol className="mini-steps">
+            {steps.slice(1).map(step => (
+              <li key={step.title}>
+                <strong>{step.title}</strong>
+                {step.text}
+              </li>
+            ))}
+          </ol>
+        </section>
+        <TrustCard />
+      </aside>
+    </div>
   );
 }
+

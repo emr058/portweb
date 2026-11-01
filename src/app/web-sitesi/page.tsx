@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { AddonGroups, CtaStrip, ExclusionNote, PackageCard } from "@/components/sales/parts";
+import { Actions, AddonGroups, Chooser, CtaStrip, ExclusionNote, PackageCard, ProviderInfo, SalesHero, SectionTitle, SiteWireframe, Steps, TrustCard } from "@/components/sales/parts";
 import { formatTL, websitePackages } from "@/data/pricing";
 import { salesMetadata } from "@/lib/sales-metadata";
 
@@ -15,13 +15,26 @@ export const metadata: Metadata = salesMetadata({
 export default function WebSitesiPage() {
   return (
     <div className="sales">
-      <header className="sales-hero">
-        <h1>İşletmeniz için web sitesi</h1>
-        <p>İki paket var: Başlangıç ve Profesyonel. Kampanya fiyatı ilk 10 müşteri için geçerli.</p>
-      </header>
+      <SalesHero
+        eyebrow="Web sitesi hizmeti"
+        title="İşletmeniz için web sitesi"
+        actions={<Actions apply="/basvuru" whatsapp={{}} />}
+        visual={<SiteWireframe />}
+      >
+        İki paket var: Başlangıç ve Profesyonel. Kampanya fiyatı ilk 10 müşteri için geçerli.
+      </SalesHero>
 
-      <section className="sales-section" style={{ marginTop: 0 }} aria-labelledby="paketler">
-        <h2 id="paketler" className="sr-only">Paketler</h2>
+      <section className="sales-section" style={{ marginTop: 0 }} aria-labelledby="secim">
+        <SectionTitle id="secim" eyebrow="Seçim" title="Size uygun olan hangisi?">
+          Ne istediğinize göre bir paket seçin. Emin değilseniz başvuruda &quot;Emin değilim&quot; seçeneğini işaretleyin.
+        </SectionTitle>
+        <Chooser />
+      </section>
+
+      <section className="sales-section" aria-labelledby="paketler">
+        <SectionTitle id="paketler" eyebrow="Paketler" title="Neler dahil?">
+          Her maddenin altında ne işe yaradığı yazıyor.
+        </SectionTitle>
         <div className="sales-grid">
           {websitePackages.map((pkg, index) => (
             <PackageCard key={pkg.id} pkg={pkg} featured={index === 1} />
@@ -32,9 +45,15 @@ export default function WebSitesiPage() {
         </div>
       </section>
 
+      <section className="sales-section" aria-labelledby="adimlar">
+        <SectionTitle id="adimlar" eyebrow="Süreç" title="Nasıl ilerler?" />
+        <Steps />
+      </section>
+
       <section className="sales-section" aria-labelledby="ek">
-        <h2 id="ek">Ek hizmetler</h2>
-        <p className="lead">Aylık bakım, SEO ve sosyal medya ayrı fiyatlanır.</p>
+        <SectionTitle id="ek" eyebrow="İsteğe bağlı" title="Ek hizmetler">
+          Site yayına çıktıktan sonra isterseniz bakım, SEO ve sosyal medya hizmeti alabilirsiniz. Paketlerden ayrı fiyatlanır.
+        </SectionTitle>
         <AddonGroups />
         <p style={{ marginTop: 16 }}>
           <Link href="/fiyatlar" className="sales-link">
@@ -44,16 +63,18 @@ export default function WebSitesiPage() {
       </section>
 
       <section className="sales-section" aria-labelledby="sanayi">
-        <h2 id="sanayi">Sanayi işletmeleri</h2>
-        <p className="lead">CNC ve imalat atölyeleri için ayrı bir paket var.</p>
+        <SectionTitle id="sanayi" eyebrow="Atölye ve fabrikalar" title="Sanayi işletmeleri">
+          CNC ve imalat atölyeleri için ayrı bir paket var: makine parkuru, teklif formu, teknik çizim yükleme.
+        </SectionTitle>
         <Link href="/sanayi-cozumleri" className="sales-link">
           Sanayi çözümleri <ArrowUpRight size={15} aria-hidden />
         </Link>
       </section>
 
       <section className="sales-section" aria-labelledby="ornek">
-        <h2 id="ornek">Örnek çalışmalar</h2>
-        <p className="lead">Mağaza projeleri e-ticaret kapsamındadır ve ayrı tekliflendirilir.</p>
+        <SectionTitle id="ornek" eyebrow="Örnekler" title="Yaptığım işler">
+          Mağaza projeleri e-ticaret kapsamındadır ve ayrı tekliflendirilir.
+        </SectionTitle>
         <div className="sales-grid sales-grid-tight">
           <Link href="/projects/telefon-magazasi" className="sales-card" style={{ display: "block" }}>
             <h3>Telefon mağazası</h3>
@@ -66,7 +87,12 @@ export default function WebSitesiPage() {
         </div>
       </section>
 
-      <CtaStrip context={{ packageName: "web sitesi paketleri" }} />
+      <div style={{ marginTop: 56 }}>
+        <TrustCard />
+      </div>
+
+      <CtaStrip context={{}} />
+      <ProviderInfo />
     </div>
   );
 }
