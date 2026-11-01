@@ -5,7 +5,7 @@ export const siteConfig = {
     "I build web products and automation for daily work, from CNC manufacturing to business software.",
   url: "https://www.emirr.com.tr",
   ogImage: "/og.jpg",
-  avatar: "/og.jpg",
+  avatar: "/emir.jpg",
   author: "Emir Aydın",
   location: "Gebze, Kocaeli, Turkey",
   education: "Kyrenia University - Software Engineering (2021 - 2025)",
