@@ -35,8 +35,8 @@ async function record(browser, id, viewport, mobile, seconds, dir) {
     await page.waitForTimeout(250);
     offset = (Date.now() - t0) / 1000;
     await page.waitForTimeout(900);
-    const max = await page.evaluate((k) => Math.min(Math.max(0, document.documentElement.scrollHeight - innerHeight), innerHeight * k), mobile ? 2.6 : 1.7);
-    const moves = mobile ? 1 : 2;
+    const max = await page.evaluate((k) => Math.min(Math.max(0, document.documentElement.scrollHeight - innerHeight), innerHeight * k), mobile ? 2.6 : 3.2);
+    const moves = mobile ? 1 : 3;
     const duration = seconds * 1000 / moves;
     for (let i = 1; i <= moves; i++) {
       const target = Math.round(max * i / moves);
@@ -69,11 +69,10 @@ try {
       const html = await readFile(path.join(themesDir, id, "index.html"));
       if (!html.length) throw new Error("index.html boş");
       temp = await mkdtemp(path.join(os.tmpdir(), `portweb-${id}-`));
-      const desktop = await record(browser, id, { width: 1280, height: 800 }, false, 3.6, temp);
-      const phone = await record(browser, id, { width: 390, height: 844 }, true, 3, temp);
+      const desktop = await record(browser, id, { width: 1280, height: 800 }, false, 6.4, temp);
       const output = path.join(themesDir, `${id}-onizleme.mp4`);
-      const filter = "[0:v]fps=24,scale=720:450:force_original_aspect_ratio=decrease,pad=720:450:(ow-iw)/2:(oh-ih)/2,setsar=1[d];[1:v]fps=24,scale=200:433:force_original_aspect_ratio=decrease,pad=212:445:6:6:color=black,setsar=1[p];color=c=#111111:s=720x450:r=24:d=3[b];[b][p]overlay=(W-w)/2:(H-h)/2[m];[d][m]concat=n=2:v=1:a=0,format=yuv420p[v]";
-      await run("ffmpeg", ["-y", "-ss", String(desktop.offset), "-i", desktop.path, "-ss", String(phone.offset), "-i", phone.path, "-filter_complex", filter, "-map", "[v]", "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "30", "-b:v", "900k", "-maxrate", "900k", "-bufsize", "1800k", "-t", "7.8", "-movflags", "+faststart", output]);
+      const filter = "[0:v]fps=24,scale=720:450:force_original_aspect_ratio=decrease,pad=720:450:(ow-iw)/2:(oh-ih)/2,setsar=1,format=yuv420p[v]";
+      await run("ffmpeg", ["-y", "-ss", String(desktop.offset), "-i", desktop.path, "-filter_complex", filter, "-map", "[v]", "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "30", "-b:v", "900k", "-maxrate", "900k", "-bufsize", "1800k", "-t", "8.4", "-movflags", "+faststart", output]);
       const size = (await stat(output)).size;
       if (size > 1_200_000) throw new Error(`MP4 boyutu sınırı aştı: ${size} bayt`);
       console.log(`ok ${id} (${size} bayt)`);
