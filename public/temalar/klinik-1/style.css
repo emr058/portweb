@@ -1,0 +1,124 @@
+/* Tema: Nefes (klinik). Yön: bölünmüş sahne. Sağda sabit oda fotoğrafı, solda sakin okuma sütunu. */
+:root {
+  --bg: #ecebe7;
+  --surface: #e1dfd9;
+  --ink: #38450f;
+  --muted: #4f5a2c;
+  --accent: #38450f;
+  --accent-ink: #ecebe7;
+  --text: 'Clash Grotesk', system-ui, sans-serif;
+
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 2.6vw, 3.5rem);
+  --r: 16px;
+  --edge: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 var(--step-body)/1.5 var(--text); -webkit-font-smoothing: antialiased; }
+img { display: block; width: 100%; height: auto; }
+figure, h1, h2, p, ol, ul, details { margin: 0; padding: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); background: var(--ink); color: var(--bg); z-index: 40; }
+.skip:focus { width: auto; height: auto; clip: auto; left: 16px; top: 8px; padding: 12px 16px; }
+h2 { font: 400 var(--step-head)/1 var(--text); letter-spacing: -0.03em; }
+.small, .note { font-size: var(--step-small); color: var(--muted); }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; background: var(--accent); color: var(--accent-ink); font: 500 var(--step-body)/1 var(--text); text-decoration: none; border: 0; border-radius: 999px; cursor: pointer; transition: transform .18s ease; width: fit-content; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(1px); }
+
+/* Sağda sabit sahne */
+.stage { position: fixed; z-index: 0; top: var(--edge); right: var(--edge); bottom: var(--edge); width: calc(50vw - var(--edge) * 1.5); border-radius: var(--r); overflow: hidden; background: var(--surface); }
+.stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; }
+.stage img.on { opacity: 1; }
+
+/* Solda okuma sütunu */
+.col { position: relative; z-index: 1; width: calc(50vw - var(--edge) * 1.5); margin-left: var(--edge); }
+.col > section { padding: 0 clamp(8px, 2vw, 32px); }
+.hero { min-height: calc(100svh - var(--edge) * 2); margin-top: var(--edge); display: grid; }
+.card { background: var(--surface); border-radius: var(--r); padding: clamp(24px, 3.2vw, 56px); display: grid; align-content: space-between; gap: 28px; min-height: 100%; position: relative; overflow: hidden; }
+.card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 28px; background: var(--ink); }
+.mark { margin-top: 44px; font: 500 var(--step-lead)/1 var(--text); letter-spacing: -0.02em; }
+.mark span { font-weight: 400; }
+.card h1 { font: 400 clamp(2.3rem, 1rem + 3.1vw, 4.1rem)/1 var(--text); letter-spacing: -0.035em; }
+.sub { max-width: 26em; font-size: var(--step-lead); line-height: 1.3; }
+.live { font-weight: 500; }
+
+.intro, .list, .how, .about, .faq, .contact { padding-top: clamp(96px, 12vw, 180px) !important; display: grid; gap: 20px; align-content: start; max-width: 640px; }
+.intro .first { font: 500 var(--step-lead)/1.3 var(--text); }
+.intro p:not(.first) { max-width: 30em; }
+.list .rows { list-style: none; display: grid; gap: 4px; margin-top: 12px; }
+.rows button { width: 100%; display: flex; justify-content: space-between; gap: 20px; align-items: baseline; text-align: left; padding: 14px 6px; min-height: 52px; background: transparent; color: inherit; font: inherit; border: 0; border-radius: 12px; cursor: pointer; transition: background .2s ease, padding .2s ease; }
+.rows button:hover, .rows button:focus-visible { background: var(--surface); padding-left: 16px; padding-right: 16px; }
+.rows span { display: grid; gap: 2px; }
+.rows b { font-weight: 500; font-size: var(--step-lead); line-height: 1.2; }
+.rows i { font-style: normal; color: var(--muted); font-size: var(--step-small); }
+.rows em { font-style: normal; white-space: nowrap; font-weight: 500; }
+
+.slip { background: var(--surface); padding: clamp(20px, 3vw, 36px); max-width: 460px; display: grid; gap: 18px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), 95% 100%, 90% calc(100% - 14px), 85% 100%, 80% calc(100% - 14px), 75% 100%, 70% calc(100% - 14px), 65% 100%, 60% calc(100% - 14px), 55% 100%, 50% calc(100% - 14px), 45% 100%, 40% calc(100% - 14px), 35% 100%, 30% calc(100% - 14px), 25% 100%, 20% calc(100% - 14px), 15% 100%, 10% calc(100% - 14px), 5% 100%, 0 calc(100% - 14px)); padding-bottom: 36px; }
+.slip ol { list-style: none; display: grid; gap: 14px; }
+.slip li { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+.slip li span { font-weight: 500; }
+.slip li b { font-weight: 400; text-align: right; color: var(--muted); }
+.slip-end { background: var(--ink); color: var(--bg); padding: 12px 14px; border-radius: 8px; font-weight: 500; }
+
+.about p { max-width: 30em; font-size: var(--step-lead); line-height: 1.35; }
+.about .sign { font-size: var(--step-body); font-weight: 500; }
+.about .sign span { font-weight: 400; color: var(--muted); font-size: var(--step-small); }
+
+.faq details { border-radius: 12px; }
+.faq summary { list-style: none; cursor: pointer; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; font: 500 var(--step-lead)/1.25 var(--text); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-weight: 400; font-size: 1.6em; line-height: 1; transition: transform .25s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 0 18px; max-width: 32em; color: var(--ink); }
+.faq { gap: 8px; }
+.faq h2 { margin-bottom: 12px; }
+
+.rez { display: grid; gap: 22px; }
+.rez fieldset { margin: 0; padding: 0; border: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rez legend { padding: 0; margin-bottom: 12px; font-weight: 500; }
+.rez label { display: grid; gap: 6px; font-weight: 500; }
+.rez input, .rez select { font: 400 var(--step-body)/1 var(--text); color: var(--ink); background: var(--surface); border: 0; border-radius: 12px; min-height: 52px; padding: 0 14px; width: 100%; }
+.hint { color: var(--muted); font-size: var(--step-small); }
+.links { display: grid; gap: 4px; }
+.links a { font-size: var(--step-lead); width: fit-content; padding: 6px 0; }
+
+.inline-pic { display: none; }
+
+.foot { position: relative; z-index: 2; margin: clamp(96px, 12vw, 180px) var(--edge) var(--edge); background: var(--ink); color: var(--bg); border-radius: var(--r); padding: clamp(28px, 4vw, 64px) clamp(20px, 3vw, 48px) 0; overflow: hidden; }
+.foot-top { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.foot-top nav { display: grid; gap: 4px; }
+.foot-top a { text-decoration: none; padding: 6px 0; }
+.foot-top a:hover { text-decoration: underline; text-underline-offset: 5px; }
+.foot-word { font: 500 35vw/0.8 var(--text); letter-spacing: -0.05em; margin: clamp(24px, 4vw, 56px) 0 -0.06em; text-transform: uppercase; }
+.credit { margin-top: clamp(32px, 5vw, 64px); font-size: var(--step-small); color: #cfd1c2; max-width: 60ch; }
+
+/* Hareket */
+.js [data-rise] { opacity: 0; transform: translateY(24px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--i, 0) * 80ms); }
+.js [data-rise].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js [data-rise] { opacity: 1; transform: none; transition: none; }
+  .stage img { transition: none; }
+  .btn, .rows button, .faq summary::after { transition: none; }
+}
+
+/* Dar ekran: önce fotoğraf, sütun tam genişlikte */
+@media (max-width: 860px) {
+  .stage { display: none; }
+  .col { width: auto; margin: 0 var(--edge); }
+  .hero { min-height: 0; display: flex; flex-direction: column-reverse; padding: 0 !important; margin-top: var(--edge); }
+  .hero .inline-pic { display: block; height: 48svh; border-radius: var(--r); overflow: hidden; }
+  .hero .inline-pic img { height: 100%; object-fit: cover; }
+  .card { margin-top: -24px; position: relative; z-index: 1; }
+  .inline-pic { display: block; border-radius: var(--r); overflow: hidden; margin-top: 24px; max-height: 60svh; }
+  .inline-pic img { height: 100%; object-fit: cover; }
+  .rez fieldset { grid-template-columns: 1fr; }
+  .foot-word { font-size: 38vw; }
+}

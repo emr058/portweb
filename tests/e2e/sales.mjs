@@ -244,6 +244,18 @@ try {
       assert.equal(api.status, 503);
     } finally { closed.kill(); }
   });
+  await check("demo galerisi: görüntüleyici, çerçeve izni, tema seçili başvuru", async () => {
+    const viewer = await fetch(`${base}/temalar/spor-1`);
+    assert.equal(viewer.status, 200);
+    assert.ok((await viewer.text()).includes("/temalar/spor-1/index.html"), "iframe adresi");
+    assert.equal((await fetch(`${base}/temalar/yok-boyle-tema`)).status, 404);
+    const demo = await fetch(`${base}/temalar/spor-1/index.html`);
+    assert.equal(demo.status, 200);
+    assert.equal(demo.headers.get("x-frame-options"), "SAMEORIGIN");
+    assert.equal((await fetch(`${base}/basvuru`)).headers.get("x-frame-options"), "DENY");
+    const apply = await (await fetch(`${base}/basvuru?tema=spor-1`)).text();
+    assert.ok(apply.includes("Seçtiğiniz tasarım") && apply.includes("Tempo"), "seçilen tema kartı");
+  });
   await check("güvenlik başlıkları ve robots/sitemap", async () => {
     const home = await fetch(base);
     assert.equal(home.headers.get("x-content-type-options"), "nosniff");

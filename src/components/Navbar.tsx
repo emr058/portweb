@@ -17,6 +17,7 @@ export function Navbar() {
     { href: "/projects", label: tr ? "Projeler" : "Projects" },
     { href: "/web-sitesi", label: tr ? "Web sitesi" : "Websites" },
     { href: "/fiyatlar", label: tr ? "Fiyatlar" : "Pricing" },
+    { href: "/temalar", label: tr ? "Demolar" : "Demos" },
     { href: "/ai-stack", label: tr ? "Teknolojiler" : "Tech stack" },
     { href: "/blog", label: "Blog" },
     { href: "/#iletisim", label: tr ? "İletişim" : "Contact" },

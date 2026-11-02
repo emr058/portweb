@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Demo dosyaları yalnızca bu sitenin /temalar/<id> görüntüleyicisinde çerçevelenebilir.
+        source: "/temalar/:id/:file*",
+        headers: [{ key: "X-Frame-Options", value: "SAMEORIGIN" }],
+      },
+      {
         source: "/(.*)\\.(jpg|jpeg|png|gif|ico|svg|webp|avif)",
         headers: [
           {

@@ -19,11 +19,11 @@ interface Values {
   website: string;
 }
 
-const empty = (projectType: string): Values => ({
+const empty = (projectType: string, notes = ""): Values => ({
   name: "", phone: "", email: "", preferredContact: "whatsapp",
   businessName: "", sector: "", city: "", currentSite: "",
   projectType, features: [], extraServices: [],
-  designLogo: "", designNotes: "", budget: "", deadline: "", deadlineDate: "", notes: "",
+  designLogo: "", designNotes: "", budget: "", deadline: "", deadlineDate: "", notes,
   website: "",
 });
 
@@ -127,8 +127,10 @@ function Checks({ label, options, values, onChange, error }: { label: string; op
   );
 }
 
-export function ApplicationForm({ initialProject }: { initialProject?: string }) {
-  const [values, setValues] = useState<Values>(() => empty(initialProject ?? ""));
+export interface ChosenTheme { id: string; name: string; sector: string }
+
+export function ApplicationForm({ initialProject, theme }: { initialProject?: string; theme?: ChosenTheme }) {
+  const [values, setValues] = useState<Values>(() => empty(initialProject ?? "", theme ? `Seçtiğim tasarım: ${theme.name} (${theme.sector}). Benzer bir tasarım da olabilir.` : ""));
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [summary, setSummary] = useState("");
   const [sending, setSending] = useState(false);
@@ -338,6 +340,15 @@ export function ApplicationForm({ initialProject }: { initialProject?: string })
       </form>
 
       <aside className="apply-aside" aria-label="Başvuru bilgisi">
+        {theme && (
+          <section className="sales-card chosen-theme" aria-labelledby="chosen-title">
+            <h2 id="chosen-title" style={{ fontSize: 15, fontWeight: 600, marginBottom: 10 }}>Seçtiğiniz tasarım</h2>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/temalar/${theme.id}-onizleme.jpg`} alt="" width={1200} height={750} />
+            <p><strong>{theme.name}</strong> · {theme.sector}</p>
+            <a href={`/temalar/${theme.id}`} target="_blank" rel="noopener">Demoyu tekrar gez</a>
+          </section>
+        )}
         <SummaryCard projectType={values.projectType} />
         <section className="sales-card" aria-labelledby="next-title">
           <h2 id="next-title" style={{ fontSize: 15, fontWeight: 600, marginBottom: 14 }}>Başvurudan sonra</h2>

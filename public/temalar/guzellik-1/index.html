@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ela Stüdyo | Saç tasarım ve bakım salonu</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Ela Stüdyo: saç kesim, boya, bakım ve gelin saçı. Hizmetler, fiyatlar ve randevu isteği.">
+<link rel="stylesheet" href="fonts.css?v=mvz031o4">
+<link rel="stylesheet" href="style.css?v=mvz031o4">
+</head>
+<body>
+<a class="skip" href="#hizmetler">İçeriğe geç</a>
+
+<section class="story" data-story aria-labelledby="ad">
+  <div class="stage">
+    <div class="corner top">
+      <h1 id="ad" class="word">Ela</h1>
+      <nav aria-label="Ana menü">
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#ekip">Ekip</a>
+        <a class="btn" href="#randevu">Randevu al</a>
+      </nav>
+    </div>
+
+    <div class="window">
+      <div class="photo">
+        <img class="on" src="img/hikaye-1.jpg" width="1200" height="1500" alt="Gri bir fonun önünde rüzgârda savrulan saçlı bir kadının arkadan görünüşü">
+        <img src="img/hikaye-2.jpg" width="1200" height="1500" alt="Saçında şerit olan bir kadının arkadan görünüşü, sisli bir deniz karşısında">
+        <img src="img/hikaye-3.jpg" width="1200" height="1500" alt="Atkılı bir kişinin arkadan görünüşü, alacakaranlıkta denize bakıyor">
+      </div>
+      <div class="says">
+        <p class="say on" data-say aria-live="polite">Önce sizi dinleriz: ne istediğinizi, neyi sevmediğinizi.</p>
+        <p class="live" data-live>Pazartesi–Cumartesi 10:00–20:00</p>
+      </div>
+    </div>
+
+    <div class="corner bottom">
+      <p class="sub">Saç tasarım ve bakım salonu</p>
+      <p class="word">Stüdyo</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section class="svc" id="hizmetler" aria-labelledby="h-svc">
+    <div class="svc-list">
+      <h2 id="h-svc" data-rise>Hizmetler ve fiyatlar</h2>
+      <p class="note" data-rise>Birine dokunun, randevu formu o hizmetle açılsın.</p>
+      <ul>
+        <li data-rise><button type="button" data-pic="0" data-svc="Kadın saç kesimi"><span>Kadın saç kesimi</span><b>650 TL</b></button></li>
+        <li data-rise><button type="button" data-pic="1" data-svc="Erkek saç kesimi"><span>Erkek saç kesimi</span><b>400 TL</b></button></li>
+        <li data-rise><button type="button" data-pic="2" data-svc="Fön"><span>Fön</span><b>350 TL</b></button></li>
+        <li data-rise><button type="button" data-pic="0" data-svc="Dip boya"><span>Dip boya</span><b>1.600 TL</b></button></li>
+        <li data-rise><button type="button" data-pic="1" data-svc="Röfle"><span>Röfle</span><b>2.800 TL</b></button></li>
+        <li data-rise><button type="button" data-pic="2" data-svc="Keratin bakım"><span>Keratin bakım</span><b>3.200 TL</b></button></li>
+        <li data-rise><button type="button" data-pic="0" data-svc="Gelin saçı"><span>Gelin saçı</span><b>4.500 TL</b></button></li>
+      </ul>
+      <p class="small" data-rise>Fiyatlar örnektir. Saç uzunluğu ve yoğunluğuna göre değişen işlemlerde randevuda net fiyat söylenir.</p>
+    </div>
+    <figure class="svc-pic" aria-hidden="true">
+      <img class="on" src="img/liste-1.jpg" width="1200" height="1500" alt="" loading="lazy">
+      <img src="img/liste-2.jpg" width="1200" height="1500" alt="" loading="lazy">
+      <img src="img/liste-3.jpg" width="1200" height="1500" alt="" loading="lazy">
+    </figure>
+  </section>
+
+  <section class="team" id="ekip" aria-labelledby="h-team">
+    <h2 id="h-team" data-rise>Ekip</h2>
+    <dl>
+      <div data-rise><dt>Saç tasarımcısı</dt><dd>Kesim, fön, günlük şekil. Ad ve kısa tanıtım buraya yazılır.</dd></div>
+      <div data-rise><dt>Renk uzmanı</dt><dd>Boya, röfle, ton düzeltme. Ad ve kısa tanıtım buraya yazılır.</dd></div>
+      <div data-rise><dt>Bakım uzmanı</dt><dd>Keratin ve onarıcı bakımlar. Ad ve kısa tanıtım buraya yazılır.</dd></div>
+    </dl>
+    <p class="small" data-rise>Ekip bilgileri örnektir, salonun gerçek çalışanlarıyla ve fotoğraflarıyla değiştirilir.</p>
+  </section>
+
+  <section class="contact" id="randevu" aria-labelledby="h-rand">
+    <h2 id="h-rand" class="sr">Randevu</h2>
+    <a class="mail" data-mail href="mailto:randevu@ornek.com" data-rise>randevu@ornek.com</a>
+    <form class="rez" data-rez novalidate data-rise>
+      <fieldset>
+        <legend>Randevu bilgileri</legend>
+        <label>Adınız<input name="ad" autocomplete="name" required></label>
+        <label>Telefon<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
+        <label>Hizmet<select name="hizmet" data-svc-select><option>Kadın saç kesimi</option><option>Erkek saç kesimi</option><option>Fön</option><option>Dip boya</option><option>Röfle</option><option>Keratin bakım</option><option>Gelin saçı</option></select></label>
+        <label>Gün<input name="gun" type="date"></label>
+        <label>Saat<select name="saat"><option>Fark etmez</option><option>Sabah</option><option>Öğleden sonra</option><option>Akşam</option></select></label>
+      </fieldset>
+      <button class="btn" type="submit">Mesajı hazırla</button>
+      <p class="hint" data-hint>Mesaj hazır olunca açılır, siz göndermeden kimseye ulaşmaz.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <figure><img src="img/hikaye-3.jpg" width="1200" height="1500" loading="lazy" alt="Atkılı bir kişinin arkadan görünüşü, alacakaranlıkta denize bakıyor"></figure>
+  <div class="foot-text">
+    <nav aria-label="Bağlantılar"><a href="#hizmetler">Hizmetler</a><a href="#ekip">Ekip</a><a href="#randevu">Randevu</a></nav>
+    <p>Örnek Mahallesi, Örnek Sokak No: 12<br>Pazartesi–Cumartesi 10:00–20:00</p>
+    <p class="credit">Fotoğraflar: Unsplash lisansı, Lorem Picsum üzerinden. Bunlar örnek görsellerdir. Metin, fiyat ve ekip bilgileri örnektir.</p>
+  </div>
+</footer>
+<script src="app.js?v=mvz031o4"></script>
+<script src="/temalar/demo-bar.js" data-theme="guzellik-1" defer></script>
+</body>
+</html>
