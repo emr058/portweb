@@ -19,7 +19,7 @@ export const themes: Theme[] = [
     name: "Odun",
     sector: "Restoran, lokanta, kafe",
     sectorKey: "yeme-icme",
-    idea: "İşletmenin adı sayfanın kendisi olur: dev harfler ilk ekranı doldurur, menü siyah çubuklar halinde açılır.",
+    idea: "Lokantanızın adı ilk ekranı doldurur. Müşteri menüyü, saatleri ve masa ayırtmayı tek yerde bulur, rezervasyon mesajı size hazır gelir.",
     features: [
       "Fiyatlı menü, tıklayınca açıklama açılır",
       "Şu an açık mı, ne zaman açılıyor: saatlere göre kendiliğinden yazar",
@@ -35,7 +35,7 @@ export const themes: Theme[] = [
     name: "Eksen",
     sector: "Sanayi, CNC, imalat",
     sectorKey: "sanayi",
-    idea: "Sessiz ve kesin: tolerans canlı bir çubukla gösterilir, arşiv atölye fotoğrafları ilk ekranı doldurur.",
+    idea: "Atölyenizin hassasiyeti rakamla görünür. Müşteri parça adını, adedini ve malzemeyi yazar, hazır teklif mesajı size ulaşır.",
     features: [
       "Toleransı saç teliyle karşılaştıran canlı gösterge",
       "Yetenekler ve makine ölçüleri satır satır, tek bakışta",
@@ -51,7 +51,7 @@ export const themes: Theme[] = [
     name: "Nefes",
     sector: "Klinik, diş hekimi, sağlık",
     sectorKey: "saglik",
-    idea: "Sakin bir bölünmüş sahne: solda okuma sütunu, sağda bölüm değiştikçe yavaşça değişen oda fotoğrafı.",
+    idea: "Hasta siteye girince önce sakinlik görür, sonra randevusunu alır. Tedaviyi seçince form o tedaviyle açılır.",
     features: [
       "Tedavi listesinde birine dokununca randevu formu o tedaviyle açılır",
       "Randevunun nasıl işlediği kesik kenarlı bir fiş olarak anlatılır",
@@ -67,7 +67,7 @@ export const themes: Theme[] = [
     name: "Ela",
     sector: "Kuaför, güzellik salonu",
     sectorKey: "guzellik",
-    idea: "Sabitlenmiş afiş: ad iki köşede durur, kaydırdıkça ortadaki fotoğraf ve cümle değişir.",
+    idea: "Salonunuz dergi afişi gibi açılır. Hizmeti seçen müşteri randevu formunu o hizmetle doldurmaya başlar.",
     features: [
       "Kaydırmayla değişen sabit afiş, ilk üç ekran boyunca",
       "Hizmet ve fiyat listesi, satıra gelince fotoğraf değişir",
@@ -83,7 +83,7 @@ export const themes: Theme[] = [
     name: "Tempo",
     sector: "Spor salonu, stüdyo",
     sectorKey: "spor",
-    idea: "Her bölüm kendi düz şeker rengiyle bir afiş: ilk ekranda bugünün dersleri canlı, sıradaki ders vurgulanır.",
+    idea: "Bugünün dersleri ilk ekranda canlı görünür. Üye adayı dersi seçer, ücretsiz deneme formu o dersle açılır.",
     features: [
       "Bugünkü dersler saate göre canlı: geçenler soluklaşır, sıradaki ders vurgulanır",
       "Dersler dev satırlar halinde, birine dokununca ücretsiz deneme formu o dersle açılır",

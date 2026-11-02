@@ -14,8 +14,8 @@ export const metadata: Metadata = salesMetadata({
 export default function TemalarPage() {
   return (
     <div className="sales" style={{ maxWidth: 1180 }}>
-      <SalesHero eyebrow="Demolar" title="Hazır tasarımlar" actions={<Actions apply="/basvuru" whatsapp={{}} />}>
-        Her tasarım bir sektör için baştan çizildi. Demoyu açıp gerçek bir site gibi gezin, beğendiğinizi işletmenize uyarlayalım.
+      <SalesHero eyebrow="Demolar" title="Beğendiğiniz site sizin olsun" actions={<Actions apply="/basvuru" whatsapp={{}} />}>
+        Her tasarım bir sektör için baştan çizildi. Demoyu telefonunuzdan açıp müşteriniz gibi gezin, beğendiğinizi adınız, fotoğraflarınız ve fiyatlarınızla hazırlayalım.
       </SalesHero>
 
       <section className="sales-section" style={{ marginTop: 0 }} aria-labelledby="galeri">
