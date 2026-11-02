@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Actions, CtaStrip, ProviderInfo, SalesHero, SectionTitle } from "@/components/sales/parts";
 import { ThemeGallery } from "@/components/sales/ThemeGallery";
 import { themes } from "@/data/themes";
@@ -24,6 +26,7 @@ export default function TemalarPage() {
       </section>
 
       <CtaStrip title="Aradığınızı bulamadınız mı?" text="Sektörünüze özel tasarım da yapıyoruz. Başvuruda işletmenizi anlatın." context={{}} />
+      <p className="systems-crosslink">Hazır bir iş akışı mı arıyorsunuz? <Link href="/sistemler">Hazır sistemleri inceleyin <ArrowUpRight size={14} aria-hidden /></Link></p>
       <ProviderInfo />
     </div>
   );

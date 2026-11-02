@@ -72,7 +72,7 @@ try {
       const errors = [];
       page.on("pageerror", e => errors.push(e.message));
       page.on("console", m => { if (m.type() === "error") errors.push(m.text()); });
-      for (const [route, h1] of [["/web-sitesi", "İşletmeniz için web sitesi"], ["/fiyatlar", "Fiyatlar"], ["/temalar", "Hazır tasarımlar"], ["/sanayi-cozumleri", "Sanayi için web sitesi"], ["/basvuru", "Web sitesi başvurusu"]]) {
+      for (const [route, h1] of [["/web-sitesi", "İşletmeniz için web sitesi"], ["/fiyatlar", "Fiyatlar"], ["/temalar", "Hazır tasarımlar"], ["/sistemler", "Hazır sistemler"], ["/sistemler/telefoncu", "Telefoncu"], ["/sistemler/takimtek", "Takımtek"], ["/sanayi-cozumleri", "Sanayi için web sitesi"], ["/basvuru", "Web sitesi başvurusu"]]) {
         await check(`${engineName}/${label} ${route}: sayfa, taşma yok, yazı ≥12px, WhatsApp bağlantıları`, async () => {
           const res = await page.goto(base + route, { waitUntil: "networkidle" });
           assert.equal(res.status(), 200);
@@ -256,12 +256,32 @@ try {
     const apply = await (await fetch(`${base}/basvuru?tema=spor-1`)).text();
     assert.ok(apply.includes("Seçtiğiniz tasarım") && apply.includes("Tempo"), "seçilen tema kartı");
   });
+  await check("hazır sistemler: galeri ve ayrıntılar, WhatsApp isteği, medya yokken boş görünüm", async () => {
+    const gallery = await fetch(`${base}/sistemler`);
+    assert.equal(gallery.status, 200);
+    const galleryHtml = await gallery.text();
+    assert.ok(galleryHtml.includes("Telefoncu") && galleryHtml.includes("Takımtek"));
+    assert.ok(galleryHtml.includes("Demodaki ad, ürün ve fiyatlar örnektir."));
+    assert.ok(galleryHtml.includes("/temalar"));
+    assert.ok(!galleryHtml.includes("QR Menü"));
+    for (const id of ["telefoncu", "takimtek"]) {
+      const res = await fetch(`${base}/sistemler/${id}`);
+      assert.equal(res.status, 200);
+      const html = await res.text();
+      assert.ok(html.includes("Demoyu birlikte gezelim"));
+      assert.ok(html.includes("wa.me/905353753358"));
+      assert.ok(!html.includes(`<iframe`), "hazır sistem sayfası canlı demo açmamalı");
+      assert.ok(!html.includes(`/sistemler/${id}/ekran-`), "medya yokken ekran alanı gizli kalmalı");
+      assert.ok(!html.includes(`/sistemler/${id}/masaustu.mp4`) && !html.includes(`/sistemler/${id}/telefon.mp4`), "medya yokken video alanı gizli kalmalı");
+    }
+    assert.equal((await fetch(`${base}/sistemler/yok`)).status, 404);
+  });
   await check("güvenlik başlıkları ve robots/sitemap", async () => {
     const home = await fetch(base);
     assert.equal(home.headers.get("x-content-type-options"), "nosniff");
     assert.equal(home.headers.get("x-frame-options"), "DENY");
     const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
-    for (const p of ["/web-sitesi", "/fiyatlar", "/temalar", "/sanayi-cozumleri", "/basvuru"]) assert.ok(sitemap.includes(p), p);
+    for (const p of ["/web-sitesi", "/fiyatlar", "/temalar", "/sistemler", "/sistemler/telefoncu", "/sistemler/takimtek", "/sanayi-cozumleri", "/basvuru"]) assert.ok(sitemap.includes(p), p);
     assert.ok(!sitemap.includes("/aydinlatma"), "aydınlatma sitemap dışında");
     assert.ok((await (await fetch(`${base}/robots.txt`)).text()).includes("Disallow: /api/"));
     const html = await (await fetch(`${base}/fiyatlar`)).text();

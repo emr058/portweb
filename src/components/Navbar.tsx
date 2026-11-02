@@ -18,6 +18,7 @@ export function Navbar() {
     { href: "/web-sitesi", label: tr ? "Web sitesi" : "Websites" },
     { href: "/fiyatlar", label: tr ? "Fiyatlar" : "Pricing" },
     { href: "/temalar", label: tr ? "Demolar" : "Demos" },
+    { href: "/sistemler", label: tr ? "Hazır sistemler" : "Ready systems" },
     { href: "/ai-stack", label: tr ? "Teknolojiler" : "Tech stack" },
     { href: "/blog", label: "Blog" },
     { href: "/#iletisim", label: tr ? "İletişim" : "Contact" },

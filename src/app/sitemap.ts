@@ -35,11 +35,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...["/web-sitesi", "/fiyatlar", "/temalar", "/sanayi-cozumleri", "/basvuru"].map((path) => ({
+    ...["/web-sitesi", "/fiyatlar", "/temalar", "/sistemler", "/sanayi-cozumleri", "/basvuru"].map((path) => ({
       url: `${siteConfig.url}${path}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: path === "/basvuru" ? 0.7 : 0.9,
+    })),
+    ...["telefoncu", "takimtek"].map(id => ({
+      url: `${siteConfig.url}/sistemler/${id}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     })),
     ...projectUrls,
   ];

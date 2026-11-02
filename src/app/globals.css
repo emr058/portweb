@@ -372,6 +372,45 @@
 .mini-steps li strong { margin-bottom: 2px; }
 .wire .mac-bar span, .device-compact .mac-bar span { font-size: 12px; }
 
+/* Hazır sistemler */
+.system-cover-link { display: block; overflow: hidden; background: #0b1424; }
+.system-cover-image { display: block; width: 100%; height: auto; }
+.system-card-features { margin: 2px 0 0; padding-left: 20px; display: grid; gap: 5px; color: #a5b1c2; font-size: 14px; line-height: 1.55; }
+.systems-note { margin: 28px 0 0; }
+.systems-crosslink { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 26px; color: #a5b1c2; font-size: 14px; }
+.systems-crosslink a { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; color: #b8d4ff; text-decoration: underline; text-underline-offset: 3px; }
+.system-viewer-head { grid-template-columns: 1fr auto; align-items: end; }
+.system-viewer-head .viewer-back { grid-column: 1 / -1; }
+.system-idea { margin-top: 10px; max-width: 680px; color: #a5b1c2; line-height: 1.7; }
+.system-screens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+.system-screen, .system-videos figure { min-width: 0; margin: 0; }
+.system-screen img { display: block; width: 100%; height: auto; border: 1px solid #303c50; border-radius: 12px; background: #0b1424; }
+.system-screen figcaption, .system-videos figcaption { margin-top: 8px; color: #a5b1c2; font-size: 13px; }
+.system-videos { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(230px, .65fr); align-items: start; gap: 24px; margin-top: 32px; }
+.system-videos video { display: block; width: 100%; max-height: 78vh; border: 1px solid #303c50; border-radius: 12px; background: #050a12; }
+.system-phone-frame { width: min(100%, 330px); margin-inline: auto; padding: 10px; border: 1px solid #59677c; border-radius: 32px; background: #080d16; box-shadow: 0 20px 60px #0007; }
+.system-phone-frame video { max-height: 75vh; aspect-ratio: 390 / 844; object-fit: contain; border: 0; border-radius: 22px; }
+.system-info { margin-top: 36px; }
+.system-info .sales-note h2 { margin: 0 0 8px; font-size: 20px; }
+.system-info .sales-note p { line-height: 1.7; }
+.system-info .sales-note .system-note-title { margin-top: 22px; }
+.system-scope { padding: 24px; border: 1px solid #303c50; border-radius: 14px; background: #101b2c; }
+.system-scope h2 { font-size: 22px; letter-spacing: -.03em; }
+.system-scope ul { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 8px; color: #c3cfdf; line-height: 1.6; }
+.system-bottom-cta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 28px; padding: 24px; border: 1px solid #2d4669; border-radius: 14px; background: linear-gradient(140deg, #12233b, #0d1728); }
+.system-bottom-cta h2 { font-size: 22px; letter-spacing: -.03em; }
+.system-bottom-cta p { margin-top: 6px; color: #a5b1c2; line-height: 1.6; }
+@media (max-width: 760px) {
+  .system-viewer-head { grid-template-columns: 1fr; }
+  .system-screens { grid-template-columns: 1fr; }
+  .system-videos { grid-template-columns: 1fr; }
+  .system-phone-frame { width: min(100%, 300px); }
+}
+.system-tile:hover { transform: none; border-color: #303c50; }
+@media (hover: hover) and (pointer: fine) {
+  .system-tile:hover { transform: translateY(-4px); border-color: #4a6290; }
+}
+
 /* Hazır tasarımlar galerisi ve görüntüleyici */
 .theme-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .theme-filter button { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid #303c50; background: #101b2c; color: #c3cfdf; font: inherit; cursor: pointer; }
