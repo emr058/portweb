@@ -15,6 +15,7 @@ const pages = [
   { file: "web-sitesi", title: "İşletmeniz için web sitesi", sub: "Başlangıç ve Profesyonel paketler" },
   { file: "fiyatlar", title: "Web sitesi fiyatları", sub: "Paketler, ek hizmetler ve ilk 10 müşteri kampanyası" },
   { file: "sanayi", title: "Sanayi için web sitesi", sub: "CNC torna, CNC freze ve imalat işletmeleri" },
+  { file: "temalar", title: "Hazır web sitesi tasarımları", sub: "Sektöre göre farklı, canlı demolu temalar" },
   { file: "basvuru", title: "Web sitesi başvurusu", sub: "Projenizi anlatın, size dönelim" },
 ];
 

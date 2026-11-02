@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...["/web-sitesi", "/fiyatlar", "/sanayi-cozumleri", "/basvuru"].map((path) => ({
+    ...["/web-sitesi", "/fiyatlar", "/temalar", "/sanayi-cozumleri", "/basvuru"].map((path) => ({
       url: `${siteConfig.url}${path}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,

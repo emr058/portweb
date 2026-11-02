@@ -72,7 +72,7 @@ try {
       const errors = [];
       page.on("pageerror", e => errors.push(e.message));
       page.on("console", m => { if (m.type() === "error") errors.push(m.text()); });
-      for (const [route, h1] of [["/web-sitesi", "İşletmeniz için web sitesi"], ["/fiyatlar", "Fiyatlar"], ["/sanayi-cozumleri", "Sanayi için web sitesi"], ["/basvuru", "Web sitesi başvurusu"]]) {
+      for (const [route, h1] of [["/web-sitesi", "İşletmeniz için web sitesi"], ["/fiyatlar", "Fiyatlar"], ["/temalar", "Hazır tasarımlar"], ["/sanayi-cozumleri", "Sanayi için web sitesi"], ["/basvuru", "Web sitesi başvurusu"]]) {
         await check(`${engineName}/${label} ${route}: sayfa, taşma yok, yazı ≥12px, WhatsApp bağlantıları`, async () => {
           const res = await page.goto(base + route, { waitUntil: "networkidle" });
           assert.equal(res.status(), 200);
@@ -249,7 +249,7 @@ try {
     assert.equal(home.headers.get("x-content-type-options"), "nosniff");
     assert.equal(home.headers.get("x-frame-options"), "DENY");
     const sitemap = await (await fetch(`${base}/sitemap.xml`)).text();
-    for (const p of ["/web-sitesi", "/fiyatlar", "/sanayi-cozumleri", "/basvuru"]) assert.ok(sitemap.includes(p), p);
+    for (const p of ["/web-sitesi", "/fiyatlar", "/temalar", "/sanayi-cozumleri", "/basvuru"]) assert.ok(sitemap.includes(p), p);
     assert.ok(!sitemap.includes("/aydinlatma"), "aydınlatma sitemap dışında");
     assert.ok((await (await fetch(`${base}/robots.txt`)).text()).includes("Disallow: /api/"));
     const html = await (await fetch(`${base}/fiyatlar`)).text();

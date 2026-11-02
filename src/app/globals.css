@@ -371,3 +371,14 @@
 @media (max-width: 640px) { .form-submit .btn { width: 100%; } }
 .mini-steps li strong { margin-bottom: 2px; }
 .wire .mac-bar span, .device-compact .mac-bar span { font-size: 12px; }
+
+/* Hazır tasarımlar galerisi */
+.theme-card { display: grid; gap: 12px; align-content: start; }
+.theme-shot { display: block; border-radius: 10px; overflow: hidden; border: 1px solid #303c50; }
+.theme-shot img { display: block; width: 100%; height: auto; }
+.theme-sector { color: #9fb2cc; font-size: 14px; }
+.theme-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.theme-list li { display: flex; gap: 8px; align-items: flex-start; color: #c3cfdf; line-height: 1.5; font-size: 15px; }
+.theme-list svg { flex: none; margin-top: 3px; color: #8ebcff; }
+.theme-card .sales-note { margin-top: 4px; }
+.theme-card .btn { justify-self: start; }
