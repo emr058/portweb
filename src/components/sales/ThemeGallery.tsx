@@ -2,12 +2,50 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import type { Theme } from "@/data/themes";
 
 const preview = (id: string) => `/temalar/${id}-onizleme.jpg`;
 const phone = (id: string) => `/temalar/${id}-telefon.jpg`;
+
+function ThemePreview({ id }: { id: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (reducedMotion || connection?.saveData) return;
+    const video = videoRef.current;
+    if (!video) return;
+    setEnabled(true);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) void video.play().catch(() => {});
+      else video.pause();
+    });
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      aria-hidden="true"
+      data-video={enabled ? "on" : undefined}
+      muted
+      loop
+      playsInline
+      preload="none"
+      poster={preview(id)}
+      src={enabled ? `/temalar/${id}-onizleme.mp4` : undefined}
+      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+    />
+  );
+}
 
 export function ThemeGallery({ themes }: { themes: Theme[] }) {
   const sectors = Array.from(new Map(themes.map(t => [t.sectorKey, t.sector.split(",")[0]])).entries());
@@ -28,6 +66,7 @@ export function ThemeGallery({ themes }: { themes: Theme[] }) {
           <article key={theme.id} className="theme-tile" aria-labelledby={`t-${theme.id}`}>
             <Link href={`/temalar/${theme.id}`} className="theme-stage" aria-label={`${theme.name} demosunu gez`}>
               <Image className="theme-desk" src={preview(theme.id)} alt="" width={1200} height={750} sizes="(max-width: 900px) 100vw, 640px" />
+              <ThemePreview id={theme.id} />
               <Image className="theme-phone" src={phone(theme.id)} alt="" width={390} height={844} sizes="140px" />
               <span className="theme-open">Demoyu gez <ArrowUpRight size={16} aria-hidden /></span>
             </Link>
