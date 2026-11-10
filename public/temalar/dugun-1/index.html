@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3d0012">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Düğün ve etkinlik organizasyonu için tarih ve kapsam talep kartı.">
+  <title>Tarih Kartelası — Düğün organizasyonu</title>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <header class="masthead page-frame">
+    <a class="wordmark" href="#baslangic" aria-label="Tarih Kartelası, başa dön">Tarih Kartelası</a>
+    <nav aria-label="Sayfa bölümleri"><a href="#duzen">Düzen</a><a href="#hazirlik">Hazırlık</a><a href="#talep">Talep</a></nav>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero page-frame" aria-labelledby="hero-title">
+      <div class="invite-card motion-part">
+        <p class="card-name">Tarih Kartelası</p>
+        <h1 id="hero-title">Gününüzü<br>birlikte planlayalım</h1>
+        <p class="hero-copy">Düğün ve kutlamanız için tarihi, etkinlik türünü ve yaklaşık kişi sayısını paylaşın.</p>
+        <figure class="hero-illustration"><img src="assets/flower-arch.svg" alt="Çiçek dallarıyla çevrili tören kemerinin kodla çizilmiş eskizi"><figcaption>Kodla çizilmiş tören kemeri eskizi</figcaption></figure>
+        <div class="card-bottom"><span>Örnek organizasyon sayfası</span><a class="action-link" href="#talep">Talep kartı oluştur</a></div>
+      </div>
+      <p class="hero-note">Tarih ve kapsam ilk konuşmanın başlangıcıdır. Uygunluk ve teklif birlikte netleştirilir.</p>
+    </section>
+
+    <section class="section page-frame event-types" id="duzen" aria-labelledby="duzen-title">
+      <div class="section-heading motion-part"><h2 id="duzen-title">Hangi günü<br>kuruyoruz?</h2><p>Etkinliğin biçimi, ihtiyaç duyulan düzeni belirler.</p></div>
+      <ul class="type-list">
+        <li class="motion-part"><span>Düğün</span><img src="assets/invitation-back.svg" alt="Açık davetiye kâğıdının kodla çizilmiş görünümü"><p>Karşılama, tören ve kutlama için tek akış.</p></li>
+        <li class="motion-part"><span>Nişan</span><img src="assets/table-plan.svg" alt="Yuvarlak ve uzun masaları gösteren kodla çizilmiş yerleşim taslağı"><p>Konuk düzeni ve masa yerleşimi üzerine ilk plan.</p></li>
+        <li class="motion-part"><span>Özel gün</span><img src="assets/place-plan.svg" alt="Karşılama, tören ve yemek bölümlerini içeren kodla çizilmiş mekân krokisi"><p>Kutlamanın yerine ve ölçeğine göre şekillenen kapsam.</p></li>
+      </ul>
+      <p class="sample-note">Etkinlik açıklamaları örnektir; gerçek hizmet listesi işletme tarafından doğrulanmalıdır.</p>
+    </section>
+
+    <section class="section prep-section page-frame" id="hazirlik" aria-labelledby="hazirlik-title">
+      <div class="prep-copy motion-part"><h2 id="hazirlik-title">Önce çerçeve,<br>sonra ayrıntı</h2><p>İlk talep kartı günü ve kişi sayısını toplar. Mekân, kurulum sırası ve hizmet kapsamı görüşmede netleşir.</p>
+        <ol class="prep-list"><li>Gün ve etkinlik türü belirlenir.</li><li>Yaklaşık katılım paylaşılır.</li><li>İhtiyaçlar ve mekân konuşulur.</li></ol>
+      </div>
+      <figure class="plan-figure motion-part"><img src="assets/place-plan.svg" alt="Etkinlikte karşılama, tören ve yemek akışını işaretleyen örnek kroki"><figcaption>Örnek akış krokisi · mekâna göre yeniden çizilir</figcaption></figure>
+    </section>
+
+    <section class="section request-section page-frame" id="talep" aria-labelledby="talep-title">
+      <div class="request-intro motion-part"><h2 id="talep-title">Tarih talebiniz</h2><p>Alanları doldurun; tarayıcıda paylaşmaya hazır bir özet oluşsun. Bu demo uygunluk veya fiyat garantisi vermez.</p><p class="sample-note">Örnek talep aracı</p></div>
+      <div class="request-layout">
+        <form id="request-form" class="request-form motion-part">
+          <label for="event-date">Düşündüğünüz tarih</label>
+          <input id="event-date" name="date" type="date" required>
+          <label for="event-kind">Etkinlik türü</label>
+          <select id="event-kind" name="kind" required><option value="">Bir tür seçin</option><option>Düğün</option><option>Nişan</option><option>Özel gün</option></select>
+          <label for="guest-count">Yaklaşık kişi sayısı</label>
+          <input id="guest-count" name="guests" type="number" min="1" inputmode="numeric" placeholder="Örnek: 120" required>
+          <button type="submit">Talep özeti oluştur</button>
+          <p class="form-help">Bilgiler bu sayfada işlenir; sunucuya gönderilmez ve saklanmaz.</p>
+        </form>
+        <aside class="request-card motion-part" id="request-card" aria-live="polite" aria-atomic="true">
+          <h3>Talep kartı</h3>
+          <p id="request-output">Tarih, etkinlik türü ve kişi sayısını seçince özet burada görünür.</p>
+          <button id="share-request" type="button" disabled>Özeti paylaş</button>
+          <p id="request-status" class="request-status">İşletme telefon veya WhatsApp bilgisi eklenince talep kanalı bağlanır.</p>
+        </aside>
+      </div>
+      <noscript><p class="no-script">JavaScript kapalı. Tarih ve kapsamı not edin; işletmenin gerçek telefon veya WhatsApp bilgisi bu demoya eklenmelidir.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="footer page-frame"><p>Tarih Kartelası</p><p>Örnek tema · gerçek içerik ve iletişim bilgileri eklenecek</p><a href="#baslangic">Başa dön</a></footer>
+<script src="/temalar/demo-bar.js" data-theme="dugun-1" defer></script>
+</body>
+</html>

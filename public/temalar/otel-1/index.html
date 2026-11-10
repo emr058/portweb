@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f9fa">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Örnek bir butik otel ve pansiyon sayfası. Odanızı seçip konaklama talebinizi hazırlayın.">
+  <title>Oda Anahtarı — örnek konaklama sayfası</title>
+  <link rel="preload" href="fonts/GeneralSans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <header class="masthead" aria-label="Sayfa başlığı">
+    <a class="wordmark" href="#baslangic">ODA ANAHTARI</a>
+    <p>Örnek konaklama sayfası</p>
+    <a class="masthead__action" href="#talep">Oda seç</a>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero-stage" aria-labelledby="hero-title">
+      <div class="hero-backdrop" aria-hidden="true">
+        <img src="assets/hotel-keys-a-thing-of-the-past.jpg" alt="" width="1024" height="683" fetchpriority="high">
+      </div>
+      <article class="key-card" id="key-card">
+        <div class="key-card__top">
+          <span>ODA ANAHTARI</span>
+          <span>ÖRNEK · PANSİYON</span>
+        </div>
+        <h1 id="hero-title"><span>Bir oda,</span><span>bir anahtar</span></h1>
+        <p class="hero-copy">Küçük bir konaklama yeri için oda bilgileri ve doğrudan talep formu.</p>
+        <div class="hero-details">
+          <p><span>Konaklama</span><strong>1–2 kişilik odalar</strong></p>
+          <p><span>Talep</span><strong>Odayı ve tarihleri seçin</strong></p>
+        </div>
+        <div class="key-card__bottom">
+          <a class="button" href="#talep">Oda seç</a>
+          <a class="text-link" href="#odalar">Odaları incele</a>
+        </div>
+      </article>
+      <p class="archive-caption">Arşiv fotoğrafı: Regency Hyatt House anahtarlığı, Atlanta</p>
+      <p class="stage-caption">Bir yerin hikâyesi bazen kapıyı açan küçük bir eşyada başlar.</p>
+    </section>
+
+    <section class="intro section-reveal" aria-labelledby="intro-title">
+      <h2 id="intro-title">Konaklama, oda seçimiyle başlar.</h2>
+      <div class="intro__copy">
+        <p>Bu demo, butik otel ya da pansiyonun odalarını, konaklama notlarını ve ulaşım bilgilerini tek bir sayfada toplar.</p>
+        <p>Oda adları, ücretler ve tüm işletme ayrıntıları örnektir; gerçek işletmeye göre değiştirilmelidir.</p>
+      </div>
+    </section>
+
+    <section class="archive-section section-reveal" aria-labelledby="archive-title">
+      <div class="archive-section__heading">
+        <h2 id="archive-title">Her odanın ayrı bir anahtarı var.</h2>
+      </div>
+      <figure class="archive-feature">
+        <img src="assets/hotel-key-board-8317946457.jpg" alt="Buck Hill Inn arşivindeki numaralı anahtar panosu" width="1920" height="1245" loading="lazy" decoding="async">
+        <figcaption>Numaralı anahtar panosu, Buck Hill Inn arşivi. Örnek pansiyonun eşyası değildir.</figcaption>
+      </figure>
+      <figure class="archive-inset">
+        <img src="assets/jangsusan-hotel-key-pyongsong-33139932995.jpg" alt="Pyongsong'daki Jangsusan Hotel için hazırlanmış numaralı metal anahtar" width="1920" height="2560" loading="lazy" decoding="async">
+        <figcaption>Jangsusan Hotel anahtarı, Pyongsong. Arşiv fotoğrafı.</figcaption>
+      </figure>
+    </section>
+
+    <section class="rooms-section section-reveal" id="odalar" aria-labelledby="rooms-title">
+      <div class="rooms-heading">
+        <h2 id="rooms-title">Üç örnek oda.</h2>
+        <p>Oda adları, kişi sayıları ve gecelik ücretler yerleşim örneğidir.</p>
+      </div>
+      <ol class="room-list">
+        <li class="room-entry">
+          <div><h3>Avlu</h3><p>Çift kişilik yatak · 2 kişi · avluya bakan</p></div>
+          <p class="room-price">₺2.400 <span>/ gece · örnek</span></p>
+        </li>
+        <li class="room-entry">
+          <div><h3>Çatı</h3><p>İki tek yatak · 2 kişi · üst kat</p></div>
+          <p class="room-price">₺2.150 <span>/ gece · örnek</span></p>
+        </li>
+        <li class="room-entry">
+          <div><h3>Sedir</h3><p>Çift kişilik yatak · 2 kişi · ek oturma alanı</p></div>
+          <p class="room-price">₺2.800 <span>/ gece · örnek</span></p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="story-section section-reveal" aria-labelledby="story-title">
+      <div class="story-note">
+        <h2 id="story-title">Bir isim, bir tarih, bir imza.</h2>
+        <p>Eski konaklama defterleri, gelen yolcuların izini sayfada tutardı. Buradaki görüntü de başka bir yerin arşivinden.</p>
+      </div>
+      <figure class="register-photo">
+        <img src="assets/wright-tavern-guest-register.jpg" alt="Wright Tavern'ın 1897 ve 1901 tarihli ziyaretçi kayıt defteri sayfası" width="1920" height="2898" loading="lazy" decoding="async">
+        <figcaption>Wright Tavern ziyaretçi defteri, 1897 ve 1901 kayıtları. Wikimedia Commons arşivi.</figcaption>
+      </figure>
+      <figure class="room-archive">
+        <img src="assets/hamilton-hotel-typical-room-portland-oregon.jpg" alt="Portland'daki Hamilton Hotel'in 1993 tarihli tipik oda belgelemesi" width="1920" height="1569" loading="lazy" decoding="async">
+        <figcaption>Hamilton Hotel, Portland; 1993 tarihli HABS oda belgelemesi. Örnek pansiyonun odası değildir.</figcaption>
+      </figure>
+    </section>
+
+    <section class="request-section section-reveal" id="talep" aria-labelledby="request-title">
+      <div class="request-card">
+        <div class="request-card__intro">
+          <h2 id="request-title">Konaklama talebi</h2>
+          <p>Odanızı ve tarihleri seçin. Bilgileriniz e-posta taslağına eklenir.</p>
+        </div>
+        <form id="booking-form" action="mailto:konaklama@example.com" method="get" enctype="text/plain">
+          <label for="room-choice">Oda</label>
+          <select id="room-choice" name="Oda">
+            <option value="Avlu">Avlu · ₺2.400 / gece (örnek)</option>
+            <option value="Çatı">Çatı · ₺2.150 / gece (örnek)</option>
+            <option value="Sedir">Sedir · ₺2.800 / gece (örnek)</option>
+          </select>
+          <div class="date-fields">
+            <div><label for="arrival">Giriş</label><input id="arrival" name="Giriş" type="date"></div>
+            <div><label for="departure">Çıkış</label><input id="departure" name="Çıkış" type="date"></div>
+          </div>
+          <label for="guest-email">E-posta adresiniz</label>
+          <input id="guest-email" name="Yanıt e-postası" type="email" autocomplete="email" placeholder="ad@ornek.com">
+          <button class="button submit-button" type="submit">Talep e-postası oluştur</button>
+          <p id="form-status" class="form-status" aria-live="polite">Örnek sayfa: e-posta alıcısı ve oda bilgileri yayından önce güncellenmelidir.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="visit-section section-reveal" aria-labelledby="visit-title">
+      <div class="visit-copy">
+        <h2 id="visit-title">Geliş bilgileri burada yer alır.</h2>
+        <p>Adres, ulaşım tarifi, giriş ve çıkış saati ile kahvaltı bilgileri işletme tarafından eklenmelidir.</p>
+      </div>
+      <div class="visit-slip">
+        <p><span>Adres</span><strong>İşletme adresi eklenecek</strong></p>
+        <p><span>Giriş / çıkış</span><strong>İşletme saatleri eklenecek</strong></p>
+        <p><span>Telefon</span><strong>İletişim numarası eklenecek</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-name">ODA ANAHTARI</p>
+    <p>Butik otel / pansiyon için örnek tema.</p>
+    <details class="credits">
+      <summary>Arşiv görsel kaynakları</summary>
+      <ul>
+        <li><a href="https://www.flickr.com/photos/97651299@N00/37676412096">“Hotel Keys - a thing of the past!”</a>, Carol (vanhookc), CC BY-SA 2.0, Flickr.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Hotel_Key_Board_(8317946457).jpg">“Hotel Key Board (8317946457)”</a>, Jonathan Haeber, CC BY 2.0, Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Jangsusan_Hotel_key,_Pyongsong_(33139932995).jpg">“Jangsusan Hotel key, Pyongsong”</a>, jennybento, CC BY-SA 2.0, Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Wright_Tavern_Guest_Register_-_DPLA_-_fb73183d19f4f0889bcbef2ad5bf0d52_(page_126).jpg">“Wright Tavern Guest Register”</a>, kamu malı, Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Hamilton_Hotel_-_typical_room_-_Portland_Oregon.jpg">“Hamilton Hotel - typical room - Portland Oregon”</a>, Historic American Buildings Survey, kamu malı, Wikimedia Commons.</li>
+      </ul>
+    </details>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="otel-1" defer></script>
+</body>
+</html>

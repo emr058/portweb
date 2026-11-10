@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 460" role="img" aria-labelledby="title desc">
+  <title id="title">Boş çalışma dosyası çizimi</title><desc id="desc">İsimsiz, boş sekmeli bir hukuk dosyasının kapak ve sayfaları.</desc>
+  <path fill="#7d0c14" d="M71 84h185l43 39h167v249H71z"/>
+  <path fill="#d6d6d6" d="M112 55h184l43 39h109v238H112z"/>
+  <path fill="#e2e2e2" d="M151 26h183l41 38h94v231H151z"/>
+  <path fill="#7d0c14" d="M178 77h220v12H178zm0 31h163v7H178zm0 25h189v7H178zm0 36h68v8h-68z"/>
+  <path fill="#c4b9b7" d="M178 161h194v2H178zm0 30h194v2H178zm0 30h194v2H178z"/>
+  <circle cx="378" cy="234" r="20" fill="#7d0c14"/>
+  <path fill="#e2e2e2" d="M369 234h18v4h-18zm7-9h4v17h-4z"/>
+</svg>

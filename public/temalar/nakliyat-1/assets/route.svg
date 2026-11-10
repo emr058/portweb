@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" role="img" aria-labelledby="title desc">
+  <style>@media (prefers-reduced-motion: no-preference) { .route-van { transform-box: fill-box; transform-origin: center; animation: route-travel 7s ease-in-out infinite alternate; } @keyframes route-travel { from { transform: translateX(-18px); } to { transform: translateX(36px); } } }</style>
+  <title id="title">İki ev arasında taşıma rotası çizimi</title><desc id="desc">İki apartman ve aralarında ilerleyen küçük bir nakliye aracı, noktalı güzergâh üzerinde gösterilir.</desc>
+  <path d="M50 234H590" stroke="#2c3620" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 18"/>
+  <path d="M62 229V92l56-43 58 43v137M47 229h145M88 229v-49h58v49M105 109h24m-24 30h24" fill="#b7c8be" stroke="#1c1c1c" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M430 229V101l55-40 56 40v128M416 229h139M455 229v-45h59v45M473 118h22m-22 28h22" fill="#d6c4b8" stroke="#1c1c1c" stroke-width="5" stroke-linejoin="round"/>
+  <g class="route-van"><path d="M248 180h84v50h-84zM332 194h42l30 29v7h-72z" fill="#2c3620" stroke="#1c1c1c" stroke-width="5" stroke-linejoin="round"/><path d="M345 202h24l19 20h-43z" fill="#e3e2da"/><circle cx="274" cy="234" r="12" fill="#1c1c1c"/><circle cx="359" cy="234" r="12" fill="#1c1c1c"/><path d="M271 193h34v22h-34zM279 199h18v10h-18z" fill="#e3e2da"/></g>
+  <circle cx="62" cy="234" r="12" fill="#2c3620"/><circle cx="542" cy="234" r="12" fill="#2c3620"/>
+  <path d="M55 270h58m0 0-12-10m12 10-12 10M585 270h-58m0 0 12-10m-12 10 12 10" fill="none" stroke="#1c1c1c" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

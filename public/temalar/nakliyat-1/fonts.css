@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'General Sans';
+  src: url('fonts/GeneralSans-400.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url('fonts/GeneralSans-500.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Imbue';
+  src: url('fonts/Imbue-400-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-024F;
+}
+@font-face {
+  font-family: 'Imbue';
+  src: url('fonts/Imbue-400-latin-ext.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-02FF, U+1E00-1EFF;
+}

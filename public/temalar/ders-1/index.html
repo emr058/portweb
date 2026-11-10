@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8e8e3">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Kurs ve özel dersler için örnek haftalık ders takvimi.">
+  <title>Ders Takvimi — Örnek kurs programı</title>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#program">Programı gör</a>
+  <header class="site-header">
+    <a class="wordmark" href="#baslangic">Ders Takvimi</a>
+    <nav aria-label="Sayfa bölümleri">
+      <a href="#program">Haftalık program</a>
+      <a href="#dersler">Ders biçimleri</a>
+      <a href="#sorular">Sorular</a>
+    </nav>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-sheet">
+        <div class="hero-sheet-top"><span>Örnek kurs programı</span><span>Güz dönemi · örnek</span></div>
+        <h1 id="hero-title">Ders<br>Takvimi</h1>
+        <div class="hero-bottom">
+          <p>Kurs ve özel ders saatlerini tek bir haftalık sayfada görün.</p>
+          <a class="action" href="#program">Haftayı incele <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="paper-tabs" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      </div>
+      <p class="hero-note">Haftanın ritmi, ders ders belli olsun.</p>
+    </section>
+
+    <section class="schedule-section" id="program" aria-labelledby="program-title">
+      <div class="section-intro" data-reveal>
+        <h2 id="program-title">Haftalık ders programı</h2>
+        <p>Bu örnek çizelgede günleri seçerek o günün kurslarını görüntüleyin. Saatler ve dersler örnek içeriktir.</p>
+      </div>
+      <div class="schedule-paper">
+        <div class="schedule-head">
+          <h3>Bu haftanın dersleri</h3>
+          <p>Örnek program · Eylül–Haziran</p>
+        </div>
+        <div class="day-picker" role="group" aria-label="Programda gösterilecek gün">
+          <button type="button" data-day="all" aria-pressed="true">Tümü</button>
+          <button type="button" data-day="pazartesi" aria-pressed="false">Pzt</button>
+          <button type="button" data-day="sali" aria-pressed="false">Sal</button>
+          <button type="button" data-day="carsamba" aria-pressed="false">Çar</button>
+          <button type="button" data-day="persembe" aria-pressed="false">Per</button>
+          <button type="button" data-day="cuma" aria-pressed="false">Cum</button>
+          <button type="button" data-day="cumartesi" aria-pressed="false">Cmt</button>
+        </div>
+        <p class="filter-status" aria-live="polite">Tüm örnek dersler görünür.</p>
+        <div class="lesson-list" id="lesson-list">
+          <article class="lesson" data-weekday="pazartesi">
+            <time datetime="16:00">16.00</time><div><h4>İngilizce konuşma</h4><p>Yetişkin · küçük grup · yüz yüze</p></div><span class="lesson-day">Pazartesi</span>
+          </article>
+          <article class="lesson" data-weekday="pazartesi">
+            <time datetime="18:00">18.00</time><div><h4>Matematik etütü</h4><p>Ortaokul · bire bir · çevrim içi</p></div><span class="lesson-day">Pazartesi</span>
+          </article>
+          <article class="lesson" data-weekday="sali">
+            <time datetime="16:30">16.30</time><div><h4>Çizim atölyesi</h4><p>Gençler · küçük grup · yüz yüze</p></div><span class="lesson-day">Salı</span>
+          </article>
+          <article class="lesson" data-weekday="sali">
+            <time datetime="19:00">19.00</time><div><h4>İngilizce bire bir</h4><p>Yetişkin · bire bir · çevrim içi</p></div><span class="lesson-day">Salı</span>
+          </article>
+          <article class="lesson" data-weekday="carsamba">
+            <time datetime="16:00">16.00</time><div><h4>Fen bilimleri</h4><p>Ortaokul · küçük grup · yüz yüze</p></div><span class="lesson-day">Çarşamba</span>
+          </article>
+          <article class="lesson" data-weekday="carsamba">
+            <time datetime="18:30">18.30</time><div><h4>Piyano başlangıç</h4><p>Her yaş · bire bir · yüz yüze</p></div><span class="lesson-day">Çarşamba</span>
+          </article>
+          <article class="lesson" data-weekday="persembe">
+            <time datetime="17:00">17.00</time><div><h4>Türkçe yazma</h4><p>Lise · küçük grup · çevrim içi</p></div><span class="lesson-day">Perşembe</span>
+          </article>
+          <article class="lesson" data-weekday="persembe">
+            <time datetime="19:00">19.00</time><div><h4>Kodlamaya giriş</h4><p>Gençler · küçük grup · çevrim içi</p></div><span class="lesson-day">Perşembe</span>
+          </article>
+          <article class="lesson" data-weekday="cuma">
+            <time datetime="16:30">16.30</time><div><h4>Matematik etütü</h4><p>Lise · bire bir · yüz yüze</p></div><span class="lesson-day">Cuma</span>
+          </article>
+          <article class="lesson" data-weekday="cuma">
+            <time datetime="18:00">18.00</time><div><h4>İngilizce konuşma</h4><p>Yetişkin · küçük grup · çevrim içi</p></div><span class="lesson-day">Cuma</span>
+          </article>
+          <article class="lesson" data-weekday="cumartesi">
+            <time datetime="10:00">10.00</time><div><h4>Çizim atölyesi</h4><p>Gençler · küçük grup · yüz yüze</p></div><span class="lesson-day">Cumartesi</span>
+          </article>
+          <article class="lesson" data-weekday="cumartesi">
+            <time datetime="13:00">13.00</time><div><h4>Fen bilimleri</h4><p>Ortaokul · bire bir · çevrim içi</p></div><span class="lesson-day">Cumartesi</span>
+          </article>
+        </div>
+        <noscript><p class="no-script">Gün seçimi için JavaScript gerekir; yukarıda haftanın bütün örnek dersleri listelenmiştir.</p></noscript>
+      </div>
+    </section>
+
+    <section class="learning-section" id="dersler" aria-labelledby="learning-title">
+      <div class="learning-copy" data-reveal>
+        <h2 id="learning-title">Derse uygun biçim</h2>
+        <p>Küçük grup dersleri birlikte çalışmaya, bire bir saatler kişisel hedeflere ayrılır. Örnek programda yüz yüze ve çevrim içi seçenekler birlikte gösterilir.</p>
+        <ul class="format-list">
+          <li><strong>Küçük grup</strong><span>Konuşma, atölye ve ortak alıştırmalar</span></li>
+          <li><strong>Bire bir</strong><span>Konuya ve öğrenme hızına göre çalışma</span></li>
+          <li><strong>Çevrim içi</strong><span>Uzaktan katılıma uygun ders saatleri</span></li>
+        </ul>
+      </div>
+      <figure class="learning-photo" data-reveal>
+        <img src="assets/classroom-in-goma-eastern-drc-25765237378.jpg" width="1920" height="1280" alt="Goma'da sınıf ortamında öğrenme materyaliyle çalışan öğrenciler" loading="lazy" decoding="async">
+        <figcaption>Sınıf içinde ortak çalışma · örnek tema görseli</figcaption>
+      </figure>
+    </section>
+
+    <section class="archive-section" aria-labelledby="archive-title">
+      <div class="archive-heading" data-reveal><h2 id="archive-title">Öğrenmenin farklı sahneleri</h2><p>Ders, aynı masanın çevresinde ya da ekranda ilerleyebilir.</p></div>
+      <div class="photo-strip">
+        <figure data-reveal>
+          <img src="assets/adult-education-beirut-unesco-photo0000004400-0001.jpg" width="1920" height="1479" alt="1965 Beyrut'ta bir eğitmenin yetişkin öğrencilere uygulamalı ders anlatışı" loading="lazy" decoding="async">
+          <figcaption>Yetişkin eğitimi, Beyrut · 1965</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="assets/students-at-a-school-in-bangalore-india.jpg" width="1920" height="1201" alt="Bangalore'da bilgisayar başında kodlama öğrenen öğrenciler" loading="lazy" decoding="async">
+          <figcaption>Bilgisayar başında öğrenme · Bangalore</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="assets/tabletunterricht-06.jpg" width="1920" height="1440" alt="Tablet kullanarak ders çalışan öğrenciler" loading="lazy" decoding="async">
+          <figcaption>Tablet destekli ders · örnek arşiv fotoğrafı</figcaption>
+        </figure>
+        <figure data-reveal>
+          <img src="assets/adult-education-marianao-unesco-photo0000000135-0001.jpg" width="1920" height="2536" alt="Defterine yazı yazan yetişkin öğrenci" loading="lazy" decoding="async">
+          <figcaption>Yetişkin eğitimi, Marianao</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="questions-section" id="sorular" aria-labelledby="questions-title">
+      <div class="questions-copy" data-reveal>
+        <h2 id="questions-title">Program hakkında</h2>
+        <p>Bu sayfa, kurs ve özel ders programını anlatan örnek bir tema taslağıdır.</p>
+        <div class="qa"><h3>Ders saatleri gerçek mi?</h3><p>Hayır. Ders adları, günler ve saatler örnek veri olarak yazıldı; işletme programıyla değiştirilmeli.</p></div>
+        <div class="qa"><h3>Hangi dersler eklenebilir?</h3><p>Dil, okul dersleri, sanat ya da beceri kursları işletmenin gerçek içeriğine göre listelenebilir.</p></div>
+        <div class="qa"><h3>Yüz yüze ve çevrim içi dersler nasıl ayrılır?</h3><p>Her program satırında ders biçimi ayrıca belirtilir. Gerçek konum veya bağlantı işletme tarafından eklenir.</p></div>
+        <div class="qa"><h3>Özel ders için nasıl bilgi alınır?</h3><p>İşletmenin gerçek iletişim adresi eklendiğinde ders ve uygunluk bilgisi oradan paylaşılabilir.</p></div>
+      </div>
+      <figure class="question-photo" data-reveal>
+        <img src="assets/adult-education-marianao-unesco-photo0000000135-0001.jpg" width="1920" height="2536" alt="Ders notları üzerinde çalışan yetişkin öğrenci" loading="lazy" decoding="async">
+        <figcaption>Notlar ve tekrar · Marianao</figcaption>
+      </figure>
+    </section>
+
+    <section class="last-page" aria-labelledby="last-title">
+      <div class="last-copy" data-reveal><h2 id="last-title">Bir haftayı seçin</h2><p>Örnek takvim, gerçek ders adları ve uygun saatlerle tamamlandığında kursiyerler aradıkları bilgiyi tek yerde görür.</p></div>
+      <a class="last-card" href="#program"><span>Program yaprağı</span><strong>Haftalık<br>çizelgeye dön</strong><span class="card-action">Dersleri gör <b aria-hidden="true">↗</b></span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-paper">
+      <div class="footer-message"><h2>Ders Takvimi</h2><p>Kurs ve özel eğitim için örnek tema.</p></div>
+      <div class="footer-details"><p>Örnek veri</p><p>Gerçek dersler, saatler ve iletişim bilgileri eklenmelidir.</p></div>
+      <div class="credits"><h3>Görsel kaynakları</h3>
+        <ul>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Classroom_in_Goma,_Eastern_DRC_(25765237378).jpg">“Classroom in Goma, Eastern DRC”</a> — USAID in Africa, public domain.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Adult_education,_Beirut_-_UNESCO_-_PHOTO0000004400_0001.tiff">“Adult education, Beirut — UNESCO”</a> — Dominique Roger, CC BY-SA 3.0.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Students_at_a_school_in_Bangalore,_India_learning_to_code_on_Progate.jpg">“Students at a school in Bangalore, India learning to code on Progate”</a> — Nayakyashraj, CC BY-SA 4.0.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Tabletunterricht_06.jpg">“Tabletunterricht 06”</a> — Aigner Ronja, CC0.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Adult_education,_Marianao_-_UNESCO_-_PHOTO0000000135_0001.tiff">“Adult education, Marianao — UNESCO”</a> — Dominique Roger, CC BY-SA 3.0.</li>
+        </ul>
+      </div>
+      <p class="imprint">Ders Takvimi · Örnek sayfa</p>
+    </div>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="ders-1" defer></script>
+</body>
+</html>

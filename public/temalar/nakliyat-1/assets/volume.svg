@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" role="img" aria-labelledby="title desc">
+  <title id="title">Eşya hacmi için oda planı</title><desc id="desc">Oda planı üzerinde kanepe, masa ve kolilerle hacim bilgisinin neyi anlattığını gösteren çizim.</desc>
+  <path d="M58 55h324v190H58z" fill="#e3e2da" stroke="#1c1c1c" stroke-width="5"/>
+  <path d="M58 150h142v95M200 55v95h182" fill="none" stroke="#1c1c1c" stroke-width="4"/>
+  <path d="M88 82h80v44H88zM98 126v13m60-13v13M245 176h95v42h-95zM257 218v13m72-13v13" fill="#b7c8be" stroke="#1c1c1c" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M91 190h31v31H91zM126 190h31v31h-31zM345 82h26v26h-26zM345 113h26v26h-26z" fill="#d6c4b8" stroke="#1c1c1c" stroke-width="4"/>
+  <path d="M218 80v44m-17-17 17 17 17-17M218 220v-42m-17 17 17-17 17 17" fill="none" stroke="#2c3620" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" role="img" aria-labelledby="title desc">
+  <title id="title">İlk görüşme akışı çizimi</title><desc id="desc">Konu, ön bilgi ve görüşme adımlarını birbirine bağlayan üç boş kâğıt.</desc>
+  <path fill="#d6d6d6" d="M65 71h282v276H65z"/><path fill="#c0b8b7" d="M169 101h282v276H169z"/><path fill="#e2e2e2" d="M273 45h282v276H273z"/>
+  <path fill="#7d0c14" d="M310 91h187v12H310zm0 32h150v7H310zm0 25h203v7H310z"/>
+  <circle cx="326" cy="205" r="18" fill="#7d0c14"/><circle cx="410" cy="205" r="18" fill="#7d0c14"/><circle cx="494" cy="205" r="18" fill="#7d0c14"/>
+  <path stroke="#7d0c14" stroke-width="5" d="M344 205h48m36 0h48"/><path fill="#e2e2e2" d="M320 203h12v4h-12zm84 0h12v4h-12zm84 0h12v4h-12z"/>
+  <path fill="#a38e8d" d="M310 252h203v7H310zm0 24h172v7H310z"/>
+</svg>

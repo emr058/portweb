@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Nöbetçi veteriner kliniğini ararken bilgilerinizi tek bir notta toplayın.">
+  <title>Nöbet Saati — Veteriner</title>
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script>document.documentElement.classList.add('has-js');</script>
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Nöbet Saati, ana sayfa">Nöbet Saati</a>
+    <nav aria-label="Ana gezinme">
+      <a href="#arama-notu">Arama notu</a>
+      <a href="#bilgi">Bilgi</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero board" aria-labelledby="page-title">
+      <div class="hero-title tile paper">
+        <h1 id="page-title">Nöbet Saati</h1>
+        <p class="hero-deck">Mesai dışı veteriner aramasına hazırlanmak için kısa bir bilgi sayfası.</p>
+        <a class="text-link" href="#arama-notu">Arama notunu hazırla <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="hero-photo tile shutter">
+        <img src="assets/kitten-check-up-at-guantanamo.jpg" width="1920" height="1275" alt="Guantanamo'da muayene sırasında yavru kedi" fetchpriority="high">
+        <figcaption>Guantanamo’da kedi muayenesi · The National Guard</figcaption>
+      </figure>
+      <figure class="hero-photo hero-photo-secondary tile">
+        <img src="assets/stethoscope-examination-of-an-orange-cat-in.jpg" width="1920" height="2560" alt="Newark'ta turuncu bir kedinin stetoskopla muayenesi" loading="lazy" decoding="async">
+        <figcaption>Newark, New Jersey · Veterinarian Pet Alliance</figcaption>
+      </figure>
+      <div class="hero-note tile">
+        <p>Durumu birkaç açık bilgiyle anlatın.</p>
+        <a class="button" href="#arama-notu">Not oluştur</a>
+      </div>
+    </section>
+
+    <section class="call-section section-shell" id="arama-notu" aria-labelledby="call-title">
+      <div class="axis-heading">
+        <h2 id="call-title">Arama notu</h2>
+      </div>
+      <div class="call-layout">
+        <div class="call-copy reveal">
+          <p>Telefon açarken hayvanı, gözlediğiniz durumu ve ne zamandır sürdüğünü kısaca aktarın.</p>
+          <p>Bu örnek sayfa nöbetçi klinik bulmaz veya tanı koymaz. Gerçek klinik adı ve telefon numarası işletme bilgileriyle eklenmelidir.</p>
+        </div>
+        <form class="note-form reveal" id="note-form">
+          <label for="pet">Hayvan türü ve adı <span>(isteğe bağlı)</span></label>
+          <input id="pet" name="pet" type="text" autocomplete="off" placeholder="Örnek: kedi, Misket">
+
+          <label for="observation">Gözlediğiniz durum</label>
+          <textarea id="observation" name="observation" rows="3" placeholder="Kısa ve kendi sözlerinizle yazın"></textarea>
+
+          <div class="field-row">
+            <div>
+              <label for="since">Ne zamandır?</label>
+              <input id="since" name="since" type="text" autocomplete="off" placeholder="Örnek: bu akşam">
+            </div>
+            <div>
+              <label for="district">Bulunduğunuz ilçe</label>
+              <input id="district" name="district" type="text" autocomplete="address-level3" placeholder="İlçe adı">
+            </div>
+          </div>
+          <button class="button submit-button" type="submit" disabled>Arama notunu oluştur</button>
+          <p class="form-hint" id="form-hint">Bilgiler bu sayfada işlenir; gönderilmez veya saklanmaz.</p>
+          <div class="note-output" id="note-output" aria-live="polite" aria-atomic="true">
+            <p class="output-title">Aramada söyleyecekleriniz</p>
+            <p id="note-text">Hayvan türü ve adı · Gözlediğiniz durum · Ne zamandır · Bulunduğunuz ilçe</p>
+            <button class="copy-button" id="copy-note" type="button" hidden>Notu kopyala</button>
+          </div>
+          <noscript><p class="no-script">JavaScript kapalı. Bu alanları telefon görüşmesi sırasında sırayla not edebilirsiniz.</p></noscript>
+        </form>
+      </div>
+    </section>
+
+    <section class="steps-section" id="bilgi" aria-labelledby="steps-title">
+      <div class="section-shell">
+        <div class="axis-heading">
+          <h2 id="steps-title">Aramadan önce</h2>
+        </div>
+        <div class="step-list">
+          <article class="step-item reveal">
+            <h3>Önce hayvanı tanıtın.</h3>
+            <p>Türünü, adını ve yaklaşık yaşını biliyorsanız belirtin.</p>
+          </article>
+          <article class="step-item reveal">
+            <h3>Gözlediğinizi anlatın.</h3>
+            <p>Kendi sözlerinizle ne olduğunu ve ne zamandır sürdüğünü söyleyin.</p>
+          </article>
+          <article class="step-item reveal">
+            <h3>Mevcut bilgileri ekleyin.</h3>
+            <p>Varsa kullandığı ilaçları ve önceki sağlık kayıtlarını hazır bulundurun.</p>
+          </article>
+          <article class="step-item reveal">
+            <h3>Konumunuzu paylaşın.</h3>
+            <p>İlçe bilginiz, size uygun kliniği konuşmayı kolaylaştırır.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="photo-section section-shell" aria-labelledby="photo-title">
+      <div class="axis-heading">
+        <h2 id="photo-title">Muayene anları</h2>
+      </div>
+      <div class="photo-pair">
+        <figure class="editorial-photo reveal">
+          <img src="assets/otoscope-examination-of-a-cat-ear-in.jpg" width="1536" height="2048" alt="Newark'ta veteriner kedinin kulağını otoskopla inceliyor" loading="lazy" decoding="async">
+          <figcaption>Kulak muayenesi · Newark, New Jersey</figcaption>
+        </figure>
+        <figure class="editorial-photo editorial-photo-offset reveal">
+          <img src="assets/kitten-supported-on-a-towel-covered-examination.jpg" width="1920" height="2560" alt="Muayene masasında havlu üzerinde tutulan gri ve krem rengi yavru kedi" loading="lazy" decoding="async">
+          <figcaption>Muayene masasında yavru kedi · Newark, New Jersey</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="faq-heading">
+        <div class="section-shell"><h2 id="faq-title">Sık sorulanlar</h2></div>
+      </div>
+      <div class="faq-band">
+        <div class="section-shell faq-grid">
+          <h3>Hangi kliniği aramalıyım?</h3>
+          <p>Bu örnek taslakta şehir, nöbet listesi ve klinik telefonu tanımlı değil. Yayın öncesi doğrulanmış yerel nöbet bilgisi eklenmelidir.</p>
+        </div>
+      </div>
+      <div class="faq-band faq-band-alt">
+        <div class="section-shell faq-grid">
+          <h3>Sayfa teşhis koyar mı?</h3>
+          <p>Hayır. Not, telefon görüşmesinde aktaracağınız bilgileri toparlamaya yarar; değerlendirmeyi veteriner hekim yapar.</p>
+        </div>
+      </div>
+      <div class="faq-band">
+        <div class="section-shell faq-grid">
+          <h3>Yazdıklarım nereye gider?</h3>
+          <p>Not yalnızca bu sayfada oluşturulur. Herhangi bir sunucuya iletilmez ve kayıt altına alınmaz.</p>
+        </div>
+      </div>
+      <div class="faq-band faq-band-alt">
+        <div class="section-shell faq-grid">
+          <h3>Bilgileri sonra değiştirebilir miyim?</h3>
+          <p>Evet. Alanları düzenleyip notu yeniden oluşturabilirsiniz. Formdaki örnek metinler gerçek hasta bilgisi değildir.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section section-shell" aria-label="Sayfa hakkında">
+      <h2 class="contact-heading">Yerel nöbet bilgisi</h2>
+      <p class="contact-statement reveal">Nöbetçi kliniği ararken gerekli bilgileri kısa ve anlaşılır biçimde aktarın.</p>
+      <div class="contact-photo reveal">
+        <img src="assets/kitten-check-up-at-guantanamo.jpg" width="1920" height="1275" alt="Muayene sırasında yavru kedi, Guantanamo" loading="lazy" decoding="async">
+      </div>
+      <div class="contact-copy reveal">
+        <p>Bu tema, gerçek klinik bilgileri eklenecek bir örnek sayfadır.</p>
+        <a href="#arama-notu">Arama notuna dön</a>
+        <p class="pending-info">İşletme adı, nöbet telefonu ve hizmet bölgesi eklenecek.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-top">
+      <a class="footer-mark" href="#top">Nöbet Saati</a>
+      <p>Veteriner nöbet bilgilendirme teması</p>
+      <a href="#top">Başa dön</a>
+    </div>
+    <h2 class="footer-action"><a href="#arama-notu">Arama notunu hazırla</a></h2>
+    <div class="footer-bottom">
+      <span>Örnek tema · 2026</span>
+      <div class="credits">
+        <p class="credits-title">Görsel kaynakları</p>
+        <ul>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Kitten_check_up_at_Guantanamo.jpg">“Kitten check up at Guantanamo”</a>, The National Guard, kamu malı, Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Stethoscope_examination_of_an_orange_cat_in_Newark,_New_Jersey.jpg">“Stethoscope examination of an orange cat in Newark, New Jersey”</a>, Veterinarian Pet Alliance, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Otoscope_examination_of_a_cat_ear_in_Newark,_New_Jersey.jpg">“Otoscope examination of a cat ear in Newark, New Jersey”</a>, Veterinarian Pet Alliance, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Kitten_supported_on_a_towel-covered_examination_table_in_Newark,_New_Jersey.jpg">“Kitten supported on a towel-covered examination table in Newark, New Jersey”</a>, Veterinarian Pet Alliance, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, Wikimedia Commons.</li>
+        </ul>
+      </div>
+      <span>Demo sayfa</span>
+    </div>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="veteriner-1" defer></script>
+</body>
+</html>

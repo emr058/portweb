@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-labelledby="t d">
+  <title id="t">Örnek çekim talep fişi</title><desc id="d">Çekim türü, tarih ve teklif notları için boş bırakılmış temsili fiş çizimi.</desc>
+  <rect width="420" height="300" fill="#d5ceca"/><path d="M46 24h328v252H46z" fill="#f1ece8"/>
+  <path d="M75 66h190M75 123h270M75 174h270M75 225h270" stroke="#938780" stroke-width="2"/>
+  <text x="75" y="52" fill="#2b2622" font-family="Arial,sans-serif" font-size="17" letter-spacing="2">ÇEKİM TALEBİ</text>
+  <text x="75" y="105" fill="#514742" font-family="Arial,sans-serif" font-size="13">TÜR</text><text x="75" y="155" fill="#514742" font-family="Arial,sans-serif" font-size="13">TARİH</text><text x="75" y="206" fill="#514742" font-family="Arial,sans-serif" font-size="13">KAPSAM</text>
+  <circle cx="337" cy="61" r="20" fill="#0f7d45"/><path d="m328 61 7 7 13-15" fill="none" stroke="#fff" stroke-width="3"/>
+  <path d="M18 18h384v264H18z" fill="none" stroke="#fff" stroke-width="2"/>
+</svg>

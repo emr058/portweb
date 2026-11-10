@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 390" role="img" aria-labelledby="title desc">
+  <title id="title">Örnek ambalaj çizimleri</title><desc id="desc">Toptan ürün sunumu için örnek çuval, kutu ve kapalı kasa.</desc>
+  <path fill="#d8dfbd" d="M35 28h470v334H35z"/>
+  <path fill="#b69b63" d="M76 114c17-21 131-21 148 0l-12 192H88z"/><path fill="#785d35" d="M75 110h151v32H75z"/><path fill="#dfd3ae" d="M99 171h103v70H99z"/><path fill="#26301f" d="M111 184h80v8h-80zm0 18h61v6h-61z"/>
+  <path fill="#84934f" d="M275 102h166v188H275z"/><path fill="#526039" d="M275 102h166v36H275z"/><path fill="#dfe2c8" d="M301 167h114v75H301z"/><path fill="#25301f" d="M314 182h85v8h-85zm0 18h66v6h-66z"/>
+  <path fill="#b4c56a" d="M116 262h68v45h-68z"/><path fill="#d8dfbd" d="M134 261v46m30-46v46" stroke="#53613a" stroke-width="5"/>
+  <path fill="#53613a" d="M62 319h394v15H62z"/>
+</svg>

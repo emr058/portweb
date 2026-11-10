@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Mekân akışı için örnek kroki</title><desc id="desc">Karşılama, tören alanı ve yemek düzeni arasındaki akışın şematik krokisi.</desc>
+  <rect width="640" height="420" fill="#3d0012"/><path d="M65 80h510v260H65z" fill="#ffe7f2"/>
+  <path d="M110 118h150v80H110zm270 0h145v80H380zM110 246h150v57H110zm270 0h145v57H380z" fill="#f8c8df"/>
+  <path d="M260 158h120m-60 0v110h60" fill="none" stroke="#b72060" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#3d0012"><circle cx="280" cy="158" r="10"/><circle cx="370" cy="158" r="10"/><circle cx="320" cy="268" r="10"/></g>
+</svg>

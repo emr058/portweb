@@ -1,0 +1,19 @@
+{
+  "sektor": "tarim-gida",
+  "ad": "Hasat Defteri",
+  "slogan": "Sezon ürünü, toptana hazır",
+  "kapanis": "Toptan üreticiler için de hazırız. emirr.com.tr",
+  "instagram": "Sezonu, ürün listesini ve örnek ambalaj seçeneklerini tek sayfada gösteren Hasat Defteri.\n\nZiyaretçi ürün, ambalaj ve yaklaşık miktar bilgisini kullanarak cihazında toptan talep taslağı oluşturabilir. Taslak gönderilmez ve kaydedilmez.\n\nÖrnek ürün ve dönem satırları gerçek üretici bilgileriyle değiştirilmek üzere açıkça işaretlenmiştir.\n\nİlk 10 müşteriye 1 yıl ücretsiz temel teknik destek var.\n\n#tarım #gıdaüretimi #toptan #üretici #webtasarım",
+  "kanal": "Bu tema, tarım ve gıda üreticilerinin ürün dönemiyle ambalaj bilgilerini aynı sayfada anlatması için hazırlandı. Toptan talep alanları ziyaretçinin cihazında kopyalanabilir bir metin oluşturur; örnek içerik gerçek üretici bilgileriyle değiştirilmelidir.",
+  "alanlar": {
+    "Ürün": "Buğday (örnek ürün)",
+    "Ambalaj tercihi": "Çuval, 25 kg (örnek)",
+    "Yaklaşık miktar": "2 ton (örnek)",
+    "Firma": "Kuzey Gıda Ltd. (örnek)",
+    "Yetkili kişi": "Deniz Kaya (örnek)",
+    "Telefon": "05xx xxx xx xx (örnek)",
+    "E-posta": "satin-alma@firma.com (örnek)",
+    "Teslim ili": "Konya (örnek)",
+    "Not": "Tercih edilen teslim haftası (örnek)"
+  }
+}

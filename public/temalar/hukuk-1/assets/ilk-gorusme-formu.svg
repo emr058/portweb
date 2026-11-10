@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 600" role="img" aria-labelledby="title desc">
+  <title id="title">Boş ilk görüşme bilgi föyü</title><desc id="desc">Örnek konu, iletişim bilgisi ve not alanları bulunan, hiçbir kişisel veri içermeyen çizim.</desc>
+  <path fill="#7d0c14" d="M46 26h428v548H46z"/><path fill="#e2e2e2" d="M76 52h368v496H76z"/>
+  <path fill="#7d0c14" d="M110 102h220v16H110zm0 62h286v8H110zm0 35h286v8H110zm0 79h286v8H110zm0 35h286v8H110zm0 77h286v8H110zm0 35h235v8H110z"/>
+  <path fill="#c5bdbc" d="M110 134h180v5H110zm0 79h221v5H110zm0 79h170v5H110zm0 79h205v5H110z"/>
+  <rect x="110" y="452" width="28" height="28" fill="#7d0c14"/><path fill="#e2e2e2" d="m116 465 6 6 11-13 3 3-14 16-9-9z"/>
+</svg>

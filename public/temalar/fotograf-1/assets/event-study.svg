@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" role="img" aria-labelledby="t d">
+  <title id="t">Etkinlik için ışık ve sahne çalışması</title><desc id="d">Sahne ışıkları ve hareket çizgileriyle kurulmuş temsili etkinlik karesi.</desc>
+  <rect width="720" height="450" fill="#625d5b"/><rect x="0" y="0" width="720" height="318" fill="#817a76"/>
+  <path d="M93 40 301 318H130z" fill="#e5d0b6" opacity=".42"/><path d="M608 22 423 318h173z" fill="#c4d1c3" opacity=".4"/>
+  <circle cx="154" cy="60" r="18" fill="#f0e5d8"/><circle cx="566" cy="47" r="14" fill="#f0e5d8"/>
+  <path d="M0 317h720v50H0z" fill="#484340"/><path d="M0 367h720v83H0z" fill="#34312f"/>
+  <g fill="#292725"><circle cx="252" cy="264" r="20"/><path d="M220 316q3-45 32-45 33 0 36 45"/><circle cx="354" cy="242" r="23"/><path d="M315 316q3-52 39-52 39 0 43 52"/><circle cx="465" cy="273" r="18"/><path d="M435 316q2-39 30-39 31 0 34 39"/></g>
+  <path d="M42 174q89 28 167 0M501 184q70-22 152 2" fill="none" stroke="#eee4db" stroke-width="2" opacity=".85"/>
+  <path d="M18 18h684v414H18z" fill="none" stroke="#eee9e5" stroke-width="2"/>
+</svg>

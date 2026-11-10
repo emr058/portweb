@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#273222">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Tarım ve gıda üreticileri için sezon, ambalaj ve toptan talep bilgilerini bir araya getiren örnek tema.">
+  <title>Hasat Defteri — örnek tema</title>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#baslangic" aria-label="Hasat Defteri, başlangıca dön">Hasat Defteri <span>örnek tema</span></a>
+    <nav aria-label="Ana gezinme">
+      <a href="#sezon">Sezon</a>
+      <a href="#ambalaj">Ambalaj</a>
+      <a class="nav-action" href="#talep">Talep oluştur</a>
+    </nav>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title"><span>Sezon</span><img class="hero-object" src="assets/hasat-kasasi.svg" alt="Örnek hasat kasası çizimi"><span>ürünü<br class="mobile-break"> toptana hazır</span></h1>
+        <div class="hero-bottom">
+          <p>Ürün dönemi, ambalaj seçeneği ve toptan talep aynı yerde.</p>
+          <a class="button button-light" href="#talep">Talep oluştur</a>
+        </div>
+      </div>
+      <p class="example-note">Örnek tema. Ürün ve dönem bilgileri temsili içeriktir.</p>
+    </section>
+
+    <section class="season section-pad" id="sezon" aria-labelledby="season-title">
+      <div class="section-statement" data-reveal>
+        <h2 id="season-title">Sezon bilgisi alımı başlatır.</h2>
+        <p>Alıcı önce ürünün ne zaman ve hangi biçimde sunulduğunu görür. Kayıtları işletmenin güncel dönemine göre değiştirin.</p>
+      </div>
+      <figure class="season-figure" data-reveal>
+        <img src="assets/sezon-kaydi.svg" alt="Ürün dönemlerini gösteren temsili sezon kaydı çizimi" loading="lazy" width="520" height="360">
+        <figcaption>Temsili sezon kaydı. Gerçek dönem bilgisi üretici tarafından eklenir.</figcaption>
+      </figure>
+      <div class="season-list" aria-label="Örnek ürün dönemleri" data-reveal>
+        <div class="season-row"><span>Örnek ürün</span><strong>Buğday</strong><span>Yaz dönemi · örnek</span></div>
+        <div class="season-row"><span>Örnek ürün</span><strong>Nohut</strong><span>Yaz sonu · örnek</span></div>
+        <div class="season-row"><span>Örnek ürün</span><strong>Zeytin</strong><span>Sonbahar · örnek</span></div>
+      </div>
+    </section>
+
+    <section class="packing section-pad" id="ambalaj" aria-labelledby="packing-title">
+      <div class="packing-copy" data-reveal>
+        <h2 id="packing-title">Ambalaj siparişin parçası.</h2>
+        <p>Ambalaj türünü ve talep edilen miktarı birlikte belirtin. Aşağıdaki seçenekler yalnızca örnek tema içeriğidir; ölçü ve uygunluk üretici tarafından doğrulanmalıdır.</p>
+        <ul class="pack-options">
+          <li><span>Örnek ambalaj</span><strong>Çuval</strong><span>25 kg · örnek</span></li>
+          <li><span>Örnek ambalaj</span><strong>Kraft torba</strong><span>10 kg · örnek</span></li>
+          <li><span>Örnek ambalaj</span><strong>Dökme</strong><span>Palet / araç · örnek</span></li>
+        </ul>
+      </div>
+      <figure class="packing-figure" data-reveal>
+        <img src="assets/ambalaj-ornekleri.svg" alt="Örnek çuval ve kutu ambalaj çizimleri" loading="lazy" width="540" height="390">
+        <figcaption>Ambalaj çizimleri. Fotoğraf ve teknik ölçüler üretici içeriğiyle değiştirilebilir.</figcaption>
+      </figure>
+    </section>
+
+    <section class="flow section-pad" aria-labelledby="flow-title">
+      <div class="flow-intro" data-reveal>
+        <h2 id="flow-title">Talep ürünle başlar.</h2>
+        <img src="assets/talep-rotasi.svg" alt="Ürün, ambalaj ve teslim bilgilerini bir araya getiren örnek akış çizimi" loading="lazy" width="500" height="300">
+      </div>
+      <ol class="flow-steps">
+        <li data-reveal><h3>Ürünü seçin</h3><p>Ürün ve dönem kaydı alıcının ne aradığını netleştirir.</p></li>
+        <li data-reveal><h3>Ambalajı belirtin</h3><p>Tercih edilen ambalajı ve yaklaşık miktarı talebe ekleyin.</p></li>
+        <li data-reveal><h3>Teslimi konuşun</h3><p>İl ve iletişim bilgisiyle üreticiye iletilecek talep metnini hazırlayın.</p></li>
+      </ol>
+    </section>
+
+    <section class="request section-pad" id="talep" aria-labelledby="request-title">
+      <div class="request-heading" data-reveal>
+        <h2 id="request-title">Toptan talep metni</h2>
+        <p>Bilgileri doldurun; örnek sayfa talep taslağını cihazınızda oluşturur. Herhangi bir yere gönderilmez veya kaydedilmez.</p>
+      </div>
+      <div class="request-layout">
+        <form id="wholesale-form" class="request-form" data-reveal>
+          <label>Ürün
+            <select name="urun" required>
+              <option value="">Ürün seçin</option>
+              <option>Buğday (örnek ürün)</option>
+              <option>Nohut (örnek ürün)</option>
+              <option>Zeytin (örnek ürün)</option>
+              <option>Diğer</option>
+            </select>
+          </label>
+          <label>Ambalaj tercihi
+            <select name="ambalaj" required>
+              <option value="">Ambalaj seçin</option>
+              <option>Çuval, 25 kg (örnek)</option>
+              <option>Kraft torba, 10 kg (örnek)</option>
+              <option>Dökme, palet veya araç (örnek)</option>
+              <option>Görüşülecek</option>
+            </select>
+          </label>
+          <label>Yaklaşık miktar
+            <input name="miktar" type="text" placeholder="Örnek: 2 ton" autocomplete="off" required>
+          </label>
+          <label>Firma
+            <input name="firma" type="text" placeholder="Örnek: Kuzey Gıda Ltd." autocomplete="organization">
+          </label>
+          <label>Yetkili kişi
+            <input name="yetkili" type="text" placeholder="Örnek: Deniz Kaya" autocomplete="name" required>
+          </label>
+          <label>Telefon
+            <input name="telefon" type="tel" placeholder="Örnek: 05xx xxx xx xx" autocomplete="tel" required>
+          </label>
+          <label>E-posta
+            <input name="eposta" type="email" placeholder="Örnek: satin-alma@firma.com" autocomplete="email">
+          </label>
+          <label>Teslim ili
+            <input name="il" type="text" placeholder="Örnek: Konya" autocomplete="address-level1">
+          </label>
+          <label class="field-wide">Not
+            <input name="not" type="text" placeholder="Örnek: Tercih edilen teslim haftası" autocomplete="off">
+          </label>
+          <button class="button button-dark field-wide" type="submit">Talep metnini oluştur</button>
+        </form>
+        <div class="request-output" data-reveal>
+          <label for="request-message">Talep taslağı</label>
+          <textarea id="request-message" rows="12" spellcheck="false">Merhaba,
+
+Ürün: …
+Ambalaj tercihi: …
+Yaklaşık miktar: …
+Firma: …
+Yetkili kişi: …
+Telefon: …
+E-posta: …
+Teslim ili: …
+Not: …
+
+Ürün dönemi ve güncel koşullar hakkında bilgi rica ederim.</textarea>
+          <p>Bu demo formu göndermez. Taslağı seçip kopyalayın ve kendi iletişim kanalınızdan iletin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="answers section-pad" aria-labelledby="answers-title">
+      <h2 id="answers-title" data-reveal>Üreticinin yanıtlayacağı bilgiler</h2>
+      <div class="answer-list">
+        <article data-reveal><h3>Hangi ürünler sunuluyor?</h3><p>Örnek ürün adlarını gerçek ürün listeniz, kalite sınıfı ve mevcut dönem bilgisiyle değiştirin.</p></article>
+        <article data-reveal><h3>Ambalaj ölçüsü nedir?</h3><p>Örnek ambalaj ölçülerini gerçek gramaj, malzeme ve palet düzeniyle doğrulayın.</p></article>
+        <article data-reveal><h3>Talep nasıl iletilir?</h3><p>Bu tema taslak metin üretir. Yayında işletmenin gerçek telefon, e-posta veya sipariş bağlantısı eklenmelidir.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <p>Ürün dönemi ve toptan tedarik için bir başlangıç.</p>
+      <a class="button button-light" href="#talep">Talep oluştur</a>
+    </div>
+    <p class="footer-wordmark" aria-hidden="true">Hasat Defteri</p>
+    <div class="footer-bottom"><span>Örnek tema · Tarım / gıda üretimi ve toptan</span><span>Ürün ve ambalaj çizimleri SVG ile üretildi.</span></div>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="tarim-gida-1" defer></script>
+</body>
+</html>

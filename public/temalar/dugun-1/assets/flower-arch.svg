@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Çiçekli tören kemeri eskizi</title><desc id="desc">Mürdüm zeminde, küçük çiçek dallarıyla çevrili kemer çizimi.</desc>
+  <rect width="640" height="420" fill="#f8c8df"/><path d="M160 380V220a160 160 0 0 1 320 0v160" fill="none" stroke="#3d0012" stroke-width="7"/>
+  <path d="M200 380V220a120 120 0 0 1 240 0v160" fill="#ffe7f2" stroke="#3d0012" stroke-width="3"/>
+  <path d="M115 265c40-35 17-70 64-96m-46 42c-22 1-31-9-38-25m61-10c-2-20 9-31 22-39m326 128c-40-35-17-70-64-96m46 42c22 1 31-9 38-25m-61-10c2-20-9-31-22-39" fill="none" stroke="#3d0012" stroke-width="4"/>
+  <g fill="#b72060"><circle cx="125" cy="248" r="11"/><circle cx="155" cy="194" r="9"/><circle cx="185" cy="168" r="10"/><circle cx="515" cy="248" r="11"/><circle cx="485" cy="194" r="9"/><circle cx="455" cy="168" r="10"/></g>
+</svg>

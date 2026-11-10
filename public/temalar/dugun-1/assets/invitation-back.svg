@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">Katlanmış davetiye kâğıdı</title><desc id="desc">İçinde çiçek motifi bulunan, iki kanadı açık davetiye kâğıdı.</desc>
+  <rect width="640" height="420" fill="#f8c8df"/><path d="M92 92h456v236H92z" fill="#ffe7f2"/>
+  <path d="M92 92l228 160L92 328zm456 0L320 252l228 76z" fill="#f0a9cb"/>
+  <path d="M92 328l164-118m292 118L384 210" fill="none" stroke="#b72060" stroke-width="4"/>
+  <path d="M300 165c-28-22-61 7-30 35l50 45 50-45c31-28-2-57-30-35l-20 17z" fill="#b72060"/>
+</svg>

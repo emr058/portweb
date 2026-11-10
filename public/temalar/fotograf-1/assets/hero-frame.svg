@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 350" role="img" aria-labelledby="t d">
+  <title id="t">Stüdyo penceresi ve kadraj çizgileri</title><desc id="d">Pencere ışığının düştüğü örnek bir fotoğraf stüdyosu çizimi.</desc>
+  <rect width="560" height="350" fill="#c9c5c1"/><rect x="0" y="0" width="560" height="248" fill="#ded9d4"/>
+  <path d="M0 0h250v248H0z" fill="#a4a09d"/><path d="M24 20h201v207H24z" fill="#e9e4e1"/><path d="M125 20v207M24 120h201" stroke="#817973" stroke-width="8"/>
+  <path d="M250 248 0 350h330l145-102z" fill="#b4ada8"/><path d="m224 227 154 19-57 104H95z" fill="#ece7e3" opacity=".74"/>
+  <rect x="357" y="53" width="147" height="209" fill="#56514d"/><rect x="374" y="69" width="113" height="177" fill="#86807b"/>
+  <path d="M393 239c4-35 23-57 51-57s42 22 47 57" fill="#35312e"/><ellipse cx="446" cy="135" rx="28" ry="37" fill="#b7afa9"/><path d="M408 143q38-47 77 0" fill="none" stroke="#ded9d4" stroke-width="2"/>
+  <path d="M344 34h174v239H344z" fill="none" stroke="#f7f4f1" stroke-width="1.5"/><path d="M431 34v239M344 153h174" fill="none" stroke="#f7f4f1" stroke-width="1" opacity=".8"/>
+</svg>

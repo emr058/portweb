@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#133621">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Mimarlık ve yapım sürecini kesitinden anlatan bağımsız tema demosu.">
+  <title>Yapı Kesiti — Mimarlık ve yapım</title>
+  <link rel="preload" href="fonts/Imbue-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/GeneralSans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <main>
+    <section class="hero" id="baslangic" aria-labelledby="hero-title">
+      <img class="hero__image hero__image--one" src="assets/food-nutrition-and-health-building-ubc-concrete.jpg" alt="Kanada, Vancouver’daki beton cepheli bir eğitim yapısı; arşiv fotoğrafı." width="1920" height="1280" fetchpriority="high">
+      <img class="hero__image hero__image--two" src="assets/shalom-shalome-apartment-close-up-of-facade.jpg" alt="" aria-hidden="true" width="1920" height="1199">
+      <header class="hero__rail">
+        <h1 id="hero-title">Yapı Kesiti</h1>
+        <p>Mimarlık, yapı ve malzeme kararları</p>
+        <nav aria-label="Sayfa bölümleri">
+          <a href="#yapilar">Yapılar</a>
+          <a href="#kesit">Kesit</a>
+          <a class="hero__action" href="#surec">Sürece bak</a>
+        </nav>
+      </header>
+      <p class="hero__caption">Arşiv fotoğrafı · Vancouver, Kanada</p>
+    </section>
+
+    <section class="opening reveal" aria-labelledby="opening-title">
+      <h2 id="opening-title">Yapıyı katmanlarıyla oku.</h2>
+      <p>Yapı Kesiti, mimarlık ve inşaat hizmetleri için hazırlanmış örnek bir tema. Proje fotoğrafları arşivden seçilmiştir; belirli bir ofisi ya da tamamlanmış işi temsil etmez.</p>
+    </section>
+
+    <section class="gallery" id="yapilar" aria-labelledby="gallery-title">
+      <div class="section-heading reveal">
+        <h2 id="gallery-title">Yapıya yakından</h2>
+        <p>Farklı ölçeklerde cephe, taşıyıcı ve iç mekân okumaları.</p>
+      </div>
+      <figure class="gallery__wide reveal">
+        <img src="assets/a-photo-of-modern-architecture-in-amsterdam.jpg" alt="Amsterdam Oosterdokseiland’da beton kolonların ardında uzanan çağdaş yapı cepheleri." width="1920" height="1440" loading="lazy" decoding="async">
+        <figcaption>Kolon ve cephe ilişkisi <span>Arşiv fotoğrafı · Amsterdam</span></figcaption>
+      </figure>
+      <div class="gallery__pair">
+        <figure class="reveal">
+          <img src="assets/2024-photo-of-the-interior-architecture-design.jpg" alt="Rotterdam Merkez İstasyonu’nun cam ve beton iç mekânı." width="1920" height="1442" loading="lazy" decoding="async">
+          <figcaption>Işık, açıklık ve dolaşım <span>Arşiv fotoğrafı · Rotterdam</span></figcaption>
+        </figure>
+        <figure class="gallery__portrait reveal">
+          <img src="assets/timber-framed-building-under-construction-far-gosford.jpg" alt="Ahşap çatı makasları ve taşıyıcı dikmelerin görüldüğü yapım aşaması." width="1920" height="2571" loading="lazy" decoding="async">
+          <figcaption>Taşıyıcı sistemin kurulumu <span>Arşiv fotoğrafı · Coventry</span></figcaption>
+        </figure>
+      </div>
+      <figure class="gallery__detail reveal">
+        <img src="assets/shalom-shalome-apartment-close-up-of-facade.jpg" alt="Shalom Shalome Apartmanı’nın beton balkonları, gölgelikleri ve kafes cephe elemanları." width="1920" height="1199" loading="lazy" decoding="async">
+        <figcaption>Gölge ve cephe derinliği <span>Arşiv fotoğrafı · Addis Ababa</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="cutaway" id="kesit" aria-labelledby="cutaway-title">
+      <div class="cutaway__intro reveal">
+        <h2 id="cutaway-title">Kesitte ne var?</h2>
+        <p>Örnek yapı kesiti, bir binanın yükü temele ve dış ortamla kurduğu sınırı nasıl aktardığını gösterir.</p>
+      </div>
+      <div class="cutaway__body">
+        <div class="section-drawing reveal" role="img" aria-label="Örnek yapı kesiti: çatı ve döşeme katmanları, taşıyıcı çerçeve, zemin duvarı ve temel birlikte gösterilir.">
+          <div class="section-drawing__roof"></div>
+          <div class="section-drawing__floor"></div>
+          <div class="section-drawing__frame"><i></i><i></i><i></i><i></i></div>
+          <div class="section-drawing__wall"></div>
+          <div class="section-drawing__footing"></div>
+          <div class="section-drawing__ground"></div>
+        </div>
+        <div class="layer-picker" data-layer-picker hidden>
+          <p class="layer-picker__label">Kesit katmanını seç</p>
+          <div class="layer-picker__buttons" role="group" aria-label="Kesitte vurgulanacak katman">
+            <button type="button" data-layer="shell" aria-pressed="false">Kabuk</button>
+            <button type="button" data-layer="frame" aria-pressed="true">Taşıyıcı</button>
+            <button type="button" data-layer="base" aria-pressed="false">Temel</button>
+          </div>
+          <p class="layer-picker__detail" aria-live="polite">Döşemeler ve kolonlar, yükü temel sistemine aktarır.</p>
+        </div>
+        <ul class="layer-fallback" data-layer-fallback>
+          <li><strong>Kabuk</strong><span>Çatı, dış duvar ve açıklıkların birleşimi.</span></li>
+          <li><strong>Taşıyıcı</strong><span>Döşeme ve kolonların yük aktarımı.</span></li>
+          <li><strong>Temel</strong><span>Yükün zemine iletildiği alt yapı.</span></li>
+        </ul>
+      </div>
+      <p class="cutaway__note">Şema örnektir; mühendislik projesi veya uygulama detayı değildir.</p>
+    </section>
+
+    <section class="process" id="surec" aria-labelledby="process-title">
+      <div class="process__image reveal">
+        <img src="assets/food-nutrition-and-health-building-ubc-concrete.jpg" alt="Beton yüzey, doğrama ve giriş kotunun aynı cephede buluştuğu örnek yapı." width="1920" height="1280" loading="lazy" decoding="async">
+        <p>Arşiv fotoğrafı · Vancouver, Kanada</p>
+      </div>
+      <div class="process__copy reveal">
+        <h2 id="process-title">Fikirden uygulamaya</h2>
+        <p>Bir yapı işi; ihtiyaçların tanımlanması, tasarım kararlarının geliştirilmesi ve uygulama belgelerinin hazırlanmasıyla ilerler.</p>
+        <ol>
+          <li><strong>İhtiyaç</strong><span>Yer, kullanım ve kapsam netleşir.</span></li>
+          <li><strong>Tasarım</strong><span>Plan, kesit ve malzeme ilişkisi kurulur.</span></li>
+          <li><strong>Uygulama</strong><span>Detaylar ve saha koordinasyonu birlikte ele alınır.</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__title">Yapı Kesiti</p>
+    <p>Bağımsız tema demosu. Ofis, portföy, adres ve iletişim bilgileri örnek olarak da üretilmemiştir.</p>
+    <details>
+      <summary>Görsel kaynakları</summary>
+      <ul>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Food,_Nutrition_and_Health_Building,_UBC_-_concrete_facade_on_East_Mall.jpg">“Food, Nutrition and Health Building, UBC”</a>, Travis Zhang, CC BY-SA 4.0.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:A_photo_of_modern_architecture_in_Amsterdam_city,_free_download;_rear_facades_and_concrete_columns_of_buildings_at_Oosterdokseiland._Fons_Heijnsbroek,_street_photography_of_The_Netherlands_in_high_resolution;_free_image_CC0.tif">“Modern architecture in Amsterdam”</a>, Fons Heijnsbroek, CC0.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:2024_-_photo_of_the_interior_architecture_design_of_the_concrete_hall_of_station_Rotterdam_Centraal_with_people_waiting_-_street_photography_in_free_images_and_high_resolutions,_Dutch_photographer_Fons_Heijnsbroek,_The_Netherlands.tif">“Rotterdam Centraal interior”</a>, Fons Heijnsbroek, CC0.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Shalom_Shalome_Apartment_(Close_Up_of_Facade).jpg">“Shalom Shalome Apartment”</a>, The Chroniclers, CC BY-SA 4.0.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Timber-framed_building_under_construction,_Far_Gosford_Street_-_geograph.org.uk_-_6844011.jpg">“Timber-framed building under construction”</a>, A J Paxton, CC BY-SA 2.0.</li>
+      </ul>
+    </details>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="insaat-1" defer></script>
+</body>
+</html>

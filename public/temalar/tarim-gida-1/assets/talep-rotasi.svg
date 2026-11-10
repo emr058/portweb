@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" role="img" aria-labelledby="title desc">
+<title id="title">Örnek toptan talep akışı</title><desc id="desc">Ürün, ambalaj ve teslim bilgisini bir araya getiren çizilmiş sevk güzergâhı.</desc>
+<path fill="#e8ebdc" d="M24 22h452v256H24z"/><path d="M84 210c56-112 112 19 169-53s98 44 163-66" fill="none" stroke="#809047" stroke-width="16" stroke-linecap="round" stroke-dasharray="3 27"/>
+<circle cx="84" cy="210" r="29" fill="#ad6239"/><circle cx="253" cy="157" r="29" fill="#d1af59"/><circle cx="416" cy="91" r="29" fill="#26301f"/>
+<path fill="#26301f" d="M68 54h88v13H68zm0 20h61v8H68zm146 162h108v13H214zm0 20h74v8h-74zm112-205h96v13h-96zm0 20h66v8h-66z"/>
+</svg>

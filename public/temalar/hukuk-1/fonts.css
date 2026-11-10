@@ -1,0 +1,53 @@
+@font-face {
+  font-family: "Imbue Local";
+  src: url("fonts/Imbue-400-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: "Imbue Local";
+  src: url("fonts/Imbue-400-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: "Figtree Local";
+  src: url("fonts/Figtree-400-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: "Figtree Local";
+  src: url("fonts/Figtree-400-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+
+@font-face {
+  font-family: "Figtree Local";
+  src: url("fonts/Figtree-600-latin.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: "Figtree Local";
+  src: url("fonts/Figtree-600-latin-ext.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}

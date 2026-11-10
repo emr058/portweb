@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#a6b3bc">
+  <meta name="robots" content="noindex">
+<meta name="description" content="İki adres, eşya hacmi ve taşınma tarihini teklif talebi taslağında bir araya getiren örnek evden eve nakliyat teması.">
+  <title>Taşınma Fişi — örnek nakliyat teması</title>
+  <link rel="preload" href="fonts/GeneralSans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/GeneralSans-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <header class="site-header frame">
+    <a class="wordmark" href="#baslangic" aria-label="Taşınma Fişi, başa dön">Taşınma Fişi</a>
+    <nav aria-label="Ana gezinme">
+      <a href="#bilgiler">Teklif bilgileri</a>
+      <a href="#talep">Talep oluştur</a>
+    </nav>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero frame" aria-labelledby="hero-title">
+      <div class="hero-sheet paper">
+        <div class="hero-copy">
+          <p class="sample-mark">Örnek tema</p>
+          <h1 id="hero-title">Taşınma<br>fişi</h1>
+          <p class="hero-lead">İki adresi, eşya hacmini ve tarihi tek bir taşıma talebinde birleştir.</p>
+          <a class="button" href="#talep">Talep bilgilerini gir <span aria-hidden="true">↘</span></a>
+        </div>
+        <figure class="route-art">
+          <img src="assets/route.svg" alt="İki apartman arasında ilerleyen küçük nakliye aracı ve noktalı rota çizimi" width="640" height="320" fetchpriority="high">
+          <figcaption>Çıkış adresi → varış adresi</figcaption>
+        </figure>
+        <div class="ticket-foot"><span>Taşıma türü</span><strong>Evden eve · örnek</strong><span>Bilgileriniz gönderilmez</span></div>
+      </div>
+    </section>
+
+    <section class="intake frame" id="bilgiler" aria-labelledby="intake-title">
+      <div class="section-intro reveal">
+        <p class="section-kicker">Bir fişte toplananlar</p>
+        <h2 id="intake-title">Teklifin yolu<br>bu üç bilgiden geçer</h2>
+      </div>
+      <div class="intake-body">
+        <p class="intake-lead reveal">Mesafe, taşınacak eşya miktarı ve planlanan gün; taşıma talebini değerlendirmek için gereken başlangıç bilgisini verir.</p>
+        <div class="paper-strip">
+          <article class="info-item reveal">
+            <img src="assets/doorway.svg" alt="Yan yana iki kapının geçiş çizimi" width="360" height="300" loading="lazy">
+            <h3>İki adres</h3>
+            <p>Nereden çıkılacağı ve nereye gidileceği.</p>
+          </article>
+          <article class="info-item reveal">
+            <img src="assets/volume.svg" alt="Oda planı içinde mobilya ve koliler" width="440" height="300" loading="lazy">
+            <h3>Eşya hacmi</h3>
+            <p>Ev büyüklüğü ya da taşınacak eşya miktarı.</p>
+          </article>
+          <article class="info-item reveal">
+            <img src="assets/date.svg" alt="Takvimde işaretlenmiş bir gün" width="300" height="280" loading="lazy">
+            <h3>Taşınma tarihi</h3>
+            <p>Planlanan gün; tarih kesin değilse tercih edilen zaman.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="request frame" id="talep" aria-labelledby="request-title">
+      <div class="request-heading reveal">
+        <p class="section-kicker">Talep kartı · örnek</p>
+        <h2 id="request-title">Taşınma bilgilerini gir</h2>
+        <p>Bu örnek tema bir fiyat hesaplamaz ve talebi bir işletmeye iletmez. Girilen bilgiler bu sayfada bir mesaj taslağına dönüşür.</p>
+      </div>
+      <div class="request-layout">
+        <form id="move-form" class="move-form paper reveal" aria-describedby="form-note">
+          <label for="move-type">Taşıma türü</label>
+          <select id="move-type" name="Taşıma türü" required>
+            <option value="" selected disabled>Bir tür seçin</option>
+            <option>Evden eve</option>
+            <option>Ofis taşıma</option>
+            <option>Parça eşya</option>
+          </select>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="origin">Nereden</label>
+              <input id="origin" name="Nereden" autocomplete="address-level2" placeholder="İlçe, şehir" required>
+            </div>
+            <div class="field">
+              <label for="destination">Nereye</label>
+              <input id="destination" name="Nereye" autocomplete="address-level2" placeholder="İlçe, şehir" required>
+            </div>
+          </div>
+
+          <div class="field-pair">
+            <div class="field">
+              <label for="volume">Eşya hacmi</label>
+              <select id="volume" name="Eşya hacmi" required>
+                <option value="" selected disabled>Yaklaşık hacmi seçin</option>
+                <option>1+1 ev</option>
+                <option>2+1 ev</option>
+                <option>3+1 ev</option>
+                <option>Parça eşya</option>
+                <option>Henüz belli değil</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="move-date">Taşınma tarihi</label>
+              <input id="move-date" name="Taşınma tarihi" type="date" required>
+            </div>
+          </div>
+          <p id="form-note" class="form-note">Adres alanlarına ilçe ve şehir yazmanız yeterli. Tam adresi paylaşmayın.</p>
+          <button class="button form-submit" type="submit">Talep mesajı oluştur <span aria-hidden="true">↗</span></button>
+          <noscript><p class="noscript-note">Bu formun mesaj taslağı etkileşimi JavaScript gerektirir. Örnek fiş aşağıda görülebilir; burada talep iletimi yapılmaz.</p></noscript>
+        </form>
+
+        <aside class="result-sheet reveal" aria-labelledby="result-title" aria-live="polite">
+          <div class="result-top"><span>Talep özeti</span><span class="result-state" id="result-state">Örnek veri</span></div>
+          <h3 id="result-title">Taşınma talebi</h3>
+          <p class="result-text" id="result-text">Taşıma türü: Evden eve
+Nereden: Kadıköy, İstanbul
+Nereye: Beşiktaş, İstanbul
+Eşya hacmi: 2+1 ev
+Taşınma tarihi: 15.11.2026</p>
+          <p class="result-caption">Bu yalnızca örnek bir talep metnidir; fiyat teklifi değildir.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="frame footer-inner">
+      <p class="footer-name">Taşınma Fişi</p>
+      <p>Örnek tema · işletme bilgileri ve teklif alıcısı eklenmeden kullanıma hazır değildir.</p>
+      <a href="#baslangic">Başa dön ↑</a>
+    </div>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="nakliyat-1" defer></script>
+</body>
+</html>

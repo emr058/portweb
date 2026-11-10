@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8edf0">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Mahalle Atlası emlak ofisi için örnek mahalle ve ilan görünümü.">
+  <title>Mahalle Atlası — Emlak ofisi örnek teması</title>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+</head>
+<body>
+  <a class="skip" href="#portfoy">Portföye geç</a>
+  <header class="masthead">
+    <a class="brand" href="#baslangic" aria-label="Mahalle Atlası, sayfa başı"><span>Mahalle</span><span>Atlası</span></a>
+    <nav aria-label="Sayfa bağlantıları">
+      <a href="#harita">Bölgeler</a>
+      <a href="#portfoy">Portföy</a>
+      <a href="#ofis">Ofis</a>
+    </nav>
+    <span class="sample-tag">Örnek tema</span>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy" data-reveal>
+        <h1 id="hero-title">Mahalle<br>rehberi</h1>
+        <p class="hero-lead">Örnek portföyü mahalleye ve ilan türüne göre inceleyin.</p>
+        <a class="action" href="#portfoy">İlanlara bak <span aria-hidden="true">↘</span></a>
+      </div>
+      <figure class="hero-map" data-reveal>
+        <svg viewBox="0 0 760 520" role="img" aria-labelledby="map-title map-desc">
+          <title id="map-title">Temsili mahalle planı</title>
+          <desc id="map-desc">Gerçek adresleri göstermeyen, sokakları ve yeşil alanı çizgilerle gösteren örnek plan.</desc>
+          <rect width="760" height="520" fill="#dce5e8"/>
+          <path class="water" d="M0 382C140 350 188 422 315 388s205-80 445-34v166H0Z"/>
+          <path class="park" d="M410 0h164l42 105-95 77-124-34zM52 62l142-40 61 92-96 94-123-45z"/>
+          <g class="streets">
+            <path d="M-20 112 780 260M-40 230 780 72M24 540 305-20M174 550 456-25M333 560 599-20M495 570 744-6M0 320 760 420M85-20 625 540M-15 460 755 145"/>
+            <path d="M30 170 716 294M20 278 733 126M265 500 503 17M393 515 673 60"/>
+          </g>
+          <g class="blocks">
+            <path d="m93 124 70 14-10 37-70-16zm89 19 72 14-9 39-72-16zm118 25 70 15-8 38-72-15zm181 38 68 14-8 39-69-15zM59 259l70 13-8 38-70-14zm122 21 74 14-10 39-71-15zm302 53 75 15-9 38-75-15zM286 82l48 11-9 42-47-10zm239 112 48 9-10 43-46-11z"/>
+          </g>
+          <g class="pins" aria-hidden="true"><circle data-map-neighborhood="kiyi" cx="263" cy="250" r="11"/><circle data-map-neighborhood="carsi" cx="460" cy="311" r="11"/><circle data-map-neighborhood="bahce" cx="570" cy="229" r="11"/></g>
+          <text x="24" y="486">TEMSiLİ PLAN · GERÇEK KONUM DEĞİL</text>
+        </svg>
+        <figcaption>Örnek çizim · gerçek sokak veya ilan konumu değildir</figcaption>
+      </figure>
+      <p class="hero-note">Bölge ve ilan bilgileri örnektir.<br>Gerçek ofis içeriğiyle değiştirilmelidir.</p>
+    </section>
+
+    <section class="atlas" id="harita" aria-labelledby="atlas-title">
+      <div class="section-intro">
+        <h2 id="atlas-title">Semt semt<br>bakın.</h2>
+        <p>Bu demo paftadaki mahalle adları örnektir. Gerçek hizmet bölgeleri ofis tarafından eklenmelidir.</p>
+      </div>
+      <figure class="atlas-sheet">
+        <svg viewBox="0 0 700 520" role="img" aria-labelledby="sheet-title sheet-desc">
+          <title id="sheet-title">Örnek bölge paftası</title>
+          <desc id="sheet-desc">Örnek mahalle alanlarını, yolları ve üç ilan işaretini gösteren temsili çizim.</desc>
+          <rect width="700" height="520" fill="#c9d6d9"/>
+          <path d="M0 125 202 45l147 77-48 151-189 37L0 245zm356-3 170-78 174 62v161l-196 18-103-66zM0 339l170-27 125 75-25 133H0zm323 65 184-80 193 40v156H300z" fill="#d9e4df"/>
+          <g fill="none" stroke="#f6f7f5" stroke-width="12" stroke-linecap="round">
+            <path d="m-35 281 770-203M-23 442 721 181M105-20l184 571M302-20l137 570M510-20l151 563M-8 142l716 257"/>
+          </g>
+          <g fill="none" stroke="#93a5aa" stroke-width="2"><path d="M0 125 202 45l147 77-48 151-189 37L0 245zm356-3 170-78 174 62v161l-196 18-103-66zM0 339l170-27 125 75-25 133H0zm323 65 184-80 193 40v156H300z"/></g>
+          <g class="map-label"><text x="82" y="197">ÖRNEK · KIYI</text><text x="430" y="147">ÖRNEK · ÇARŞI</text><text x="410" y="410">ÖRNEK · BAHÇE</text></g>
+          <g class="map-pin"><circle data-map-neighborhood="kiyi" cx="282" cy="255" r="12"/><circle data-map-neighborhood="carsi" cx="495" cy="285" r="12"/><circle data-map-neighborhood="bahce" cx="203" cy="389" r="12"/></g>
+        </svg>
+        <figcaption>Temsili bölge çizimi. Gerçek mahalle sınırı veya adres göstermez.</figcaption>
+      </figure>
+    </section>
+
+    <section class="neighborhood-gallery" aria-labelledby="city-gallery-title">
+      <div class="neighborhood-gallery-head">
+        <h2 id="city-gallery-title">İstanbul cepheleri</h2>
+        <p>Balat cephelerinden Kartal konutlarına, yapı dokusu atlasın ilk okuma katmanıdır.</p>
+      </div>
+      <div class="neighborhood-gallery-grid">
+        <figure class="city-photo city-photo-wide" data-reveal>
+          <img src="assets/colorful-apartment-buildings-istanbul-turkey.jpg" width="1920" height="1440" alt="Balat'ta pembe, turkuaz, turuncu ve sarı apartman cepheleri" loading="lazy" decoding="async">
+          <figcaption>Balat · renkli apartman cepheleri</figcaption>
+        </figure>
+        <figure class="city-photo city-photo-tall" data-reveal>
+          <img src="assets/an-apartment-in-balat.jpg" width="1920" height="2560" alt="Balat'ta dar sokakta turuncu apartman ve demir balkonlar" loading="lazy" decoding="async">
+          <figcaption>Balat · köşe apartmanı</figcaption>
+        </figure>
+        <figure class="city-photo city-photo-low" data-reveal>
+          <img src="assets/tepebasi-istanbul-1.jpg" width="1200" height="900" alt="Tepebaşı'nda yan yana sıralanan eski apartman cepheleri" loading="lazy" decoding="async">
+          <figcaption>Tepebaşı · eski kent dokusu</figcaption>
+        </figure>
+        <figure class="city-photo city-photo-mid" data-reveal>
+          <img src="assets/bal-kesir-apartment-building-in-istanbul.jpg" width="1920" height="2256" alt="İstanbul'da 1953 tarihli Balıkesir apartmanının taş giriş cephesi" loading="lazy" decoding="async">
+          <figcaption>İstanbul · 1953 tarihli apartman girişi</figcaption>
+        </figure>
+        <figure class="city-photo city-photo-last" data-reveal>
+          <img src="assets/manzara-adalar-residential-block-istanbul.jpg" width="1920" height="2560" alt="Kartal'da modern konut bloğunun yüksek cephesi" loading="lazy" decoding="async">
+          <figcaption>Kartal · Manzara Adalar konut bloğu</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="portfolio" id="portfoy" aria-labelledby="portfolio-title">
+      <div class="portfolio-head">
+        <div><h2 id="portfolio-title">Portföy seçkisi</h2></div>
+        <p>Üç kayıt da örnek veridir; fiyat, alan ve oda bilgileri gerçek ilan değildir.</p>
+      </div>
+
+      <div class="filter-panel" data-filter>
+        <label>Mahalle
+          <select name="neighborhood" aria-label="Mahalleye göre filtrele">
+            <option value="all">Tüm örnek mahalleler</option>
+            <option value="kiyi">Örnek Kıyı</option>
+            <option value="carsi">Örnek Çarşı</option>
+            <option value="bahce">Örnek Bahçe</option>
+          </select>
+        </label>
+        <label>İlan türü
+          <select name="kind" aria-label="Satılık veya kiralık filtrele">
+            <option value="all">Satılık ve kiralık</option>
+            <option value="sale">Satılık</option>
+            <option value="rent">Kiralık</option>
+          </select>
+        </label>
+        <p class="filter-status" aria-live="polite" data-status>JavaScript kapalı: tüm örnek ilanlar aşağıda listelenir.</p>
+      </div>
+
+      <div class="listing-list" data-listings>
+        <article class="listing listing-wide" data-neighborhood="kiyi" data-kind="sale" data-reveal>
+          <div class="listing-art art-one" aria-hidden="true"><svg viewBox="0 0 600 360"><rect width="600" height="360" fill="#a9bdc2"/><path d="M0 245h600v115H0" fill="#66808a"/><path d="M90 95h235v150H90zM113 120h70v59h-70zm97 0h88v59h-88zm-97 82h168v43H113z" fill="#e7e9e5"/><path d="M338 122h172v123H338zM361 143h55v44h-55zm75 0h54v44h-54zm-75 62h129v40H361z" fill="#cfd7d4"/><path d="M0 282q150-34 300 0t300 0" fill="none" stroke="#d9e1df" stroke-width="5"/></svg><span>Örnek çizim</span></div>
+          <div class="listing-copy"><p class="listing-place">Örnek Kıyı <span>· Satılık</span></p><h3>İki odalı örnek daire</h3><p>2 oda · 78 m² · Örnek bina</p><p class="price">Örnek fiyat: 4.800.000 TL</p><p class="disclaimer">Örnek ilan. Alan ve fiyat gerçek portföy bilgisi değildir.</p></div>
+        </article>
+        <article class="listing listing-tall" data-neighborhood="carsi" data-kind="rent" data-reveal>
+          <div class="listing-art art-two" aria-hidden="true"><svg viewBox="0 0 480 420"><rect width="480" height="420" fill="#d3c8b7"/><path d="M0 302 99 238l79 58 118-112 184 99v137H0z" fill="#8b9890"/><path d="M82 135h186v169H82z" fill="#f0ede5"/><path d="M104 157h65v62h-65zm83 0h59v62h-59zm-83 79h142v68H104z" fill="#9caeb0"/><path d="M309 210h117v94H309zM328 228h34v36h-34zm50 0h33v36h-33z" fill="#d7ddd7"/></svg><span>Örnek çizim</span></div>
+          <div class="listing-copy"><p class="listing-place">Örnek Çarşı <span>· Kiralık</span></p><h3>Avlulu örnek konut</h3><p>3 oda · 112 m² · Örnek bina</p><p class="price">Örnek kira: 28.000 TL / ay</p><p class="disclaimer">Örnek ilan. Alan ve kira gerçek portföy bilgisi değildir.</p></div>
+        </article>
+        <article class="listing listing-small" data-neighborhood="bahce" data-kind="sale" data-reveal>
+          <div class="listing-art art-three" aria-hidden="true"><svg viewBox="0 0 420 320"><rect width="420" height="320" fill="#d9d5c8"/><path d="M35 184 210 60l175 124v136H35z" fill="#b8684e"/><path d="M72 184h276v136H72z" fill="#e8e4d8"/><path d="M108 211h67v67h-67zm125-1h84v109h-84z" fill="#8fa5a4"/><path d="m191 60 19-18 20 18v20h-39z" fill="#596e70"/><path d="M20 304h380" stroke="#61795f" stroke-width="14"/></svg><span>Örnek çizim</span></div>
+          <div class="listing-copy"><p class="listing-place">Örnek Bahçe <span>· Satılık</span></p><h3>Bahçeli örnek ev</h3><p>4 oda · 146 m² · Örnek yapı</p><p class="price">Örnek fiyat: 7.250.000 TL</p><p class="disclaimer">Örnek ilan. Alan ve fiyat gerçek portföy bilgisi değildir.</p></div>
+        </article>
+        <p class="empty-state" data-empty hidden>Bu seçimde örnek ilan yok. Başka bir mahalle veya ilan türü seçin.</p>
+      </div>
+      <noscript><p class="no-script">Filtre çalışmıyor; tüm örnek ilanlar listeleniyor.</p></noscript>
+    </section>
+
+    <section class="approach" id="ofis" aria-labelledby="approach-title">
+      <div class="approach-title"><h2 id="approach-title">Bölgeyi<br>tanıyoruz.</h2></div>
+      <div class="approach-copy" data-reveal>
+        <p>Mahalle sınırları, çalışma alanı, danışman bilgisi ve portföy bu örnek sayfada doğrulanmış değil. Yayından önce ofisin gerçek içerikleriyle değiştirilmelidir.</p>
+        <p class="contact-placeholder">Ofis adresi ve iletişim bilgileri eklenecek.</p>
+      </div>
+      <svg class="approach-mark" viewBox="0 0 260 200" aria-hidden="true"><path d="M18 168 95 31l62 98 39-62 47 101H18Z" fill="#ef5b35"/><path d="m48 168 47-83 41 67 22-34 33 50H48Z" fill="#e8edf0"/></svg>
+    </section>
+  </main>
+  <footer class="footer">
+    <a class="brand" href="#baslangic"><span>Mahalle</span><span>Atlası</span></a>
+    <p>Örnek tema · Gerçek ofis, bölge ve ilan bilgileri eklenmemiştir.</p>
+    <details class="image-credits">
+      <summary>Görsel kaynakları</summary>
+      <ul>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Colorful_apartment_buildings,_Istanbul,_Turkey.jpg">“Colorful apartment buildings, Istanbul, Turkey”</a> by Maurice Flesier, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:An_apartment_in_Balat.jpg">“An apartment in Balat”</a> by Antoloji, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Tepebasi_Istanbul_1.jpg">“Tepebasi Istanbul 1”</a> by Chapultepec, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>, via Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Bal%C4%B1kesir_apartment_building_in_Istanbul.jpg">“Balıkesir apartment building in Istanbul”</a> by Dor Shabashewitz, <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, via Wikimedia Commons.</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Manzara_Adalar_Residential_Block,_Istanbul.jpg">“Manzara Adalar Residential Block, Istanbul”</a> by Maurice Flesier, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, via Wikimedia Commons.</li>
+      </ul>
+    </details>
+    <a href="#baslangic">Başa dön ↑</a>
+  </footer>
+  <script src="app.js?v=mw6kiwmi" defer></script>
+<script src="/temalar/demo-bar.js" data-theme="emlak-1" defer></script>
+</body>
+</html>

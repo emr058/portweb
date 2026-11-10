@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Hukuk bürosu örnek teması: çalışma alanlarını ve ilk görüşme talebi akışını inceleyin.">
+  <title>Dosya Arası — Hukuk Bürosu Örnek Teması</title>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <header class="site-header">
+    <a class="wordmark" href="#baslangic" aria-label="Dosya Arası hukuk bürosu örnek teması, başa dön">Dosya Arası <span>Hukuk Bürosu · Örnek Tema</span></a>
+    <nav aria-label="Ana menü"><a href="#alanlar">Çalışma alanları</a><a href="#yaklasim">Çalışma biçimi</a><a class="nav-action" href="#talep">Görüşme talebi</a></nav>
+  </header>
+
+  <main id="icerik">
+    <section class="hero" id="baslangic" aria-labelledby="hero-title">
+      <div class="hero-object">
+        <div class="hero-copy">
+          <h1 id="hero-title">Hukuk<br>İlk görüşme</h1>
+          <p class="hero-intro">Konunuzu kısaca paylaşın. Görüşme talebiniz için izlenecek yol ve gerekli bilgiler birlikte netleşsin.</p>
+          <a class="button" href="#talep">İlk görüşme talebi</a>
+        </div>
+        <img class="hero-art" src="assets/dosya-kapagi.svg" alt="İsimsiz, boş sekmeli çalışma dosyası çizimi" width="540" height="460">
+        <p class="object-foot">Hukuk bürosu için hazırlanmış örnek web teması</p>
+      </div>
+    </section>
+
+    <section class="areas section" id="alanlar" aria-labelledby="areas-title">
+      <div class="section-heading"><h2 id="areas-title">Çalışma alanları</h2><p>Bu bölümde büronun gerçek hizmet başlıkları yer alır. Aşağıdaki gruplar yalnızca yerleşimi göstermek için yazılmış örneklerdir.</p></div>
+      <div class="area-sheet">
+        <img src="assets/calisma-alanlari.svg" alt="Üç sekmeli örnek çalışma alanı dosyası çizimi" width="620" height="420" loading="lazy">
+        <div class="area-list">
+          <article><h3>Sözleşmeler</h3><p>Örnek çalışma alanı. Kapsam ve hizmet tanımı büro tarafından doğrulanmalıdır.</p></article>
+          <article><h3>İş ilişkileri</h3><p>Örnek çalışma alanı. Görüşme öncesi gerekli bilgiler, başvuru konusuna göre belirlenir.</p></article>
+          <article><h3>Uyuşmazlıklar</h3><p>Örnek çalışma alanı. Her başvurunun kapsamı ve izlenecek yol ayrıca değerlendirilir.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach section" id="yaklasim" aria-labelledby="approach-title">
+      <div class="section-heading"><h2 id="approach-title">Görüşme nasıl başlar?</h2><p>İlk temas, konuyu ve beklentiyi anlamaya yarayan kısa bir bilgi alışverişidir.</p></div>
+      <div class="approach-sheet">
+        <div class="approach-copy">
+          <ol>
+            <li><h3>Konuyu belirtin</h3><p>Talep formunda çalışma alanını ve kısa konu başlığını seçin.</p></li>
+            <li><h3>İletişim tercihinizi yazın</h3><p>Size nasıl ve hangi iletişim bilgisiyle dönülebileceğini ekleyin.</p></li>
+            <li><h3>Görüşmeyi netleştirin</h3><p>Büro, talebinizi inceledikten sonra görüşme için uygun adımları paylaşır.</p></li>
+          </ol>
+          <p class="sample-note">Akış örnektir; büro tarafından kendi çalışma düzenine göre uyarlanmalıdır.</p>
+        </div>
+        <img src="assets/gorusme-akisi.svg" alt="İlk görüşme akışını gösteren üç boş kâğıt çizimi" width="620" height="420" loading="lazy">
+      </div>
+    </section>
+
+    <section class="request section" id="talep" aria-labelledby="request-title">
+      <div class="request-heading">
+        <h2 id="request-title">İlk görüşme talebi</h2>
+        <p>Bilgiler bu sayfada işlenir ve saklanmaz. Gönderim yapılmaz; form, sizin gözden geçirip paylaşabileceğiniz bir talep metni oluşturur.</p>
+        <img src="assets/ilk-gorusme-formu.svg" alt="Kişisel veri içermeyen boş ilk görüşme bilgi föyü çizimi" width="520" height="600" loading="lazy">
+      </div>
+      <div class="form-panel">
+        <form id="request-form">
+          <label for="area">Çalışma alanı</label>
+          <select id="area" name="area" required>
+            <option value="">Bir alan seçin</option>
+            <option>Sözleşmeler (örnek)</option><option>İş ilişkileri (örnek)</option><option>Uyuşmazlıklar (örnek)</option>
+          </select>
+          <label for="subject">Konu başlığı</label>
+          <input id="subject" name="subject" type="text" placeholder="Örnek: sözleşme inceleme talebi" required>
+          <label for="name">Ad soyad</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Örnek: Deniz Yılmaz" required>
+          <label for="contact">İletişim bilgisi</label>
+          <input id="contact" name="contact" type="text" autocomplete="email" placeholder="Örnek: ad@ornek.com veya 05xx xxx xx xx" required>
+          <button class="button" type="submit">Talep metnini oluştur</button>
+          <p class="form-note">Hassas belge veya ayrıntılı kişisel bilgi eklemeyin. Örnek değerleri kendi bilginizle değiştirin.</p>
+        </form>
+        <div class="draft" id="draft" aria-live="polite" aria-atomic="true" hidden>
+          <h3>Gözden geçirilecek talep metni</h3>
+          <textarea id="draft-text" rows="8" readonly aria-label="Oluşturulan görüşme talep metni"></textarea>
+          <p>Metni seçip kopyalayın ve büronun doğrulanmış iletişim kanalından paylaşın.</p>
+        </div>
+        <noscript><p class="noscript-note">JavaScript kapalı. Bu form gönderilmez; büronun iletişim bilgileri eklendiğinde telefon veya e-posta üzerinden talep iletebilirsiniz.</p></noscript>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-name">Dosya Arası</p>
+    <p>Örnek tema. Büro adı, gerçek çalışma alanları, iletişim bilgileri ve süreç açıklamaları teslim öncesi eklenmelidir.</p>
+    <a href="#baslangic">Başa dön</a>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="hukuk-1" defer></script>
+</body>
+</html>

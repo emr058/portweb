@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="title desc">
+  <title id="title">Taşınma öncesi ve sonrası kapı siluetleri</title><desc id="desc">Yan yana iki açık kapı, bir evden diğerine geçişi simgeler.</desc>
+  <path d="M39 254h282M63 254V49h100v205M197 254V49h100v205" fill="#b7c8be" stroke="#1c1c1c" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M79 254V66l68 16v172m70 0V82l68-16v188" fill="#e3e2da" stroke="#2c3620" stroke-width="5" stroke-linejoin="round"/>
+  <circle cx="135" cy="160" r="5" fill="#1c1c1c"/><circle cx="247" cy="160" r="5" fill="#1c1c1c"/>
+  <path d="M165 150h30m-10-11 11 11-11 11" fill="none" stroke="#2c3620" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151311">
+  <meta name="robots" content="noindex">
+<meta name="description" content="Dönem sonunda mali müşavire iletilecek belgeler için örnek dönem dosyası.">
+  <title>Dönem Dosyası — Mali müşavir</title>
+  <link rel="stylesheet" href="fonts.css?v=mw6kiwmi">
+  <link rel="stylesheet" href="style.css?v=mw6kiwmi">
+  <script>document.documentElement.classList.add('js')</script>
+  <script src="app.js?v=mw6kiwmi" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#donem">Dönem dosyasına geç</a>
+  <header class="site-head">
+    <a class="wordmark" href="#baslangic">Dönem Dosyası</a>
+    <nav aria-label="Sayfa bölümleri">
+      <a href="#donem">Dönem seç</a>
+      <a href="#belgeler">Belge listesi</a>
+    </nav>
+  </header>
+
+  <main id="baslangic">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">Dönem<br>dosyası</h1>
+        <p>Mali müşavirinize ileteceğiniz ay sonu belgelerini tek dosyada toparlayın.</p>
+        <a class="action" href="#donem">Dönemi seç</a>
+      </div>
+      <div class="folder-stack" aria-hidden="true">
+        <div class="folder folder-back folder-may"><span>Mayıs · örnek</span></div>
+        <div class="folder folder-back folder-apr"><span>Nisan · örnek</span></div>
+        <div class="folder folder-front"><span class="tab">Nisan · Haziran</span><span class="folder-label">DÖNEM / 02</span><span class="folder-stamp">2026<br>ÖRNEK</span></div>
+      </div>
+    </section>
+
+    <section class="period section" id="donem" aria-labelledby="period-title">
+      <div class="section-intro" data-reveal>
+        <h2 id="period-title">Hangi dönemi hazırlıyorsunuz?</h2>
+        <p>Bir örnek dönem seçin. Liste, dosyaya eklenebilecek belge türlerini gösterir.</p>
+      </div>
+      <form class="period-form" id="period-form" action="#belgeler" method="get">
+        <label for="period-select">Örnek dönem</label>
+        <div class="period-controls">
+          <select id="period-select" name="donem">
+            <option value="2026-04">Nisan 2026 · örnek</option>
+            <option value="2026-05">Mayıs 2026 · örnek</option>
+            <option value="2026-06">Haziran 2026 · örnek</option>
+          </select>
+          <button class="action" type="submit">Dosyayı göster</button>
+        </div>
+        <p class="form-note" id="period-note" aria-live="polite">Örnek dönem; liste müşavirinizin çalışma biçimine göre uyarlanır.</p>
+      </form>
+      <p class="noscript-note"><strong>Örnek yedek liste:</strong> satış belgeleri, alış belgeleri, banka hareketleri ve varsa ücret kayıtları. Dönem seçimi çalıştırılamadığında bu liste görünür kalır.</p>
+    </section>
+
+    <section class="archive section" aria-labelledby="archive-title">
+      <div class="archive-heading" data-reveal>
+        <h2 id="archive-title">Bir dönemin kayıtları</h2>
+        <p>Eski ticari defterlerden arşiv görselleri. Bunlar örnek işletmenin belgeleri değildir.</p>
+      </div>
+      <div class="archive-grid">
+        <figure class="archive-image image-large" data-reveal>
+          <img src="assets/pittsboro-merchant-business-ledger.jpg" width="1920" height="2881" alt="1830'lara ait el yazısı ticari defter sayfası" fetchpriority="high">
+          <figcaption>Pittsboro ticari defteri · 1832–1834</figcaption>
+        </figure>
+        <figure class="archive-image image-wide" data-reveal>
+          <img src="assets/ledger.png" width="1706" height="896" alt="1828 tarihli Alman muhasebe defteri açık sayfaları" loading="lazy" decoding="async">
+          <figcaption>Alman muhasebe defteri · 1828</figcaption>
+        </figure>
+        <figure class="archive-image image-tall" data-reveal>
+          <img src="assets/accounts-book-holmes-mcdougall-4203789636.jpg" width="1856" height="1530" alt="Edinburgh City of Print koleksiyonundaki eski hesap defteri ve kapak sayfası" loading="lazy" decoding="async">
+          <figcaption>Hesap defteri · Edinburgh City of Print</figcaption>
+        </figure>
+        <figure class="archive-image image-bottom" data-reveal>
+          <img src="assets/account-book-of-thomas-mister.jpg" width="1920" height="2386" alt="Thomas Mister'ın 1766 tarihli hesap defterinden iki sayfa" loading="lazy" decoding="async">
+          <figcaption>Thomas Mister'ın hesap defteri</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="documents section" id="belgeler" aria-labelledby="documents-title">
+      <div class="documents-head" data-reveal>
+        <h2 id="documents-title">Dosyaya girebilecek belgeler</h2>
+        <p id="documents-period">Nisan 2026 · örnek dönem</p>
+      </div>
+      <ul class="document-list" id="document-list">
+        <li><span>Satış</span><span>Satış faturaları ve iade belgeleri</span><span class="file-tab" aria-hidden="true"></span></li>
+        <li><span>Alış</span><span>Gider faturaları ve masraf belgeleri</span><span class="file-tab" aria-hidden="true"></span></li>
+        <li><span>Banka</span><span>Hesap ekstreleri ve tahsilat dökümleri</span><span class="file-tab" aria-hidden="true"></span></li>
+        <li><span>Ücret</span><span>Varsa puantaj ve ücret değişikliği bilgileri</span><span class="file-tab" aria-hidden="true"></span></li>
+      </ul>
+      <p class="sample-note">Örnek belge türleri. İşletmenizin kayıt ve beyan kapsamını mali müşaviriniz belirler.</p>
+    </section>
+
+    <section class="handoff section" aria-labelledby="handoff-title">
+      <h2 id="handoff-title" data-reveal>Dosyanız hazır.</h2>
+      <p data-reveal>Seçtiğiniz döneme ait belgeleri kontrol edip mali müşavirinize iletin.</p>
+      <a class="action" href="#donem" data-reveal>Başka dönem seç</a>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="foot-mark" aria-hidden="true"><span>D</span><span>Ö</span><span>N</span><span>E</span><span>M</span></div>
+    <div class="foot-bottom">
+      <p>Dönem Dosyası · mali müşavir teması · örnek içerik</p>
+      <p class="credits">Görseller: <a href="https://commons.wikimedia.org/wiki/File:Pittsboro_Merchant_Business_Ledger_-_DPLA_-_4cbfce8f8f08c14f851ab74af046c082_(page_258).jpg">Pittsboro Merchant Business Ledger</a>, Public Domain, Wikimedia Commons; <a href="https://commons.wikimedia.org/wiki/File:Ledger.png">Ledger, RaphaelQS</a>, CC0; <a href="https://commons.wikimedia.org/w/index.php?curid=52151160">Accounts Book, Edinburgh City of Print</a>, CC BY 2.0; <a href="https://commons.wikimedia.org/w/index.php?curid=36137926">Account-book of Thomas Mister</a>, CC BY 4.0. Tüm bağlantılar Wikimedia Commons kaynak sayfalarına gider.</p>
+    </div>
+  </footer>
+<script src="/temalar/demo-bar.js" data-theme="muhasebe-1" defer></script>
+</body>
+</html>

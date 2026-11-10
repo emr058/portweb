@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" role="img" aria-labelledby="title desc">
+  <title id="title">Çalışma alanları için örnek dosya ayracı</title><desc id="desc">Üç renkli sekme, farklı başvuru konularını temsil eden boş bir dosya ayracı.</desc>
+  <path fill="#7d0c14" d="M65 82h490v270H65z"/><path fill="#e2e2e2" d="M104 54h131v50H104z"/><path fill="#c5bdbc" d="M247 54h131v50H247z"/><path fill="#a38e8d" d="M390 54h131v50H390z"/>
+  <path fill="#e2e2e2" d="M104 124h412v193H104z"/><path fill="#7d0c14" d="M137 160h248v12H137zm0 36h338v7H137zm0 29h338v7H137zm0 29h270v7H137zm0 29h311v7H137z"/>
+  <circle cx="465" cy="163" r="20" fill="#c5bdbc"/><path fill="#7d0c14" d="M458 162h14v4h-14zm5-7h4v15h-4z"/>
+</svg>
